@@ -3,13 +3,11 @@ package Proyecto;
 import java.util.ArrayList;
 
 public class Persona {
-    String nombre;
-    String correo;
+    String nombre, correo;
     ArrayList<Tarea> tareasResponsable;
 
-    public Persona(String nombre, String correo) {
-        this.nombre = nombre;
-        this.correo = correo;
+    public Persona() {
+        super();
         tareasResponsable = new ArrayList<>();
     }
 }

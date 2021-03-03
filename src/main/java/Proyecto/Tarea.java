@@ -16,6 +16,6 @@ public class Tarea {
 
 
     public Tarea () {
-
+        super();
     }
 }
