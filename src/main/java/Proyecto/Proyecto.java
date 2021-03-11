@@ -10,6 +10,7 @@ public class Proyecto {
         listaPersonas = new ArrayList<>();
         listaTareas = new ArrayList<>();
     }
+    /* Esta clase puede extender de persona y de tarea, de esta forma tendrá accesso a los arrays sin crear atributos. */
 
 
 }
