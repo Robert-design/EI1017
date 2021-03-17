@@ -2,16 +2,15 @@ package Proyecto;
 
 import java.util.ArrayList;
 
-public class Proyecto extends Tarea{
+public class Proyecto extends Tarea {
+    ArrayList<Persona> listaPersonas;
     ArrayList<Tarea> listaTareas;
 
     public Proyecto() {
-        super();
+        listaPersonas = personasATarea;
         listaTareas = new ArrayList<>();
     }
-    public static void main (String [] args) {
-        System.out.println();
-    }
+    /* Esta clase puede extender de persona y de tarea, de esta forma tendrá accesso a los arrays sin crear atributos. */
 
 
 }

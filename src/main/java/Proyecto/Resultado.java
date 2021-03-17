@@ -12,6 +12,8 @@ public class Resultado {
         this.opcion =opcion;
     }
 
+
+    
     public String getIdentificadorResultado() { return this.identificadorResultado; } //Devuelve el ID
 
     public int getNumHorasInvertidas() { return this.numHorasInvertidas; } //Devuelve horas

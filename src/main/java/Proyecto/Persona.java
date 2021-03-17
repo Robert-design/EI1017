@@ -18,4 +18,12 @@ public class Persona {
     public String getCorreo() {
         return this.correo;
     }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                '}';
+    }
 }

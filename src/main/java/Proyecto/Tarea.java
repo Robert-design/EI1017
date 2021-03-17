@@ -6,10 +6,10 @@ import java.util.ArrayList;
 public class Tarea {
 
    private String titulo, descripcion;
-    ArrayList<Persona> personasATarea;
+    static ArrayList<Persona> personasATarea =  new ArrayList<Persona>();
     Persona responsable;
     private int prioridad;
-    LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
+    private LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
     boolean finalizado;
     Resultado resultadoEsperado;
     //Me falta añadir lista de etiquetas, pero no sé si debe de ser una clase o lista normal
@@ -20,18 +20,17 @@ public class Tarea {
     * estadoTarea que contenga el atributo finalizado y el resultado.
     * */
 
-    public Tarea () {
+    public  Tarea () {
         super();
-        personasATarea = new ArrayList<>();
+        //personasATarea = new ArrayList<>();
     }
 
-    public static void main (String [] args) {
+    public static void main(String[] args) {
+        Persona prueba = new Persona("Robert", "marica@uji.es");
+        System.out.println(prueba.toString());
+        personasATarea.add(prueba);
         System.out.println(personasATarea.toString());
     }
 
-    public void add() {
-       Persona pepe = new Persona("correo", "nombre");
-       personasATarea.add(pepe);
 
-    }
 }
