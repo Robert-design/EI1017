@@ -5,7 +5,7 @@ public class Resultado {
     private int numHorasInvertidas;
     private String opcion; //Interno o comercializado, de esto no estoy muy seguro
 
-    public Resultado () {
+    public Resultado() {
         super();
     }
 

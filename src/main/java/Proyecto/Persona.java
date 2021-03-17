@@ -1,5 +1,6 @@
 package Proyecto;
 
+
 import java.util.ArrayList;
 
 public class Persona {
@@ -9,13 +10,11 @@ public class Persona {
 
     public Persona() {
         super();
-
     }
 
     public String getNombre () {
         return this.nombre;
     }
-
     public String getCorreo() {
         return this.correo;
     }

@@ -1,18 +1,16 @@
 package Proyecto;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Tarea {
-
-   private String titulo, descripcion;
     ArrayList<Persona> personasATarea;
-    Persona responsable;
+    ArrayList<String> listaEtiquetas;
+    private String titulo, descripcion;
+    private Persona responsable;
     private int prioridad;
     private LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
     boolean finalizado;
-    Resultado resultadoEsperado;
-    ArrayList<String> listaEtiquetas;
+    private Resultado resultadoEsperado;
 
 
     public  Tarea () {
@@ -20,5 +18,23 @@ public class Tarea {
         personasATarea = new ArrayList<>();
         listaEtiquetas = new ArrayList<>();
     }
+
+    public String getTitulo() { return titulo; }
+
+    public String getDescripcion() { return descripcion; }
+
+    public Persona getResponsable() { return responsable; }
+
+    public int getPrioridad() { return prioridad; }
+
+    public LocalDate getFechaCreacion() { return fechaCreacion; }
+
+    public LocalDate getFechaFinalizacion() { return fechaFinalizacion; }
+
+    public boolean isFinalizado() { return finalizado; }
+
+    public Resultado getResultadoEsperado() { return resultadoEsperado; }
+
+
 
 }

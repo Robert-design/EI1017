@@ -7,7 +7,7 @@ public class Documentacion extends Resultado {
     private int numPaginas;
     private float espacioDisco; //Float porque puede dar ¿8,4MB?
 
-    public Documentacion () {
+    public Documentacion() {
         super();
     }
 
