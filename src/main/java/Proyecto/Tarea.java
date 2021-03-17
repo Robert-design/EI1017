@@ -22,5 +22,16 @@ public class Tarea {
 
     public Tarea () {
         super();
+        personasATarea = new ArrayList<>();
+    }
+
+    public static void main (String [] args) {
+        System.out.println(personasATarea.toString());
+    }
+
+    public void add() {
+       Persona pepe = new Persona("correo", "nombre");
+       personasATarea.add(pepe);
+
     }
 }
