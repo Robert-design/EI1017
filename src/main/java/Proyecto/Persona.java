@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Persona {
     private String nombre, correo;
+    ArrayList<Tarea> responsables;
+
 
     public Persona(String nombre, String correo) {
         super();
