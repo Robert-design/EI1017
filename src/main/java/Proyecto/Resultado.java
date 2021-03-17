@@ -5,11 +5,8 @@ public class Resultado {
     private int numHorasInvertidas;
     private String opcion; //Interno o comercializado, de esto no estoy muy seguro
 
-    public Resultado (String identificadorResultado, int numHorasInvertidas, String opcion) {
+    public Resultado () {
         super();
-        this.identificadorResultado = identificadorResultado;
-        this.numHorasInvertidas = numHorasInvertidas;
-        this.opcion =opcion;
     }
 
     public String getIdentificadorResultado() { return this.identificadorResultado; } //Devuelve el ID

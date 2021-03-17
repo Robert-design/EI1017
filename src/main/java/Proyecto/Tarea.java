@@ -12,12 +12,13 @@ public class Tarea {
     private LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
     boolean finalizado;
     Resultado resultadoEsperado;
-    //Me falta añadir lista de etiquetas, pero no sé si debe de ser una clase o lista normal
+    ArrayList<String> listaEtiquetas;
 
 
     public  Tarea () {
         super();
         personasATarea = new ArrayList<>();
+        listaEtiquetas = new ArrayList<>();
     }
 
 }
