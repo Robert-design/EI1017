@@ -6,7 +6,7 @@ public class Biblioteca extends Resultado {
     private int numModulos;
     private int numLineas;
 
-    public Biblioteca(String lenguaje, int numModulos, int numLineas) {
+    public Biblioteca() {
         super();
     }
 

@@ -7,10 +7,9 @@ public class Persona {
     ArrayList<Tarea> responsables;
 
 
-    public Persona(String nombre, String correo) {
+    public Persona() {
         super();
-        this.nombre = nombre;
-        this.correo = correo;
+
     }
 
     public String getNombre () {
