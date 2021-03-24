@@ -1,7 +1,6 @@
 package Proyecto;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Proyecto  {
     private String nombre;
@@ -21,5 +20,23 @@ public class Proyecto  {
         return nombre;
     }
 
+    public String [] listarPersonasProyecto() {
+        Persona pepe = new Persona();
+        listaPersonas.add(pepe);
+        String [] res = new String[listaPersonas.size()];
+        for (int i = 0; i < listaPersonas.size(); i++) {
+            res[i] = String.valueOf(listaPersonas.get(i));
+        }
+        return res;
+    }
+
+
+    public ArrayList<Tarea> listarTareasPoyecto() {
+        return null;
+    }
+
+    public static void main(String [] args) {
+
+    }
 
 }
