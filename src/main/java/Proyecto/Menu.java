@@ -1,6 +1,7 @@
 package Proyecto;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -17,10 +18,11 @@ public class Menu {
             System.out.println("1. Dar de dalta personas que trabajan en el proyecto.");
             System.out.println("2. Dar de alta las tareas con sus datos.");
             System.out.println("3. Marcar una tarea como finalizada.");
-            System.out.println("4. Introducir o eliminar una persona de una tarea.");
-            System.out.println("5. Listar las personas asignadas a un proyecto.");
-            System.out.println("6. Listar las tarea de un proyecto.");
-            System.out.println("7. Salir del menú.");
+            System.out.println("4. Introducir una persona en una tarea.");
+            System.out.println("5. Eliminar una persona de una tarea.");
+            System.out.println("6. Listar las personas asignadas a un proyecto.");
+            System.out.println("7. Listar las tarea de un proyecto.");
+            System.out.println("8. Salir del menú.");
             System.out.println("Escoge la opción deseada: ");
             int operacion = scan.nextInt();
             switch (operacion) {
@@ -49,9 +51,29 @@ public class Menu {
                 case 3 : {
                     break;
                 }
+                case 5 : {
+                    ArrayList<Persona> referencia_personas = proyecto.listaPersonas; //trabajadores del proyecto
+                    System.out.println("Introduce el nombre a añadir: ");
+                    String nombre = scan.next();
+
+                    if(tarea.añadirPersonaTarea(nombre))
+                        System.out.println("Persona añadida correctamente");
+                    break;
+
+
+                }
+                case 6: {
+                    /*Tarea nueva = new Tarea();
+                    System.out.println("Introduce el nombre a añadir: ");
+                    String nombre = scan.next();
+                    if(nueva.eliminarPerosnaTarea(nombre)){
+                        System.out.println("Se ha eliminado la persona correctamente.");
+                    }
+                    break */
+                }
                 case 7 : {
-                    acabado = false;
-                    System.out.println("Hasta luego");
+                    String[] personasEnProyecto = proyecto.listarPersonasProyecto();
+                    System.out.println(personasEnProyecto.toString());
                     break;
                 }
             }

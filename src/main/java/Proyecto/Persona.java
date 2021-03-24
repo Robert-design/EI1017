@@ -21,12 +21,6 @@ public class Persona {
         return this.correo;
     }
 
-    public void setNombreYCorreo(String nombre, String correo) {
-        this.nombre = nombre;
-        this.correo = correo;
-    }
-
-
     @Override
     public String toString() {
         return "Persona {" +

@@ -83,4 +83,9 @@ public class Tarea {
         }
         throw new NoSuchElementException();
     }
+
+    public boolean añadirPersonaTarea(String nombre, String nombreTarea) {
+        Persona nueva = new Persona(nombre, "@gmail.com");
+        return personasATarea.add(nueva);
+    }
 }

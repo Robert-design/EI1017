@@ -20,12 +20,20 @@ public class Proyecto  {
         return nombre;
     }
 
-    public void listarPersonasProyecto() {
+    public String[] listarPersonasProyecto() {
         String [] res = new String[listaPersonas.size()];
         for (int i = 0; i < listaPersonas.size(); i++) {
-            res[i] = String.valueOf(listaPersonas.get(i));
-            System.out.println(res[i]);
+            res[i] = listaPersonas.get(i).getNombre()+listaPersonas.get(i).getCorreo();
         }
+        return res;
+    }
+
+    public boolean existeTarea(String titulo) {
+        for( Tarea tarea : listaTareas){
+            if(tarea.getTitulo().equals(titulo))
+                return true;
+        }
+        return false;
     }
 
     public ArrayList<Tarea> listarTareasPoyecto() {
