@@ -17,13 +17,6 @@ public class Tarea {
         super();
         personasATarea = new ArrayList<>();
         listaEtiquetas = new ArrayList<>();
-        this.titulo = "Hacer una app";
-        this.descripcion = "Realizar código";
-        this.responsable = null;
-        this.prioridad = 1;
-        this.fechaCreacion = LocalDate.now();
-        this.finalizado = false;
-        this.resultadoEsperado = null;
     }
 
     public String getTitulo() { return titulo; }
@@ -45,5 +38,14 @@ public class Tarea {
     }
 
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
+
+    public void añadirPersonaTarea (Persona persona) {
+        personasATarea.add(persona);
+    }
+    public void borrarPersonaTarea (Persona persona) {
+        if (personasATarea.contains(persona.getNombre()))
+            personasATarea.remove(persona);
+    }
+
 
 }
