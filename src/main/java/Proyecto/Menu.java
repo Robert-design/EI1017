@@ -24,14 +24,19 @@ public class Menu {
             int operacion = scan.nextInt();
             switch (operacion) {
                 case 1 : {
+                    System.out.println("Introduce el nombre de la persona: ");
                     String nombrePersona = scan.next();
-                    proyecto.añadirPersona(nombrePersona);
+                    proyecto.añadirPersonaProyecto(nombrePersona);
                     System.out.println("Las personas asignadas al proyecto son: ");
                     proyecto.listarPersonasProyecto();
                     break;
                 }
                 case 2 : {
                     Tarea tarea = new Tarea();
+                    tarea.setTitulo("Programar");
+                    tarea.setDescripcion("Hacer código en Java");
+
+
                     break;
                 }
                 case 3 : {

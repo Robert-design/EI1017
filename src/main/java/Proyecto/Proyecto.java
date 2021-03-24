@@ -32,7 +32,7 @@ public class Proyecto  {
         return null;
     }
 
-    public boolean añadirPersona(String nombre) {
+    public boolean añadirPersonaProyecto(String nombre) {
         Persona persona = new Persona(nombre,"@gmail.com");
         return listaPersonas.add(persona);
     }
