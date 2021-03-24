@@ -34,8 +34,8 @@ public class Tarea {
 
     public boolean isFinalizado() { return finalizado; }
 
-    public void setFinalizado() {
-        this.finalizado = true;
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
@@ -65,10 +65,6 @@ public class Tarea {
 
     public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
         this.fechaFinalizacion = fechaFinalizacion;
-    }
-
-    public void setFinalizado(boolean finalizado) {
-        this.finalizado = finalizado;
     }
 
     public void setResultadoEsperado(Resultado resultadoEsperado) {
