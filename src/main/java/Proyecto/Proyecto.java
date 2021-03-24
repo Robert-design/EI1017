@@ -20,21 +20,20 @@ public class Proyecto  {
         return nombre;
     }
 
-    public String [] listarPersonasProyecto() {
-        Persona pepe = new Persona("pepe","@gmail.com");
-        listaPersonas.add(pepe);
+    public void listarPersonasProyecto() {
         String [] res = new String[listaPersonas.size()];
         for (int i = 0; i < listaPersonas.size(); i++) {
             res[i] = String.valueOf(listaPersonas.get(i));
+            System.out.println(res[i]);
         }
-        return res;
     }
 
     public ArrayList<Tarea> listarTareasPoyecto() {
         return null;
     }
 
-    public boolean añadirPersona(Persona persona) {
+    public boolean añadirPersonaProyecto(String nombre) {
+        Persona persona = new Persona(nombre,"@gmail.com");
         return listaPersonas.add(persona);
     }
 

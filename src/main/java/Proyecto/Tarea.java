@@ -1,6 +1,7 @@
 package Proyecto;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class Tarea {
     ArrayList<Persona> personasATarea;
@@ -39,13 +40,47 @@ public class Tarea {
 
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
 
-    public void añadirPersonaTarea (Persona persona) {
-        personasATarea.add(persona);
-    }
-    public void borrarPersonaTarea (Persona persona) {
-        if (personasATarea.contains(persona.getNombre()))
-            personasATarea.remove(persona);
+    public void setResponsable(Persona responsable) {
+        if (personasATarea.contains(responsable))
+            this.responsable = responsable;
+        else
+            System.out.println("El responsable tiene que estar asignado a la tarea");
     }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setPrioridad(int prioridad) {
+        this.prioridad = prioridad;
+    }
+
+    public void setFechaCreacion(LocalDate fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
+        this.fechaFinalizacion = fechaFinalizacion;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
+    }
+
+    public void setResultadoEsperado(Resultado resultadoEsperado) {
+        this.resultadoEsperado = resultadoEsperado;
+    }
+
+    public Persona existeResponsable(String nombre) throws NoSuchElementException {
+        for (Persona pers: personasATarea) {
+            if (nombre.compareTo(pers.getNombre())==0) {
+                return pers;
+            }
+        }
+        throw new NoSuchElementException();
+    }
 }
