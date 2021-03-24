@@ -12,6 +12,7 @@ public class Persona {
         super();
         this.nombre = nombre;
         this.correo = correo;
+        responsables = new ArrayList<>();
     }
 
     public String getNombre () {
@@ -29,6 +30,8 @@ public class Persona {
                 '}';
     }
 
-
+    public void añadirResponsable(Tarea tarea) {
+        responsables.add(tarea);
+    }
 
 }

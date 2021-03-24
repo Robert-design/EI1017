@@ -10,7 +10,7 @@ public class Tarea {
     private Persona responsable;
     private int prioridad;
     private LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
-    boolean finalizado;
+    private boolean finalizado;
     private Resultado resultadoEsperado;
 
 
@@ -41,10 +41,7 @@ public class Tarea {
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
 
     public void setResponsable(Persona responsable) {
-        if (personasATarea.contains(responsable))
-            this.responsable = responsable;
-        else
-            System.out.println("El responsable tiene que estar asignado a la tarea");
+        this.responsable = responsable;
     }
 
     public void setTitulo(String titulo) {
@@ -71,14 +68,14 @@ public class Tarea {
         this.resultadoEsperado = resultadoEsperado;
     }
 
-    public Persona existeResponsable(String nombre) throws NoSuchElementException {
+    /*public Persona existeResponsable(String nombre) throws NoSuchElementException {
         for (Persona pers: personasATarea) {
             if (nombre.compareTo(pers.getNombre())==0) {
                 return pers;
             }
         }
         throw new NoSuchElementException();
-    }
+    }*/
 
     public void añadirPersonaTarea(Persona persona) {
         personasATarea.add(persona);
@@ -86,5 +83,21 @@ public class Tarea {
 
     public void eliminarPersonaTarea(Persona eliminar) {
         personasATarea.remove(eliminar);
+    }
+
+    @Override
+    public String toString() {
+        return "Tarea{" +
+                "personasATarea=" + personasATarea +
+                ", listaEtiquetas=" + listaEtiquetas +
+                ", titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", responsable=" + responsable +
+                ", prioridad=" + prioridad +
+                ", fechaCreacion=" + fechaCreacion +
+                ", fechaFinalizacion=" + fechaFinalizacion +
+                ", finalizado=" + finalizado +
+                ", resultadoEsperado=" + resultadoEsperado +
+                '}';
     }
 }

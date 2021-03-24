@@ -43,13 +43,15 @@ public class Menu {
                     tarea.setDescripcion("Hacer código en Java");
                     System.out.print("Introduce el nombre del responsable: ");
                     String nombreResponsable = scan.next();
-                    Persona responsable = tarea.existeResponsable(nombreResponsable);
+                    Persona responsable = proyecto.damePersona(nombreResponsable);
                     tarea.setResponsable(responsable);
                     tarea.setPrioridad(1);
                     tarea.setFechaCreacion(LocalDate.now());
                     tarea.setFechaFinalizacion(null);
                     tarea.setFinalizado(false);
                     tarea.setResultadoEsperado(null);
+                    responsable.añadirResponsable(tarea);
+                    System.out.println(tarea);
                     break;
                 }
                 case 3 : {
