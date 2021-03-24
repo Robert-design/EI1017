@@ -43,15 +43,21 @@ public class Menu {
                     tarea.setDescripcion("Hacer código en Java");
                     System.out.print("Introduce el nombre del responsable: ");
                     String nombreResponsable = scan.next();
-                    Persona responsable = proyecto.damePersona(nombreResponsable);
-                    tarea.setResponsable(responsable);
-                    tarea.setPrioridad(1);
-                    tarea.setFechaCreacion(LocalDate.now());
-                    tarea.setFechaFinalizacion(null);
-                    tarea.setFinalizado(false);
-                    tarea.setResultadoEsperado(null);
-                    responsable.añadirResponsable(tarea);
-                    System.out.println(tarea);
+                    boolean existePersonaEnProyecto = proyecto.existePersona(nombreProyecto);
+
+                    if(existePersonaEnProyecto){
+                        Persona responsable = proyecto.damePersona(nombreResponsable);
+                        tarea.setResponsable(responsable);
+                        tarea.setPrioridad(1);
+                        tarea.setFechaCreacion(LocalDate.now());
+                        tarea.setFechaFinalizacion(null);
+                        tarea.setFinalizado(false);
+                        tarea.setResultadoEsperado(null);
+                        responsable.añadirResponsable(tarea);
+                        System.out.println(tarea);
+                        break;
+                    }
+                    System.out.println("Para crear una tares es necesario un responsable.");
                     break;
                 }
                 case 3 : {
@@ -96,6 +102,10 @@ public class Menu {
                     String[] personasEnProyecto = proyecto.listarPersonasProyecto();
                     System.out.println(Arrays.toString(personasEnProyecto));
                     break;
+                }
+
+                case 7 : {
+
                 }
                 case 8 : {
                     System.out.println("¡Hasta luego!");
