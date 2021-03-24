@@ -60,7 +60,9 @@ public class Menu {
                     boolean personaExistente = proyecto.existePersona(nombre);
                     if(personaExistente && tareaExistente) {
                         Tarea existente = proyecto.dameTarea(titulo);
-                        existente.añadirPersonaTarea(p);
+                        Persona nueva = proyecto.damePersona(nombre);
+                        existente.añadirPersonaTarea(nueva);
+                        System.out.println("Persona añadida a la tarea.");
                     }
 
                 }
