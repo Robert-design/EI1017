@@ -21,6 +21,8 @@ public class Proyecto  {
     }
 
     public String [] listarPersonasProyecto() {
+        Persona pepe = new Persona("pepe","@gmail.com");
+        listaPersonas.add(pepe);
         String [] res = new String[listaPersonas.size()];
         for (int i = 0; i < listaPersonas.size(); i++) {
             res[i] = String.valueOf(listaPersonas.get(i));
@@ -32,17 +34,8 @@ public class Proyecto  {
         return null;
     }
 
-    public void añadirPersonaTarea (Persona persona) {
-        listaPersonas.add(persona);
+    public boolean añadirPersona(Persona persona) {
+        return listaPersonas.add(persona);
     }
-
-    public void borrarPersonaTarea (String nombre) {
-        for(Persona elem : listaPersonas){
-            if(elem.getNombre().equals(nombre))
-                listaPersonas.remove(elem);
-                break;
-        }
-    }
-
 
 }
