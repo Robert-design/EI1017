@@ -8,8 +8,9 @@ public class Persona {
     ArrayList<Tarea> responsables;
 
 
-    public Persona() {
+    public Persona(String nombre, String correo) {
         super();
+
     }
 
     public String getNombre () {
