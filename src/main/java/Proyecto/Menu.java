@@ -2,6 +2,7 @@ package Proyecto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
@@ -88,7 +89,7 @@ public class Menu {
                 }
                 case 6 : {
                     String[] personasEnProyecto = proyecto.listarPersonasProyecto();
-                    System.out.println(personasEnProyecto.toString());
+                    System.out.println(Arrays.toString(personasEnProyecto));
                     break;
                 }
                 case 8 : {
