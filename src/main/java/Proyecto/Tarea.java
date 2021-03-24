@@ -83,4 +83,8 @@ public class Tarea {
     public void añadirPersonaTarea(Persona persona) {
         personasATarea.add(persona);
     }
+
+    public void eliminarPersonaTarea(Persona eliminar) {
+        personasATarea.remove(eliminar);
+    }
 }

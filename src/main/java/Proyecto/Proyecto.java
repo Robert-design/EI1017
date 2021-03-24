@@ -60,4 +60,11 @@ public class Proyecto  {
                 return tarea;
         throw new NoSuchElementException();
     }
+
+    public Persona damePersona(String nombre) throws NoSuchElementException {
+        for (Persona persona : listaPersonas)
+            if (persona.getNombre().equals(nombre) && existePersona(nombre))
+                return persona;
+        throw new NoSuchElementException();
+    }
 }

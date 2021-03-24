@@ -72,13 +72,19 @@ public class Menu {
 
                 }
                 case 5: {
-                    /*Tarea nueva = new Tarea();
                     System.out.println("Introduce el nombre a añadir: ");
                     String nombre = scan.next();
-                    if(nueva.eliminarPerosnaTarea(nombre)){
-                        System.out.println("Se ha eliminado la persona correctamente.");
+                    System.out.println("Introduce el título de la tarea: ");
+                    String titulo = scan.next();
+                    boolean tareaExistente = proyecto.existeTarea(titulo);
+                    boolean personaExistente = proyecto.existePersona(nombre);
+                    if(personaExistente && tareaExistente) {
+                        Tarea existente = proyecto.dameTarea(titulo);
+                        Persona eliminada = proyecto.damePersona(nombre);
+                        existente.eliminarPersonaTarea(eliminada);
+                        System.out.println("Persona eliminada correctamente");
                     }
-                    break */
+                    break;
                 }
                 case 6 : {
                     String[] personasEnProyecto = proyecto.listarPersonasProyecto();
