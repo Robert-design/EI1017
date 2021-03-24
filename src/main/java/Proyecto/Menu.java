@@ -51,18 +51,20 @@ public class Menu {
                 case 3 : {
                     break;
                 }
-                case 5 : {
-                    ArrayList<Persona> referencia_personas = proyecto.listaPersonas; //trabajadores del proyecto
+                case 4 : {
                     System.out.println("Introduce el nombre a añadir: ");
                     String nombre = scan.next();
-
-                    if(tarea.añadirPersonaTarea(nombre))
-                        System.out.println("Persona añadida correctamente");
-                    break;
-
+                    System.out.println("Introduce el título de la tarea: ");
+                    String titulo = scan.next();
+                    boolean tareaExistente = proyecto.existeTarea(titulo);
+                    boolean personaExistente = proyecto.existePersona(nombre);
+                    if(personaExistente && tareaExistente) {
+                        Tarea existente = proyecto.dameTarea(titulo);
+                        existente.añadirPersonaTarea(p);
+                    }
 
                 }
-                case 6: {
+                case 5: {
                     /*Tarea nueva = new Tarea();
                     System.out.println("Introduce el nombre a añadir: ");
                     String nombre = scan.next();
@@ -71,7 +73,7 @@ public class Menu {
                     }
                     break */
                 }
-                case 7 : {
+                case 6 : {
                     String[] personasEnProyecto = proyecto.listarPersonasProyecto();
                     System.out.println(personasEnProyecto.toString());
                     break;
