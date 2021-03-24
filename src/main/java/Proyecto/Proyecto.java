@@ -37,6 +37,14 @@ public class Proyecto  {
         return false;
     }
 
+    public boolean existePersona(String nombre) {
+        for(Persona persona : listaPersonas){
+            if(persona.getNombre().equals(nombre))
+                return true;
+        }
+        return false;
+    }
+
     public ArrayList<Tarea> listarTareasPoyecto() {
         return null;
     }
