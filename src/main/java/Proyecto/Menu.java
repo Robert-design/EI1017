@@ -91,6 +91,11 @@ public class Menu {
                     System.out.println(personasEnProyecto.toString());
                     break;
                 }
+                case 8 : {
+                    System.out.println("¡Hasta luego!");
+                    acabado = false;
+                    break;
+                }
             }
         }
     }
