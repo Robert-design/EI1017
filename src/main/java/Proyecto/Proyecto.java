@@ -21,7 +21,7 @@ public class Proyecto  {
     }
 
     public String [] listarPersonasProyecto() {
-        Persona pepe = new Persona();
+        Persona pepe = new Persona("pepe","@gmail.com");
         listaPersonas.add(pepe);
         String [] res = new String[listaPersonas.size()];
         for (int i = 0; i < listaPersonas.size(); i++) {
@@ -30,13 +30,12 @@ public class Proyecto  {
         return res;
     }
 
-
     public ArrayList<Tarea> listarTareasPoyecto() {
         return null;
     }
 
-    public static void main(String [] args) {
-
+    public boolean añadirPersona(Persona persona) {
+        return listaPersonas.add(persona);
     }
 
 }
