@@ -1,6 +1,7 @@
 package Proyecto;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class Tarea {
     ArrayList<Persona> personasATarea;
@@ -72,5 +73,14 @@ public class Tarea {
 
     public void setResultadoEsperado(Resultado resultadoEsperado) {
         this.resultadoEsperado = resultadoEsperado;
+    }
+
+    public Persona existeResponsable(String nombre) throws NoSuchElementException {
+        for (Persona pers: personasATarea) {
+            if (nombre.compareTo(pers.getNombre())==0) {
+                return pers;
+            }
+        }
+        throw new NoSuchElementException();
     }
 }

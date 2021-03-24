@@ -1,5 +1,6 @@
 package Proyecto;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Menu {
@@ -35,8 +36,14 @@ public class Menu {
                     Tarea tarea = new Tarea();
                     tarea.setTitulo("Programar");
                     tarea.setDescripcion("Hacer código en Java");
-
-
+                    String nombreResponsable = scan.next();
+                    Persona responsable = tarea.existeResponsable(nombreResponsable);
+                    tarea.setResponsable(responsable);
+                    tarea.setPrioridad(1);
+                    tarea.setFechaCreacion(LocalDate.now());
+                    tarea.setFechaFinalizacion(null);
+                    tarea.setFinalizado(false);
+                    tarea.setResultadoEsperado(null);
                     break;
                 }
                 case 3 : {
