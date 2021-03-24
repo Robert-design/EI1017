@@ -13,7 +13,7 @@ public class Tarea {
     private Resultado resultadoEsperado;
 
 
-    public  Tarea () {
+    public Tarea () {
         super();
         personasATarea = new ArrayList<>();
         listaEtiquetas = new ArrayList<>();
@@ -32,6 +32,10 @@ public class Tarea {
     public LocalDate getFechaFinalizacion() { return fechaFinalizacion; }
 
     public boolean isFinalizado() { return finalizado; }
+
+    public void setFinalizado() {
+        this.finalizado = true;
+    }
 
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
 
