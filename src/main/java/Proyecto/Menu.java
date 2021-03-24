@@ -49,6 +49,11 @@ public class Menu {
                     break;
                 }
                 case 3 : {
+                    System.out.println("¿Qué tarea ha sido finalizada?");
+                    String nombreTarea = scan.next();
+                    Tarea tarea = proyecto.dameTarea(nombreTarea);
+                    tarea.setFinalizado();
+                    System.out.println("Tarea finalizada");
                     break;
                 }
                 case 4 : {

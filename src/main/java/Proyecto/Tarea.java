@@ -67,10 +67,6 @@ public class Tarea {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 
-    public void setFinalizado(boolean finalizado) {
-        this.finalizado = finalizado;
-    }
-
     public void setResultadoEsperado(Resultado resultadoEsperado) {
         this.resultadoEsperado = resultadoEsperado;
     }
