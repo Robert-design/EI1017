@@ -1,6 +1,7 @@
 package Proyecto;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class Proyecto  {
     private String nombre;
@@ -29,7 +30,7 @@ public class Proyecto  {
     }
 
     public boolean existeTarea(String titulo) {
-        for( Tarea tarea : listaTareas){
+        for (Tarea tarea : listaTareas){
             if(tarea.getTitulo().equals(titulo))
                 return true;
         }
@@ -45,4 +46,10 @@ public class Proyecto  {
         return listaPersonas.add(persona);
     }
 
+    public Tarea dameTarea(String titulo) throws NoSuchElementException {
+        for (Tarea tarea : listaTareas)
+            if (tarea.getTitulo().equals(titulo) && existeTarea(titulo))
+                return tarea;
+        throw new NoSuchElementException();
+    }
 }
