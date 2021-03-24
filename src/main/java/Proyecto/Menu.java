@@ -37,7 +37,9 @@ public class Menu {
                 }
                 case 2 : {
                     Tarea tarea = new Tarea();
-                    tarea.setTitulo("Programar");
+                    System.out.println("Introduce la tarea: ");
+                    String nombreTarea = scan.next();
+                    tarea.setTitulo(nombreTarea);
                     tarea.setDescripcion("Hacer código en Java");
                     String nombreResponsable = scan.next();
                     Persona responsable = tarea.existeResponsable(nombreResponsable);
