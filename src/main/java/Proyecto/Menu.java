@@ -52,7 +52,7 @@ public class Menu {
                     System.out.println("¿Qué tarea ha sido finalizada?");
                     String nombreTarea = scan.next();
                     Tarea tarea = proyecto.dameTarea(nombreTarea);
-                    tarea.setFinalizado();
+                    tarea.setFinalizado(true);
                     System.out.println("Tarea finalizada");
                     break;
                 }

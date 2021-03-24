@@ -34,8 +34,8 @@ public class Tarea {
 
     public boolean isFinalizado() { return finalizado; }
 
-    public void setFinalizado() {
-        this.finalizado = true;
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
