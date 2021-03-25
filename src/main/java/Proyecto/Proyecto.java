@@ -1,6 +1,7 @@
 package Proyecto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Proyecto  {
@@ -24,7 +25,7 @@ public class Proyecto  {
     public String[] listarPersonasProyecto() {
         String [] res = new String[listaPersonas.size()];
         for (int i = 0; i < listaPersonas.size(); i++) {
-            res[i] = listaPersonas.get(i).getNombre()+listaPersonas.get(i).getCorreo();
+            res[i] = "Nombre: "+listaPersonas.get(i).getNombre()+"----"+listaPersonas.get(i).getCorreo();
         }
         return res;
     }
@@ -48,7 +49,7 @@ public class Proyecto  {
     public String [] listarTareasPoyecto() {
         String [] res = new String[listaTareas.size()];
         for (int i = 0; i < listaTareas.size(); i++) {
-            res[i] = listaTareas.get(i).getTitulo() + listaTareas.get(i).isFinalizado() + listaTareas.get(i).getResultadoEsperado() + listaTareas.get(i).mostrarPersonasProyecto();
+            res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"\n "+"Estado: "+ listaTareas.get(i).isFinalizado() + "\n"+"Resultado: " + listaTareas.get(i).getResultadoEsperado() + "\n"+"Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto())+"\n";
         }
         return res;
     }

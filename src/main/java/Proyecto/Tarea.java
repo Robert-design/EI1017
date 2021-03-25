@@ -43,8 +43,6 @@ public class Tarea {
     public void setResponsable(Persona responsable) {
         if (personasATarea.contains(responsable))
             this.responsable = responsable;
-        else
-            System.out.println("El responsable tiene que estar asignado a la tarea");
     }
 
     public void setTitulo(String titulo) {
@@ -71,14 +69,13 @@ public class Tarea {
         this.resultadoEsperado = resultadoEsperado;
     }
 
-    public Persona existeResponsable(String nombre) throws NoSuchElementException {
-        for (Persona pers: personasATarea) {
-            if (nombre.compareTo(pers.getNombre())==0) {
-                return pers;
-            }
-        }
-        throw new NoSuchElementException();
+     public boolean tieneResponsable(){
+        if (this.responsable != null)
+            return true;
+        return false;
     }
+
+
 
     public void añadirPersonaTarea(Persona persona) {
         personasATarea.add(persona);

@@ -23,15 +23,13 @@ public class Menu {
             System.out.println("6. Listar las personas asignadas a un proyecto.");
             System.out.println("7. Listar las tarea de un proyecto.");
             System.out.println("8. Salir del menú.");
-            System.out.println("Escoge la opción deseada: ");
+            System.out.print("Escoge la opción deseada: ");
             int operacion = scan.nextInt();
             switch (operacion) {
                 case 1 : {
-                    System.out.println("Introduce el nombre de la persona: ");
+                    System.out.print("Introduce el nombre de la persona: ");
                     String nombrePersona = scan.next();
                     proyecto.añadirPersonaProyecto(nombrePersona);
-                    System.out.println("Las personas asignadas al proyecto son: ");
-                    proyecto.listarPersonasProyecto();
                     break;
                 }
                 case 2 : {
@@ -58,7 +56,7 @@ public class Menu {
 
                 case 7 : {
                     String [] tareasEnProyecto = proyecto.listarTareasPoyecto();
-                    System.out.println(Arrays.toString(tareasEnProyecto));
+                    System.out.println(Arrays.toString(tareasEnProyecto)+"\n");
                     break;
                 }
                 case 8 : {
@@ -83,12 +81,12 @@ public class Menu {
         tarea.setFinalizado(false);
         tarea.setResultadoEsperado(null);
         proyecto.añadirTareaProyecto(tarea);
-        System.out.println(tarea.getTitulo());
+        System.out.println("Tarea creada exitosamente");
     }
 
     public static void marcarFinalizada(Proyecto proyecto) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("¿Qué tarea ha sido finalizada?");
+        System.out.print("¿Qué tarea ha sido finalizada? ");
         String nombreTarea = scan.next();
         Tarea tarea = proyecto.dameTarea(nombreTarea);
         tarea.setFinalizado(true);
@@ -97,19 +95,25 @@ public class Menu {
 
     public static void introducirPersonaATarea(Proyecto proyecto) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Introduce el nombre a añadir: ");
+        System.out.print("Introduce el nombre a añadir: ");
         String nombre = scan.next();
-        System.out.println("Introduce el título de la tarea: ");
+        System.out.print("Introduce el título de la tarea: ");
         String titulo = scan.next();
         boolean tareaExistente = proyecto.existeTarea(titulo);
         boolean personaExistente = proyecto.existePersona(nombre);
         if(personaExistente && tareaExistente) {
             Tarea existente = proyecto.dameTarea(titulo);
             Persona nueva = proyecto.damePersona(nombre);
-            System.out.print("¿Quieres que esta persona sea respoable de la tarea? (Y/N)");
-            String respuesta = scan.next();
-            if (respuesta.equals("Y"))
-                existente.setResponsable(nueva);
+
+            //Aquí empieza mi idea. el metodo está en la clase TAREA.
+            boolean tieneResponsable = existente.tieneResponsable();
+            if(!tieneResponsable){
+                System.out.print("¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
+                String respuesta = scan.next();
+                if (respuesta.equals("Y\n"))
+                    existente.setResponsable(nueva);
+            }
+            //aqui termina
             existente.añadirPersonaTarea(nueva);
             System.out.println("Persona añadida a la tarea.");
         }
@@ -118,9 +122,9 @@ public class Menu {
 
     public static void eliminarPersonaDeTarea(Proyecto proyecto) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Introduce el nombre de la persona para eliminarlo de la tarea: ");
+        System.out.print("Introduce el nombre de la persona para eliminarlo de la tarea: ");
         String nombre = scan.next();
-        System.out.println("Introduce el título de la tarea: ");
+        System.out.print("Introduce el título de la tarea: ");
         String titulo = scan.next();
         boolean tareaExistente = proyecto.existeTarea(titulo);
         boolean personaExistente = proyecto.existePersona(nombre);

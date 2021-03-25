@@ -11,7 +11,7 @@ public class Persona {
     public Persona(String nombre, String correo) {
         super();
         this.nombre = nombre;
-        this.correo = correo;
+        this.correo = nombre+correo;
         responsables = new ArrayList<>();
     }
 
