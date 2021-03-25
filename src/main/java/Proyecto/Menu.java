@@ -57,7 +57,9 @@ public class Menu {
                 }
 
                 case 7 : {
-
+                    String [] tareasEnProyecto = proyecto.listarTareasPoyecto();
+                    System.out.println(Arrays.toString(tareasEnProyecto));
+                    break;
                 }
                 case 8 : {
                     System.out.println("¡Hasta luego!");
@@ -80,6 +82,7 @@ public class Menu {
         tarea.setFechaFinalizacion(null);
         tarea.setFinalizado(false);
         tarea.setResultadoEsperado(null);
+        proyecto.añadirTareaProyecto(tarea);
         System.out.println(tarea.getTitulo());
     }
 
@@ -128,5 +131,4 @@ public class Menu {
             System.out.println("Persona eliminada correctamente");
         }
     }
-
 }

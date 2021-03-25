@@ -45,13 +45,22 @@ public class Proyecto  {
         return false;
     }
 
-    public ArrayList<Tarea> listarTareasPoyecto() {
-        return null;
+    public String [] listarTareasPoyecto() {
+        String [] res = new String[listaTareas.size()];
+        for (int i = 0; i < listaTareas.size(); i++) {
+            res[i] = listaTareas.get(i).getTitulo() + listaTareas.get(i).isFinalizado() + listaTareas.get(i).getResultadoEsperado() + listaTareas.get(i).mostrarPersonasProyecto();
+        }
+        return res;
     }
+
 
     public boolean añadirPersonaProyecto(String nombre) {
         Persona persona = new Persona(nombre,"@gmail.com");
         return listaPersonas.add(persona);
+    }
+
+    public boolean añadirTareaProyecto(Tarea tarea) {
+        return listaTareas.add(tarea);
     }
 
     public Tarea dameTarea(String titulo) throws NoSuchElementException {

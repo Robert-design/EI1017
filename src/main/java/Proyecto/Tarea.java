@@ -87,4 +87,12 @@ public class Tarea {
     public void eliminarPersonaTarea(Persona eliminar) {
         personasATarea.remove(eliminar);
     }
+
+    public String [] mostrarPersonasProyecto() {
+        String [] res = new String[personasATarea.size()];
+        for (int i = 0; i < personasATarea.size(); i++) {
+            res[i] = String.valueOf(personasATarea.get(i));
+        }
+        return res;
+    }
 }
