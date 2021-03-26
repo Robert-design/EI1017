@@ -64,17 +64,17 @@ public class Proyecto  {
         return listaTareas.add(tarea);
     }
 
-    public Tarea dameTarea(String titulo) throws NoSuchElementException {
+    public Tarea dameTarea(String titulo) {
         for (Tarea tarea : listaTareas)
             if (tarea.getTitulo().equals(titulo) && existeTarea(titulo))
                 return tarea;
-        throw new NoSuchElementException();
+        return null;
     }
 
-    public Persona damePersona(String nombre) throws NoSuchElementException {
+    public Persona damePersona(String nombre) {
         for (Persona persona : listaPersonas)
             if (persona.getNombre().equals(nombre) && existePersona(nombre))
                 return persona;
-        throw new NoSuchElementException();
+        return null;
     }
 }

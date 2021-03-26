@@ -120,6 +120,7 @@ public class Menu {
         boolean tareaExistente = proyecto.existeTarea(titulo);
         boolean personaExistente = proyecto.existePersona(nombre);
         Tarea tarea = proyecto.dameTarea(titulo);
+
         if ((personaExistente && tareaExistente) && !tarea.getFinalizado()) {
             Tarea existente = proyecto.dameTarea(titulo);
             Persona nueva = proyecto.damePersona(nombre);
@@ -136,7 +137,7 @@ public class Menu {
             existente.añadirPersonaTarea(nueva);
             System.out.println("Persona añadida a la tarea.");
         } else {
-            System.out.println("No se ha podido dar de alta a la persona");
+            System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto");
         }
 
     }
