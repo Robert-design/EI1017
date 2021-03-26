@@ -10,7 +10,7 @@ public class Tarea {
     private Persona responsable;
     private int prioridad;
     private LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
-    boolean finalizado;
+    private boolean finalizado;
     private Resultado resultadoEsperado;
 
 
@@ -29,6 +29,8 @@ public class Tarea {
     public int getPrioridad() { return prioridad; }
 
     public LocalDate getFechaCreacion() { return fechaCreacion; }
+
+    public boolean getFinalizado() { return finalizado; }
 
     public LocalDate getFechaFinalizacion() { return fechaFinalizacion; }
 
