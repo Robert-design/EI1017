@@ -160,11 +160,12 @@ public class Menu {
                 while (!hecho) {
                     System.out.print("Has eliminado al responsable de la tarea, escoge a otro por favor: ");
                     nombre = scan.next();
-                    if (proyecto.existePersona(nombre)) {
+                    Persona nueva = proyecto.damePersona(nombre);
+                    if (tarea.personasATarea.contains(nueva)) {
                         tarea.setResponsable(proyecto.damePersona(nombre));
                         hecho = true;
                     }
-                    System.out.println("Introduce una persona dada de alta en el proyecto");
+                    System.out.println("Introduce una persona dada de alta en la tarea");
                 }
                 existente.eliminarPersonaTarea(eliminada);
                 System.out.println("Persona eliminada correctamente");
