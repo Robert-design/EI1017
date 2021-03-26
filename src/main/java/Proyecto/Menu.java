@@ -104,7 +104,7 @@ public class Menu {
         System.out.print("¿Qué tarea ha sido finalizada? ");
         String nombreTarea = scan.next();
         Tarea tarea = proyecto.dameTarea(nombreTarea);
-        if (tarea.getFinalizado()) {
+        if (!tarea.getFinalizado()) {
             tarea.setFinalizado(true);
             System.out.println("Tarea finalizada");
         } else
@@ -137,7 +137,7 @@ public class Menu {
             existente.añadirPersonaTarea(nueva);
             System.out.println("Persona añadida a la tarea.");
         } else {
-            System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto");
+            System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto o la tarea estaba finalizada");
         }
 
     }
@@ -166,7 +166,8 @@ public class Menu {
                         tarea.setResponsable(proyecto.damePersona(nombre));
                         hecho = true;
                     }
-                    System.out.println("Introduce una persona dada de alta en la tarea");
+                    else
+                        System.out.println("Introduce una persona dada de alta en la tarea");
                 }
                 existente.eliminarPersonaTarea(eliminada);
                 System.out.println("Persona eliminada correctamente");
