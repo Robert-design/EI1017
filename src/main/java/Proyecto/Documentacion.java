@@ -25,4 +25,13 @@ public class Documentacion extends Resultado {
     public double getEspacioDisco() {
         return espacioDisco;
     }
+
+    @Override
+    public String toString() {
+        return "Documentacion {" +
+                " Formato = '" + formato + '\'' +
+                ", numPaginas = " + numPaginas +
+                ", espacioDisco = " + espacioDisco +
+                " }";
+    }
 }

@@ -24,4 +24,13 @@ public class Biblioteca extends Resultado {
     public int getNumLineas(){
         return this.numLineas;
     }
+
+    @Override
+    public String toString() {
+        return "Biblioteca {" +
+                " Lenguaje = '" + lenguaje + '\'' +
+                ", numModulos = " + numModulos +
+                ", numLineas = " + numLineas +
+                " }";
+    }
 }

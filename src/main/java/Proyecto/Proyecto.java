@@ -49,7 +49,12 @@ public class Proyecto  {
     public String [] listarTareasPoyecto() {
         String [] res = new String[listaTareas.size()];
         for (int i = 0; i < listaTareas.size(); i++) {
-            res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"\n "+"Finalizado: "+ listaTareas.get(i).isFinalizado() + "\n"+"Resultado: " + listaTareas.get(i).getResultadoEsperado() + "\n"+"Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto())+"\n" + "El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
+            //res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"; Finalizado: "+ listaTareas.get(i).isFinalizado() + "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString() + "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto()) + "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
+            res[i] = "Tarea: " + listaTareas.get(i).getTitulo();
+            res[i] += "; Finalizado: "+ listaTareas.get(i).isFinalizado();
+            res[i] += "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString();
+            res[i] += "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto());
+            res[i] += "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
         }
         return res;
     }

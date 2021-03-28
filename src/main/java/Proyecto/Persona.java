@@ -24,10 +24,10 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona {" +
+        return
                 "Nombre = '" + nombre + '\'' +
-                ", Correo = '" + correo + '\'' +
-                '}';
+                ", Correo = '" + correo + '\''
+                ;
     }
 
     public void añadirResponsable(Tarea tarea) {

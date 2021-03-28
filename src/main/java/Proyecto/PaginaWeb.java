@@ -24,4 +24,13 @@ public class PaginaWeb extends Resultado {
     public String getBack_end() {
         return back_end;
     }
+
+    @Override
+    public String toString() {
+        return "Página web {" +
+                " Tipo = '" + tipo + '\'' +
+                ", Lenguaje = " + lenguaje +
+                ", Back end = " + back_end +
+                " }";
+    }
 }

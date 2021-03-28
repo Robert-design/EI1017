@@ -24,4 +24,13 @@ public class Programa extends Resultado {
     public int getNumeroModulos() {
         return numeroModulos;
     }
+
+    @Override
+    public String toString() {
+        return "Programa {" +
+                " lenguajeEmpleado = '" + lenguajeEmpleado + '\'' +
+                ", numeroLineasCodigo = " + numeroLineasCodigo +
+                ", numeroModulos = " + numeroModulos +
+                " }";
+    }
 }
