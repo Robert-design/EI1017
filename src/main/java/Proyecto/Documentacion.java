@@ -5,10 +5,13 @@ public class Documentacion extends Resultado {
 
     private String formato; //Word, PDF, texto plano...
     private int numPaginas;
-    private float espacioDisco; //Float porque puede dar ¿8,4MB?
+    private double espacioDisco; //Float porque puede dar 8,4MB
 
-    public Documentacion() {
-        super();
+    public Documentacion(String identificadorResultado, int numHorasInvertidas, String opcion, String formato, int numPaginas, double espacioDisco) {
+        super(identificadorResultado, numHorasInvertidas, opcion);
+        this.formato = formato;
+        this.numPaginas = numPaginas;
+        this.espacioDisco = espacioDisco;
     }
 
     public String getFormato() {
@@ -19,7 +22,7 @@ public class Documentacion extends Resultado {
         return numPaginas;
     }
 
-    public float getEspacioDisco() {
+    public double getEspacioDisco() {
         return espacioDisco;
     }
 }

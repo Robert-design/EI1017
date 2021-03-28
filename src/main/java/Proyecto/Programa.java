@@ -6,8 +6,11 @@ public class Programa extends Resultado {
     private int numeroLineasCodigo;
     private int numeroModulos;
 
-    public Programa () {
-        super();
+    public Programa(String identificadorResultado, int numHorasInvertidas, String opcion, String lenguajeEmpleado, int numeroLineasCodigo, int numeroModulos) {
+        super(identificadorResultado, numHorasInvertidas, opcion);
+        this.lenguajeEmpleado = lenguajeEmpleado;
+        this.numeroLineasCodigo = numeroLineasCodigo;
+        this.numeroModulos = numeroModulos;
     }
 
     public String getLenguajeEmpleado() {

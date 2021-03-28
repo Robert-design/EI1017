@@ -6,9 +6,11 @@ public class PaginaWeb extends Resultado {
     private String lenguaje; // Lenguaje de programación
     private String back_end;
 
-    public PaginaWeb() {
-        super();
-
+    public PaginaWeb(String identificadorResultado, int numHorasInvertidas, String opcion, String tipo, String lenguaje, String back_end) {
+        super(identificadorResultado, numHorasInvertidas, opcion);
+        this.tipo = tipo;
+        this.lenguaje = lenguaje;
+        this.back_end = back_end;
     }
 
     public String getTipo() {

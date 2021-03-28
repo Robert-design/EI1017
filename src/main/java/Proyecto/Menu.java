@@ -94,9 +94,39 @@ public class Menu {
         tarea.setFechaCreacion(LocalDate.now());
         tarea.setFechaFinalizacion(null);
         tarea.setFinalizado(false);
-        tarea.setResultadoEsperado(null);
+        System.out.print("Introduce el tipo de resultado esperado: Documentación (D), Programa (P), Página web (PW), Biblioteca (B): ");
+        String nombreResultado = scan.next();
+        Resultado resultado = crearResultado(nombreResultado);
+        while (resultado == null) {
+            System.out.print("Introduce una opción correcta por favor: Documentación (D), Programa (P), Página web (PW), Biblioteca (B): ");
+            nombreResultado = scan.next();
+            resultado = crearResultado(nombreResultado);
+        }
+        tarea.setResultadoEsperado(resultado);
         proyecto.añadirTareaProyecto(tarea);
         System.out.println("Tarea creada exitosamente");
+    }
+
+    public static Resultado crearResultado(String nombreResultado){
+        Resultado resultado = null;
+        switch (nombreResultado) {
+            case "D":
+                resultado = new Documentacion("1D", 12, "Interno", "Word", 84, 8.4);
+                break;
+            case "P":
+                resultado = new Programa("1P", 10, "Interno", "Java", 100, 8);
+                break;
+            case "PW":
+                resultado = new PaginaWeb("1PW", 10, "Comercial", "Estática", "Python", "Hecho");
+                break;
+            case "B":
+                resultado = new Biblioteca("1PW", 10, "Comercial", "C++", 50, 1);
+                break;
+            default:
+                System.out.println("No has introducido una opción correcta");
+                break;
+        }
+        return resultado;
     }
 
     public static void marcarFinalizada(Proyecto proyecto) {
@@ -151,19 +181,19 @@ public class Menu {
         String titulo = scan.next();
         boolean tareaExistente = proyecto.existeTarea(titulo);
         boolean personaExistente = proyecto.existePersona(nombre);
-        Tarea tarea = proyecto.dameTarea(titulo);
-        Persona esResponsable = tarea.getResponsable();
         if (personaExistente && tareaExistente) {
             Tarea existente = proyecto.dameTarea(titulo);
             Persona eliminada = proyecto.damePersona(nombre);
+            Tarea tarea = proyecto.dameTarea(titulo);
+            Persona esResponsable = tarea.getResponsable();
             if (esResponsable.getNombre().equals(eliminada.getNombre())) {
+                System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
                 boolean hecho = false;
                 while (!hecho) {
-                    System.out.print("Has eliminado al responsable de la tarea, escoge a otro por favor: ");
                     nombre = scan.next();
                     Persona nueva = proyecto.damePersona(nombre);
                     if (tarea.personasATarea.contains(nueva)) {
-                        tarea.setResponsable(proyecto.damePersona(nombre));
+                        tarea.setResponsable(nueva);
                         hecho = true;
                     }
                     else
@@ -171,8 +201,8 @@ public class Menu {
                 }
                 existente.eliminarPersonaTarea(eliminada);
                 System.out.println("Persona eliminada correctamente");
-            } else
-                System.out.println("No se ha podido eliminar a la persona, la persona y/o tarea no existen");
-        }
+            }
+        } else
+            System.out.println("No se ha podido eliminar a la persona, la persona y/o tarea no existen");
     }
 }

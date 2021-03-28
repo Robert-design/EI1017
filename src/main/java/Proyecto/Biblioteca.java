@@ -6,8 +6,11 @@ public class Biblioteca extends Resultado {
     private int numModulos;
     private int numLineas;
 
-    public Biblioteca() {
-        super();
+    public Biblioteca(String identificadorResultado, int numHorasInvertidas, String opcion, String lenguaje, int numModulos, int numLineas) {
+        super(identificadorResultado, numHorasInvertidas, opcion);
+        this.lenguaje = lenguaje;
+        this.numModulos = numModulos;
+        this.numLineas = numLineas;
     }
 
     public String getLenguaje() {
