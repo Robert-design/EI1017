@@ -83,6 +83,28 @@ public class Menu {
             System.out.println("Ya existe esa persona");
     }
 
+    public static Resultado crearResultado(String nombreResultado){
+        Resultado resultado = null;
+        switch (nombreResultado) {
+            case "D":
+                resultado = new Documentacion("1D", 12, "Interno", "Word", 84, 8.4);
+                break;
+            case "P":
+                resultado = new Programa("1P", 10, "Interno", "Java", 100, 8);
+                break;
+            case "PW":
+                resultado = new PaginaWeb("1PW", 10, "Comercial", "Estática", "Python", "Hecho");
+                break;
+            case "B":
+                resultado = new Biblioteca("1PW", 10, "Comercial", "C++", 50, 1);
+                break;
+            default:
+                System.out.println("No has introducido una opción correcta");
+                break;
+        }
+        return resultado;
+    }
+
     public static void crearTarea(Proyecto proyecto) {
         Tarea tarea = new Tarea();
         Scanner scan = new Scanner(System.in);
@@ -107,27 +129,6 @@ public class Menu {
         System.out.println("Tarea creada exitosamente");
     }
 
-    public static Resultado crearResultado(String nombreResultado){
-        Resultado resultado = null;
-        switch (nombreResultado) {
-            case "D":
-                resultado = new Documentacion("1D", 12, "Interno", "Word", 84, 8.4);
-                break;
-            case "P":
-                resultado = new Programa("1P", 10, "Interno", "Java", 100, 8);
-                break;
-            case "PW":
-                resultado = new PaginaWeb("1PW", 10, "Comercial", "Estática", "Python", "Hecho");
-                break;
-            case "B":
-                resultado = new Biblioteca("1PW", 10, "Comercial", "C++", 50, 1);
-                break;
-            default:
-                System.out.println("No has introducido una opción correcta");
-                break;
-        }
-        return resultado;
-    }
 
     public static void marcarFinalizada(Proyecto proyecto) {
         Scanner scan = new Scanner(System.in);
