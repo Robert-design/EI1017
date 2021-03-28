@@ -49,7 +49,7 @@ public class Proyecto  {
     public String [] listarTareasPoyecto() {
         String [] res = new String[listaTareas.size()];
         for (int i = 0; i < listaTareas.size(); i++) {
-            res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"\n "+"Estado: "+ listaTareas.get(i).isFinalizado() + "\n"+"Resultado: " + listaTareas.get(i).getResultadoEsperado() + "\n"+"Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto())+"\n";
+            res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"\n "+"Finalizado: "+ listaTareas.get(i).isFinalizado() + "\n"+"Resultado: " + listaTareas.get(i).getResultadoEsperado() + "\n"+"Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto())+"\n" + "El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
         }
         return res;
     }

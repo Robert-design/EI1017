@@ -157,14 +157,17 @@ public class Menu {
 
             //Aquí empieza mi idea. el método está en la clase TAREA.
             boolean tieneResponsable = existente.tieneResponsable();
+            existente.añadirPersonaTarea(nueva);
             if (!tieneResponsable) {
                 System.out.print("¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
                 String respuesta = scan.next();
-                if (respuesta.equals("Y\n"))
+                if (respuesta.equals("Y")) {
                     existente.setResponsable(nueva);
+                    System.out.println("Hay responsable");
+                }
             }
             //aquí termina
-            existente.añadirPersonaTarea(nueva);
+
             System.out.println("Persona añadida a la tarea.");
         } else {
             System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto o la tarea estaba finalizada");
@@ -186,7 +189,7 @@ public class Menu {
             Persona eliminada = proyecto.damePersona(nombre);
             Tarea tarea = proyecto.dameTarea(titulo);
             Persona esResponsable = tarea.getResponsable();
-            if (esResponsable.getNombre().equals(eliminada.getNombre())) {
+            if (esResponsable.getNombre().equals(eliminada.getNombre()) && existente.personasATarea.size() > 1) {
                 System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
                 boolean hecho = false;
                 while (!hecho) {
@@ -201,7 +204,8 @@ public class Menu {
                 }
                 existente.eliminarPersonaTarea(eliminada);
                 System.out.println("Persona eliminada correctamente");
-            }
+            } else
+                System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo");
         } else
             System.out.println("No se ha podido eliminar a la persona, la persona y/o tarea no existen");
     }
