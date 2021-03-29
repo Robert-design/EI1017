@@ -190,22 +190,24 @@ public class Menu {
             Persona eliminada = proyecto.damePersona(nombre);
             Tarea tarea = proyecto.dameTarea(titulo);
             Persona esResponsable = tarea.getResponsable();
-            if (esResponsable.getNombre().equals(eliminada.getNombre()) && existente.personasATarea.size() > 1) {
-                System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
-                boolean hecho = false;
-                while (!hecho) {
-                    nombre = scan.next();
-                    Persona nueva = proyecto.damePersona(nombre);
-                    if (tarea.personasATarea.contains(nueva)) {
-                        tarea.setResponsable(nueva);
-                        hecho = true;
-                    }
-                    else
-                        System.out.println("Introduce una persona dada de alta en la tarea");
-                }
+           if (existente.personasATarea.size() > 1) {
+               if(esResponsable.getNombre().equals(eliminada.getNombre())){
+                   System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
+                   boolean hecho = false;
+                   while (!hecho) {
+                       nombre = scan.next();
+                       Persona nueva = proyecto.damePersona(nombre);
+                       if (tarea.personasATarea.contains(nueva)) {
+                           tarea.setResponsable(nueva);
+                           hecho = true;
+                       }
+                       else
+                           System.out.println("Introduce una persona dada de alta en la tarea");
+                   }
+               }
                 existente.eliminarPersonaTarea(eliminada);
                 System.out.println("Persona eliminada correctamente");
-            } else
+           } else
                 System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo");
         } else
             System.out.println("No se ha podido eliminar a la persona, la persona y/o tarea no existen");
