@@ -25,7 +25,7 @@ public class Proyecto  {
     public String[] listarPersonasProyecto() {
         String [] res = new String[listaPersonas.size()];
         for (int i = 0; i < listaPersonas.size(); i++) {
-            res[i] = "Nombre: "+listaPersonas.get(i).getNombre()+"----"+listaPersonas.get(i).getCorreo();
+            res[i] = "Nombre: "+ listaPersonas.get(i).getNombre() + "----" + listaPersonas.get(i).getCorreo();
         }
         return res;
     }
