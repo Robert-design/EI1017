@@ -72,10 +72,8 @@ public class Tarea {
     }
 
      public boolean tieneResponsable(){
-        if (this.responsable != null)
-            return true;
-        return false;
-    }
+         return this.responsable != null;
+     }
 
 
 
