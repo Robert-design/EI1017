@@ -1,6 +1,7 @@
 package Proyecto;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -156,7 +157,6 @@ public class Menu {
             Tarea existente = proyecto.dameTarea(titulo);
             Persona nueva = proyecto.damePersona(nombre);
 
-            //Aquí empieza mi idea. el método está en la clase TAREA.
             boolean tieneResponsable = existente.tieneResponsable();
             existente.añadirPersonaTarea(nueva);
             if (!tieneResponsable) {
@@ -167,8 +167,6 @@ public class Menu {
                     System.out.println("Hay responsable");
                 }
             }
-            //aquí termina
-
             System.out.println("Persona añadida a la tarea.");
         } else {
             System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto o la tarea estaba finalizada");
@@ -212,4 +210,6 @@ public class Menu {
         } else
             System.out.println("No se ha podido eliminar a la persona, la persona y/o tarea no existen");
     }
+
+
 }
