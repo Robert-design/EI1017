@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 public class utilidadesParaListas implements tieneLista, tieneClave {
 
+
     @Override
-    public ArrayList getLista() {
+    public Boolean getClave(Object item) {
         return null;
     }
 
     @Override
-    public Object getClave() {
+    public ArrayList getLista() {
         return null;
     }
 }

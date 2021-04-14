@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class Proyecto  {
+public class Proyecto {
     private String nombre;
     ArrayList<Persona> listaPersonas;
     ArrayList<Tarea> listaTareas;
@@ -82,4 +82,5 @@ public class Proyecto  {
                 return persona;
         return null;
     }
+
 }
