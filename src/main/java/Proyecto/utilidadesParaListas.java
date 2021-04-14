@@ -13,10 +13,9 @@ public class utilidadesParaListas<E> {
     }
 
     public static <E extends tieneClave<E>> Boolean elementosInsertables(E nombre, ArrayList<E> lista) {
-        int repeticiones = 0;
         for (E e : lista)
             if (e.getClave().equals(nombre))
-                repeticiones++;
-        return repeticiones > 1;
+                return false;
+        return true;
         }
     }
