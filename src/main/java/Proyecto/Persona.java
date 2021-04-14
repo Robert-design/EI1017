@@ -33,7 +33,7 @@ public class Persona implements tieneClave {
     public void añadirResponsable(Tarea tarea) {
         tareas_responsables.add(tarea);
     }
-
+//comentrioo de prueba
     @Override
     public Boolean getClave(Object item) {
         int repeticiones = 0;
