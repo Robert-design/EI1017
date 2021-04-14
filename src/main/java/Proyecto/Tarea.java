@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class Tarea implements tieneClave {
+public class Tarea implements tieneClave, tieneLista {
     ArrayList<Persona> personasATarea;
     ArrayList<String> listaEtiquetas;
     private String titulo, descripcion;
@@ -94,15 +94,12 @@ public class Tarea implements tieneClave {
     }
 
     @Override
-    //comentario tarea
-    public Boolean getClave(Object item) {
-        int repeticiones = 0;
-        for (Persona persona : personasATarea) {
-            if (persona.getNombre().equals(item))
-                repeticiones++;
-        }
-        if(repeticiones > 1)
-            return false;
-        return true;
+    public String getClave() {
+        return getTitulo();
+    }
+
+    @Override
+    public ArrayList getLista() {
+        return personasATarea;
     }
 }

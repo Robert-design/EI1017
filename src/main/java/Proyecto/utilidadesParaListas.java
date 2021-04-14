@@ -2,16 +2,21 @@ package Proyecto;
 
 import java.util.ArrayList;
 
-public class utilidadesParaListas implements tieneLista, tieneClave {
+public class utilidadesParaListas<E> {
 
-
-    @Override
-    public Boolean getClave(Object item) {
-        return null;
+    public static <E extends tieneLista<E>> ArrayList<E> elementosConListaVacia(ArrayList<E> lista) {
+        ArrayList<E> res = new ArrayList<>();
+        for (E e : lista)
+            if (e.getLista().isEmpty())
+                res.add(e);
+        return res;
     }
 
-    @Override
-    public ArrayList getLista() {
-        return null;
+    public static <E extends tieneClave<E>> Boolean elementosInsertables(E nombre, ArrayList<E> lista) {
+        int repeticiones = 0;
+        for (E e : lista)
+            if (e.getClave().equals(nombre))
+                repeticiones++;
+        return repeticiones > 1;
+        }
     }
-}
