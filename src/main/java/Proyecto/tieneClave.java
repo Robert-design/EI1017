@@ -1,5 +1,5 @@
 package Proyecto;
 
 public interface tieneClave<E> {
-    E getClave();
+    Boolean getClave(E item);
 }

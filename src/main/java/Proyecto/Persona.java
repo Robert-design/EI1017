@@ -3,16 +3,16 @@ package Proyecto;
 
 import java.util.ArrayList;
 
-public class Persona {
+public class Persona implements tieneClave {
     private String nombre, correo;
-    ArrayList<Tarea> responsables;
+    ArrayList<Tarea> tareas_responsables;
 
 
     public Persona(String nombre, String correo) {
         super();
         this.nombre = nombre;
         this.correo = nombre+correo;
-        responsables = new ArrayList<>();
+        tareas_responsables = new ArrayList<>();
     }
 
     public String getNombre () {
@@ -31,7 +31,19 @@ public class Persona {
     }
 
     public void añadirResponsable(Tarea tarea) {
-        responsables.add(tarea);
+        tareas_responsables.add(tarea);
     }
 
+    @Override
+    public Boolean getClave(Object item) {
+        int repeticiones = 0;
+        for (Tarea titulo : tareas_responsables) {
+            if (titulo.getTitulo().equals(item))
+                repeticiones++;
+        }
+
+        if(repeticiones > 1)
+            return false;
+        return true;
+    }
 }
