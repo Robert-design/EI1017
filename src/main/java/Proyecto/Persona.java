@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 public class Persona implements tieneClave {
     private String nombre, correo;
-    ArrayList<Tarea> tareas_responsables;
+    ArrayList<Tarea> tareasResponsables;
 
 
     public Persona(String nombre, String correo) {
         super();
         this.nombre = nombre;
         this.correo = nombre+correo;
-        tareas_responsables = new ArrayList<>();
+        tareasResponsables = new ArrayList<>();
     }
 
     public String getNombre () {
@@ -31,17 +31,16 @@ public class Persona implements tieneClave {
     }
 
     public void añadirResponsable(Tarea tarea) {
-        tareas_responsables.add(tarea);
+        tareasResponsables.add(tarea);
     }
-//comentrioo de prueba
+//comentrioo de persona
     @Override
     public Boolean getClave(Object item) {
         int repeticiones = 0;
-        for (Tarea titulo : tareas_responsables) {
+        for (Tarea titulo : tareasResponsables) {
             if (titulo.getTitulo().equals(item))
                 repeticiones++;
         }
-
         if(repeticiones > 1)
             return false;
         return true;

@@ -94,6 +94,7 @@ public class Tarea implements tieneClave {
     }
 
     @Override
+    //comentario tarea
     public Boolean getClave(Object item) {
         int repeticiones = 0;
         for (Persona persona : personasATarea) {
