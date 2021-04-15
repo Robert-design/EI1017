@@ -1,4 +1,6 @@
 package Proyecto;
+import Excepciones.existeResponsableException;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -42,9 +44,12 @@ public class Tarea implements tieneClave, tieneLista {
 
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
 
-    public void setResponsable(Persona responsable) {
+    public void setResponsable(Persona responsable) throws existeResponsableException {
         if (personasATarea.contains(responsable))
             this.responsable = responsable;
+        else {
+            throw new existeResponsableException();
+        }
     }
 
     public void setTitulo(String titulo) {

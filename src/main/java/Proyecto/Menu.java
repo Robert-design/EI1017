@@ -1,5 +1,7 @@
 package Proyecto;
 
+import Excepciones.existeResponsableException;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -156,18 +158,20 @@ public class Menu {
             Tarea existente = proyecto.dameTarea(titulo);
             Persona nueva = proyecto.damePersona(nombre);
 
-            //Aquí empieza mi idea. el método está en la clase TAREA.
             boolean tieneResponsable = existente.tieneResponsable();
             existente.añadirPersonaTarea(nueva);
             if (!tieneResponsable) {
                 System.out.print("¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
                 String respuesta = scan.next();
                 if (respuesta.equals("Y")) {
-                    existente.setResponsable(nueva);
-                    System.out.println("Hay responsable");
+                        try {
+                            existente.setResponsable(nueva);
+                        } catch (existeResponsableException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("Hay responsable");
                 }
             }
-            //aquí termina
 
             System.out.println("Persona añadida a la tarea.");
         } else {
@@ -198,7 +202,11 @@ public class Menu {
                        nombre = scan.next();
                        Persona nueva = proyecto.damePersona(nombre);
                        if (tarea.personasATarea.contains(nueva)) {
-                           tarea.setResponsable(nueva);
+                           try {
+                               tarea.setResponsable(nueva);
+                           } catch (existeResponsableException e) {
+                               e.printStackTrace();
+                           }
                            hecho = true;
                        }
                        else

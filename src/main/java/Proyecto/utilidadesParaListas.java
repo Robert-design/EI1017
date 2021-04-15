@@ -18,4 +18,4 @@ public class utilidadesParaListas<E> {
                 return false;
         return true;
         }
-    }
+}
