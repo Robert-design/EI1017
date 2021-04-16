@@ -45,11 +45,10 @@ public class Tarea implements tieneClave, tieneLista {
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
 
     public void setResponsable(Persona responsable) throws existeResponsableException {
-        if (personasATarea.contains(responsable))
-            this.responsable = responsable;
-        else {
+        if (getResponsable() != null)
             throw new existeResponsableException();
-        }
+        else
+            this.responsable = responsable;
     }
 
     public void setTitulo(String titulo) {
