@@ -1,6 +1,8 @@
 package Proyecto;
 
+import Excepciones.añadirPersonaATareaException;
 import Excepciones.existeResponsableException;
+import Excepciones.fechaFinalizacionException;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -115,7 +117,11 @@ public class Menu {
         tarea.setTitulo(nombreTarea);
         tarea.setDescripcion("Hacer código en Java");
         tarea.setPrioridad(1);
-        tarea.setFechaCreacion(LocalDate.now());
+        try {
+            tarea.setFechaCreacion(LocalDate.now());
+        } catch (fechaFinalizacionException e) {
+            e.printStackTrace();
+        }
         tarea.setFechaFinalizacion(null);
         tarea.setFinalizado(false);
         System.out.print("Introduce el tipo de resultado esperado: Documentación (D), Programa (P), Página web (PW), Biblioteca (B): ");
@@ -157,9 +163,12 @@ public class Menu {
         if ((personaExistente && tareaExistente) && !tarea.getFinalizado()) {
             Tarea existente = proyecto.dameTarea(titulo);
             Persona nueva = proyecto.damePersona(nombre);
-
             boolean tieneResponsable = existente.tieneResponsable();
-            existente.añadirPersonaTarea(nueva);
+            try {
+                existente.añadirPersonaTarea(nueva);
+            } catch (añadirPersonaATareaException e) {
+                e.printStackTrace();
+            }
             if (!tieneResponsable) {
                 System.out.print("¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
                 String respuesta = scan.next();
