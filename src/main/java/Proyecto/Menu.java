@@ -219,4 +219,3 @@ public class Menu implements Serializable {
             System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo");
     }
 }
-//HOLA GUS
