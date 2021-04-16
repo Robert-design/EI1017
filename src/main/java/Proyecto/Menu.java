@@ -4,13 +4,17 @@ import Excepciones.añadirPersonaATareaException;
 import Excepciones.existeResponsableException;
 import Excepciones.fechaFinalizacionException;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Menu {
+public class Menu implements Serializable {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fichero = new FileOutputStream("Proyecto1.bin");
+        ObjectOutputStream obj = new ObjectOutputStream(fichero);
+        obj.writeObject(fichero);
         System.out.print("Introduce el nombre del nuevo proyecto para comenzar: ");
         Scanner scan = new Scanner(System.in);
         Proyecto proyecto = new Proyecto();
@@ -74,6 +78,7 @@ public class Menu {
                 }
             }
         }
+        obj.close();
     }
 
 
