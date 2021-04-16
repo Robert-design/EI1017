@@ -1,5 +1,8 @@
 package Proyecto;
 
+import Excepciones.añadirPersonaATareaException;
+import Excepciones.añadirTareaExistenteException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
@@ -65,8 +68,11 @@ public class Proyecto {
         return listaPersonas.add(persona);
     }
 
-    public boolean añadirTareaProyecto(Tarea tarea) {
-        return listaTareas.add(tarea);
+    public boolean añadirTareaProyecto(Tarea tarea) throws añadirTareaExistenteException {
+        if (dameTarea(tarea.getTitulo()) != null)
+            throw new añadirTareaExistenteException();
+        else
+            return listaTareas.add(tarea);
     }
 
     public Tarea dameTarea(String titulo) {

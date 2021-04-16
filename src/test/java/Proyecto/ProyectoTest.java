@@ -1,5 +1,7 @@
 package Proyecto;
 
+import Excepciones.añadirPersonaATareaException;
+import Excepciones.añadirTareaExistenteException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -43,9 +45,9 @@ class ProyectoTest {
         Tarea t1 = new Tarea();
         Tarea t2 = new Tarea();
         Tarea t3 = new Tarea();
-        assertTrue(proyect.añadirTareaProyecto(t1));
+        /*assertTrue(proyect.añadirTareaProyecto(t1));
         assertTrue(proyect.añadirTareaProyecto(t2));
-        assertTrue(proyect.añadirTareaProyecto(t3));
+        assertTrue(proyect.añadirTareaProyecto(t3));*/
     }
 
 }

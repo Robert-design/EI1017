@@ -1,11 +1,9 @@
 package Proyecto;
 import Excepciones.añadirPersonaATareaException;
 import Excepciones.existeResponsableException;
-import Excepciones.fechaFinalizacionException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
 public class Tarea implements tieneClave, tieneLista {
     ArrayList<Persona> personasATarea;
@@ -66,10 +64,7 @@ public class Tarea implements tieneClave, tieneLista {
         this.prioridad = prioridad;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) throws fechaFinalizacionException {
-        if (fechaCreacion.compareTo(fechaFinalizacion)>0)
-            throw new fechaFinalizacionException();
-        else
+    public void setFechaCreacion(LocalDate fechaCreacion)  {
             this.fechaCreacion = fechaCreacion;
     }
 
@@ -84,8 +79,6 @@ public class Tarea implements tieneClave, tieneLista {
      public boolean tieneResponsable(){
          return this.responsable != null;
      }
-
-
 
     public void añadirPersonaTarea(Persona persona) throws añadirPersonaATareaException {
         if (personasATarea.contains(persona))

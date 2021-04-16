@@ -1,20 +1,16 @@
 package Proyecto;
 
 import Excepciones.añadirPersonaATareaException;
+import Excepciones.añadirTareaExistenteException;
 import Excepciones.existeResponsableException;
-import Excepciones.fechaFinalizacionException;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu implements Serializable {
 
-    public static void main(String[] args) throws IOException {
-        FileOutputStream fichero = new FileOutputStream("Proyecto1.bin");
-        ObjectOutputStream obj = new ObjectOutputStream(fichero);
-        obj.writeObject(fichero);
+    public static void main(String[] args) {
         System.out.print("Introduce el nombre del nuevo proyecto para comenzar: ");
         Scanner scan = new Scanner(System.in);
         Proyecto proyecto = new Proyecto();
@@ -78,7 +74,6 @@ public class Menu implements Serializable {
                 }
             }
         }
-        obj.close();
     }
 
 
@@ -122,11 +117,6 @@ public class Menu implements Serializable {
         tarea.setTitulo(nombreTarea);
         tarea.setDescripcion("Hacer código en Java");
         tarea.setPrioridad(1);
-        try {
-            tarea.setFechaCreacion(LocalDate.now());
-        } catch (fechaFinalizacionException e) {
-            e.printStackTrace();
-        }
         tarea.setFechaFinalizacion(null);
         tarea.setFinalizado(false);
         System.out.print("Introduce el tipo de resultado esperado: Documentación (D), Programa (P), Página web (PW), Biblioteca (B): ");
@@ -138,8 +128,11 @@ public class Menu implements Serializable {
             resultado = crearResultado(nombreResultado);
         }
         tarea.setResultadoEsperado(resultado);
-        proyecto.añadirTareaProyecto(tarea);
-        System.out.println("Tarea creada exitosamente");
+        try {
+            proyecto.añadirTareaProyecto(tarea);
+        } catch (añadirTareaExistenteException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -162,10 +155,9 @@ public class Menu implements Serializable {
         System.out.print("Introduce el nombre de la tarea: ");
         String titulo = scan.next();
         boolean tareaExistente = proyecto.existeTarea(titulo);
-        boolean personaExistente = proyecto.existePersona(nombre);
         Tarea tarea = proyecto.dameTarea(titulo);
 
-        if ((personaExistente && tareaExistente) && !tarea.getFinalizado()) {
+        if (tareaExistente && !tarea.getFinalizado()) {
             Tarea existente = proyecto.dameTarea(titulo);
             Persona nueva = proyecto.damePersona(nombre);
             boolean tieneResponsable = existente.tieneResponsable();
