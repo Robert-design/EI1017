@@ -40,14 +40,14 @@ class ProyectoTest {
     }
 
     @Test
-    void añadirTareaProyecto() {
+    void añadirTareaProyecto() throws añadirTareaExistenteException {
         Proyecto proyect = new Proyecto();
         Tarea t1 = new Tarea();
         Tarea t2 = new Tarea();
         Tarea t3 = new Tarea();
-        /*assertTrue(proyect.añadirTareaProyecto(t1));
+        assertTrue(proyect.añadirTareaProyecto(t1));
         assertTrue(proyect.añadirTareaProyecto(t2));
-        assertTrue(proyect.añadirTareaProyecto(t3));*/
+        assertTrue(proyect.añadirTareaProyecto(t3));
     }
 
 }
