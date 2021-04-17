@@ -1,6 +1,8 @@
 package Proyecto;
 
-public class PaginaWeb extends Resultado {
+import java.io.Serializable;
+
+public class PaginaWeb extends Resultado implements Serializable {
 
     private String tipo; //Estática o Dinámica
     private String lenguaje; // Lenguaje de programación

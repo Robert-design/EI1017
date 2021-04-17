@@ -3,11 +3,12 @@ package Proyecto;
 import Excepciones.añadirPersonaATareaException;
 import Excepciones.añadirTareaExistenteException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class Proyecto {
+public class Proyecto implements Serializable {
     private String nombre;
     ArrayList<Persona> listaPersonas;
     ArrayList<Tarea> listaTareas;

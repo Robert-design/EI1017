@@ -1,6 +1,8 @@
 package Proyecto;
 
-public class Biblioteca extends Resultado {
+import java.io.Serializable;
+
+public class Biblioteca extends Resultado implements Serializable {
 
     private String lenguaje; // Lenguanje de programación
     private int numModulos;

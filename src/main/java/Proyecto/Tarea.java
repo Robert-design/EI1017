@@ -2,10 +2,11 @@ package Proyecto;
 import Excepciones.añadirPersonaATareaException;
 import Excepciones.existeResponsableException;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Tarea implements tieneClave, tieneLista {
+public class Tarea implements tieneClave, tieneLista, Serializable {
     ArrayList<Persona> personasATarea;
     ArrayList<String> listaEtiquetas;
     private String titulo, descripcion;

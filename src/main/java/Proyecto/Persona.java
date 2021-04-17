@@ -1,9 +1,10 @@
 package Proyecto;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Persona implements tieneClave, tieneLista{
+public class Persona implements tieneClave, tieneLista, Serializable {
     private String nombre, correo;
     ArrayList<Tarea> tareasResponsables;
 

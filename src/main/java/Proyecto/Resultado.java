@@ -1,6 +1,8 @@
 package Proyecto;
 
-public class Resultado {
+import java.io.Serializable;
+
+public class Resultado implements Serializable {
     private String identificadorResultado;
     private int numHorasInvertidas;
     private String opcion; //Interno o comercializado
