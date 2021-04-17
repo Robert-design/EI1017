@@ -4,12 +4,13 @@ import Excepciones.añadirPersonaATareaException;
 import Excepciones.añadirTareaExistenteException;
 import Excepciones.existeResponsableException;
 
+import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.print("Introduce el nombre del nuevo proyecto para comenzar: ");
         Scanner scan = new Scanner(System.in);
         Proyecto proyecto = new Proyecto();
@@ -69,10 +70,21 @@ public class Menu {
                     break;
                 }
                 case 8: {
-                    System.out.println("Guardando los datos");
+                    FileOutputStream fichero = new FileOutputStream(nombreProyecto+".bin");
+                    ObjectOutputStream obj = new ObjectOutputStream(fichero);
+                    obj.writeObject(proyecto);
+                    obj.close();
+                    System.out.println("Guardando los datos...");
                     break;
                 }
                 case 9: {
+                    System.out.print(" ¿Qué proyecto deseas cargar?:");
+                    String cargarProyecto = scan.next();
+                    FileInputStream fichero = new FileInputStream(cargarProyecto+".bin");
+                    ObjectInputStream obj = new ObjectInputStream(fichero);
+                    proyecto = (Proyecto) obj.readObject();
+                    obj.close();
+                    System.out.println("Datos cargados");
                     break;
                 }
                 case 10: {
