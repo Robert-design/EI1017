@@ -4,11 +4,10 @@ import Excepciones.añadirPersonaATareaException;
 import Excepciones.añadirTareaExistenteException;
 import Excepciones.existeResponsableException;
 
-import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Menu implements Serializable {
+public class Menu {
 
     public static void main(String[] args) {
         System.out.print("Introduce el nombre del nuevo proyecto para comenzar: ");
@@ -26,7 +25,9 @@ public class Menu implements Serializable {
             System.out.println("5. Eliminar una persona de una tarea.");
             System.out.println("6. Listar las personas asignadas a un proyecto.");
             System.out.println("7. Listar las tarea de un proyecto.");
-            System.out.println("8. Salir del menú.");
+            System.out.println("8. Guardar los datos del proyecto");
+            System.out.println("9. Cargar los datos de un proyecto");
+            System.out.println("10. Salir del menú.");
             System.out.print("Escoge la opción deseada: ");
             int operacion = scan.nextInt();
             switch (operacion) {
@@ -68,6 +69,13 @@ public class Menu implements Serializable {
                     break;
                 }
                 case 8: {
+                    System.out.println("Guardando los datos");
+                    break;
+                }
+                case 9: {
+                    break;
+                }
+                case 10: {
                     System.out.println("¡Hasta luego!");
                     acabado = true;
                     break;
@@ -219,4 +227,3 @@ public class Menu implements Serializable {
             System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo");
     }
 }
-//otro más
