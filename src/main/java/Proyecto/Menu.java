@@ -19,7 +19,7 @@ public class Menu {
         boolean acabado = false;
         while (!acabado) {
             System.out.println("Escoja la opción deseada.");
-            System.out.println("1. Dar de dalta personas que trabajan en el proyecto.");
+            System.out.println("1. Dar de alta personas que trabajan en el proyecto.");
             System.out.println("2. Dar de alta las tareas con sus datos.");
             System.out.println("3. Marcar una tarea como finalizada.");
             System.out.println("4. Introducir una persona en una tarea.");
@@ -101,8 +101,10 @@ public class Menu {
         Scanner scan = new Scanner(System.in);
         System.out.print("Introduce el nombre de la persona: ");
         String nombrePersona = scan.next();
-        if (!proyecto.existePersona(nombrePersona))
+        if (utilidadesParaListas.elementosInsertables(nombrePersona, proyecto.listaPersonas)) {
             proyecto.añadirPersonaProyecto(nombrePersona);
+            System.out.println("Persona dada de alta\n");
+        }
         else
             System.out.println("Ya existe esa persona");
     }
@@ -123,7 +125,7 @@ public class Menu {
                 resultado = new Biblioteca("1PW", 10, "Comercial", "C++", 50, 1);
                 break;
             default:
-                System.out.println("No has introducido una opción correcta");
+                System.out.println("No has introducido una opción correcta\n");
                 break;
         }
         return resultado;
@@ -163,9 +165,9 @@ public class Menu {
         Tarea tarea = proyecto.dameTarea(nombreTarea);
         if (!tarea.getFinalizado()) {
             tarea.setFinalizado(true);
-            System.out.println("Tarea finalizada");
+            System.out.println("Tarea finalizada\n");
         } else
-            System.out.println("La tarea ya se encontraba finalizada");
+            System.out.println("La tarea ya se encontraba finalizada\n");
     }
 
     public static void introducirPersonaATarea(Proyecto proyecto) {
@@ -186,7 +188,7 @@ public class Menu {
                 e.printStackTrace();
             }
             if (!tieneResponsable) {
-                System.out.print("¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
+                System.out.print(" ¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
                 String respuesta = scan.next();
                 if (respuesta.equals("Y")) {
                         try {
@@ -197,9 +199,9 @@ public class Menu {
                 }
             }
 
-            System.out.println("Persona añadida a la tarea.");
+            System.out.println("Persona añadida a la tarea.\n");
         } else {
-            System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto o la tarea estaba finalizada");
+            System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto o la tarea estaba finalizada\n");
         }
 
     }
@@ -215,7 +217,8 @@ public class Menu {
         Persona eliminada = proyecto.damePersona(nombre);
         Tarea tarea = proyecto.dameTarea(titulo);
         Persona esResponsable = tarea.getResponsable();
-        if (existente.personasATarea.size() > 1) {
+        //existente.personasATarea.size() > 1
+        if (!utilidadesParaListas.elementosConListaVacia(tarea.personasATarea).isEmpty()) {
             if (esResponsable.getNombre().equals(eliminada.getNombre())) {
                 System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
                 boolean hecho = false;
@@ -226,7 +229,7 @@ public class Menu {
                         try {
                             tarea.setResponsable(nueva);
                             existente.eliminarPersonaTarea(eliminada);
-                            System.out.println("Persona eliminada correctamente");
+                            System.out.println("Persona eliminada correctamente\n");
                         } catch (existeResponsableException e) {
                             e.printStackTrace();
                         }
@@ -236,6 +239,6 @@ public class Menu {
                 }
             }
         } else
-            System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo");
+            System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo. O bien no hay nadie en la tarea\n");
     }
 }

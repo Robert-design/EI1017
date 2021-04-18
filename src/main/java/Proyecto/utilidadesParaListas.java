@@ -12,7 +12,7 @@ public class utilidadesParaListas<E> {
         return res;
     }
 
-    public static <E extends tieneClave<E>> Boolean elementosInsertables(E nombre, ArrayList<E> lista) {
+    public static <E extends Persona, Tarea> Boolean elementosInsertables(String nombre, ArrayList<E> lista) {
         for (E e : lista)
             if (e.getClave().equals(nombre))
                 return false;
