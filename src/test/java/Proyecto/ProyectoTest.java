@@ -37,19 +37,25 @@ class ProyectoTest {
         assertTrue(proyecto.añadirPersonaProyecto("p1"));
         assertTrue(proyecto.añadirPersonaProyecto("p12"));
         assertTrue(proyecto.añadirPersonaProyecto("p3"));
-        assertThrows(añadirPersonaATareaException.class, () -> proyecto.añadirPersonaProyecto("p1"));
     }
 
     @Test
     void añadirTareaProyecto() throws añadirTareaExistenteException {
         Proyecto proyecto = new Proyecto();
         Tarea t1 = new Tarea();
+        t1.setTitulo("programar");
+        t1.setResultadoEsperado(new Programa("1PW", 10, "Comercial", "C++", 50, 1));
         Tarea t2 = new Tarea();
+        t2.setTitulo("comer");
+        t2.setResultadoEsperado(new Programa("1PW", 10, "Comercial", "C++", 50, 1));
         Tarea t3 = new Tarea();
+        t3.setTitulo("estudiar");
+        t3.setResultadoEsperado(new Programa("1PW", 10, "Comercial", "C++", 50, 1));
         assertTrue(proyecto.añadirTareaProyecto(t1));
         assertTrue(proyecto.añadirTareaProyecto(t2));
         assertTrue(proyecto.añadirTareaProyecto(t3));
         assertThrows(añadirTareaExistenteException.class, () -> proyecto.añadirTareaProyecto(t1));
-    }
 
+
+    }
 }
