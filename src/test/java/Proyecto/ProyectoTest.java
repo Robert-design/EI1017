@@ -33,21 +33,23 @@ class ProyectoTest {
 
     @Test
     void añadirPersonaProyecto() {
-        Proyecto proyect = new Proyecto();
-        assertTrue(proyect.añadirPersonaProyecto("p1"));
-        assertTrue(proyect.añadirPersonaProyecto("p12"));
-        assertTrue(proyect.añadirPersonaProyecto("p3"));
+        Proyecto proyecto = new Proyecto();
+        assertTrue(proyecto.añadirPersonaProyecto("p1"));
+        assertTrue(proyecto.añadirPersonaProyecto("p12"));
+        assertTrue(proyecto.añadirPersonaProyecto("p3"));
+        assertThrows(añadirPersonaATareaException.class, () -> proyecto.añadirPersonaProyecto("p1"));
     }
 
     @Test
     void añadirTareaProyecto() throws añadirTareaExistenteException {
-        Proyecto proyect = new Proyecto();
+        Proyecto proyecto = new Proyecto();
         Tarea t1 = new Tarea();
         Tarea t2 = new Tarea();
         Tarea t3 = new Tarea();
-        assertTrue(proyect.añadirTareaProyecto(t1));
-        assertTrue(proyect.añadirTareaProyecto(t2));
-        assertTrue(proyect.añadirTareaProyecto(t3));
+        assertTrue(proyecto.añadirTareaProyecto(t1));
+        assertTrue(proyecto.añadirTareaProyecto(t2));
+        assertTrue(proyecto.añadirTareaProyecto(t3));
+        assertThrows(añadirTareaExistenteException.class, () -> proyecto.añadirTareaProyecto(t1));
     }
 
 }
