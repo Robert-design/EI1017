@@ -47,10 +47,11 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
 
     public void setResponsable(Persona responsable) throws existeResponsableException {
-        if (getResponsable().equals(responsable))
-            throw new existeResponsableException();
-        else
+        if (!responsable.equals(getResponsable()))
             this.responsable = responsable;
+        else
+            throw new existeResponsableException();
+
     }
 
     public void setTitulo(String titulo) {
