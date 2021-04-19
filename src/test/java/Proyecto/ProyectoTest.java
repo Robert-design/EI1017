@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProyectoTest {
 
     @Test
-    void listarPersonasProyecto() {
+    void listarPersonasProyecto() throws añadirPersonaATareaException {
         Proyecto proyect = new Proyecto();
         ArrayList<Persona> pr1 = new ArrayList<>();
         Persona p1 = new Persona("p1","@gmail.com");
@@ -32,7 +32,7 @@ class ProyectoTest {
     }
 
     @Test
-    void añadirPersonaProyecto() {
+    void añadirPersonaProyecto() throws añadirPersonaATareaException {
         Proyecto proyecto = new Proyecto();
         assertTrue(proyecto.añadirPersonaProyecto("p1"));
         assertTrue(proyecto.añadirPersonaProyecto("p12"));

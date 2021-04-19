@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, añadirPersonaATareaException {
         System.out.print("Introduce el nombre del nuevo proyecto para comenzar: ");
         Scanner scan = new Scanner(System.in);
         Proyecto proyecto = new Proyecto();
@@ -97,7 +97,7 @@ public class Menu {
     }
 
 
-    public static void altaPersona(Proyecto proyecto) {
+    public static void altaPersona(Proyecto proyecto) throws añadirPersonaATareaException {
         Scanner scan = new Scanner(System.in);
         System.out.print("Introduce el nombre de la persona: ");
         String nombrePersona = scan.next();
@@ -170,7 +170,7 @@ public class Menu {
             System.out.println("La tarea ya se encontraba finalizada\n");
     }
 
-    public static void introducirPersonaATarea(Proyecto proyecto) {
+    public static void introducirPersonaATarea(Proyecto proyecto)  {
         Scanner scan = new Scanner(System.in);
         System.out.print("Introduce el nombre a añadir: ");
         String nombre = scan.next();
@@ -237,6 +237,10 @@ public class Menu {
                     } else
                         System.out.println("Introduce una persona dada de alta en la tarea");
                 }
+            } else {
+                existente.eliminarPersonaTarea(eliminada);
+                System.out.println("Persona eliminada correctamente\n");
+
             }
         } else
             System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo. O bien no hay nadie en la tarea\n");

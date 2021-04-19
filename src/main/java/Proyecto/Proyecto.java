@@ -64,7 +64,7 @@ public class Proyecto implements Serializable {
     }
 
 
-    public boolean añadirPersonaProyecto(String nombre) {
+    public boolean añadirPersonaProyecto(String nombre) throws añadirPersonaATareaException {
         Persona persona = new Persona(nombre,"@gmail.com");
         return listaPersonas.add(persona);
     }

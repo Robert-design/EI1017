@@ -45,4 +45,6 @@ public class Persona implements tieneClave, tieneLista, Serializable {
     public ArrayList getLista() {
         return tareasResponsables;
     }
+
+
 }

@@ -40,12 +40,10 @@ class TareaTest {
         prueba.personasATarea.toArray(vector1);
         lista_prueba1.toArray(vector2);
         assertArrayEquals(vector2,vector1);
-        assertThrows(añadirPersonaATareaException.class, () -> prueba.añadirPersonaTarea(prueba1));
-
     }
 
     @org.junit.jupiter.api.Test
-     void eliminarPersonaTarea() {
+    void eliminarPersonaTarea() {
         Tarea prueba = new Tarea();
         ArrayList<Persona> pr1 = new ArrayList<>();
         Persona p1 = new Persona("p1","@gmail.com");
@@ -54,14 +52,24 @@ class TareaTest {
         Persona p4 = new Persona("p4","@gmail.com");
         try {
             prueba.añadirPersonaTarea(p1);
+        } catch (añadirPersonaATareaException e) {
+            e.printStackTrace();
+        }
+        try {
             prueba.añadirPersonaTarea(p2);
+        } catch (añadirPersonaATareaException e) {
+            e.printStackTrace();
+        }
+        try {
             prueba.añadirPersonaTarea(p3);
+        } catch (añadirPersonaATareaException e) {
+            e.printStackTrace();
+        }
+        try {
             prueba.añadirPersonaTarea(p4);
         } catch (añadirPersonaATareaException e) {
             e.printStackTrace();
         }
-        assertThrows(añadirPersonaATareaException.class, () -> prueba.añadirPersonaTarea(p1));
-
         pr1.add(p1);
         pr1.add(p2);
         pr1.add(p4);
@@ -71,6 +79,8 @@ class TareaTest {
         pr1.toArray(res2);
         prueba.personasATarea.toArray(res1);
         assertArrayEquals(res2, res1);
+
+
     }
 
     @org.junit.jupiter.api.Test
