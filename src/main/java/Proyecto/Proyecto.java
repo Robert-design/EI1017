@@ -1,10 +1,14 @@
 package Proyecto;
 
+import Excepciones.añadirPersonaATareaException;
+import Excepciones.añadirTareaExistenteException;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class Proyecto {
+public class Proyecto implements Serializable {
     private String nombre;
     ArrayList<Persona> listaPersonas;
     ArrayList<Tarea> listaTareas;
@@ -60,13 +64,16 @@ public class Proyecto {
     }
 
 
-    public boolean añadirPersonaProyecto(String nombre) {
+    public boolean añadirPersonaProyecto(String nombre) throws añadirPersonaATareaException {
         Persona persona = new Persona(nombre,"@gmail.com");
         return listaPersonas.add(persona);
     }
 
-    public boolean añadirTareaProyecto(Tarea tarea) {
-        return listaTareas.add(tarea);
+    public boolean añadirTareaProyecto(Tarea tarea) throws añadirTareaExistenteException {
+        if (dameTarea(tarea.getTitulo()) != null)
+            throw new añadirTareaExistenteException();
+        else
+            return listaTareas.add(tarea);
     }
 
     public Tarea dameTarea(String titulo) {
@@ -82,5 +89,4 @@ public class Proyecto {
                 return persona;
         return null;
     }
-
 }

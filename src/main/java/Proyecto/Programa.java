@@ -1,6 +1,8 @@
 package Proyecto;
 
-public class Programa extends Resultado {
+import java.io.Serializable;
+
+public class Programa extends Resultado implements Serializable {
 
     private String lenguajeEmpleado;
     private int numeroLineasCodigo;

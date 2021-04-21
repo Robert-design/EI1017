@@ -1,5 +1,7 @@
 package Proyecto;
 
+import Excepciones.añadirPersonaATareaException;
+import Excepciones.añadirTareaExistenteException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProyectoTest {
 
     @Test
-    void listarPersonasProyecto() {
+    void listarPersonasProyecto() throws añadirPersonaATareaException {
         Proyecto proyect = new Proyecto();
         ArrayList<Persona> pr1 = new ArrayList<>();
         Persona p1 = new Persona("p1","@gmail.com");
@@ -30,22 +32,30 @@ class ProyectoTest {
     }
 
     @Test
-    void añadirPersonaProyecto() {
-        Proyecto proyect = new Proyecto();
-        assertTrue(proyect.añadirPersonaProyecto("p1"));
-        assertTrue(proyect.añadirPersonaProyecto("p12"));
-        assertTrue(proyect.añadirPersonaProyecto("p3"));
+    void añadirPersonaProyecto() throws añadirPersonaATareaException {
+        Proyecto proyecto = new Proyecto();
+        assertTrue(proyecto.añadirPersonaProyecto("p1"));
+        assertTrue(proyecto.añadirPersonaProyecto("p12"));
+        assertTrue(proyecto.añadirPersonaProyecto("p3"));
     }
 
     @Test
-    void añadirTareaProyecto() {
-        Proyecto proyect = new Proyecto();
+    void añadirTareaProyecto() throws añadirTareaExistenteException {
+        Proyecto proyecto = new Proyecto();
         Tarea t1 = new Tarea();
+        t1.setTitulo("programar");
+        t1.setResultadoEsperado(new Programa("1PW", 10, "Comercial", "C++", 50, 1));
         Tarea t2 = new Tarea();
+        t2.setTitulo("comer");
+        t2.setResultadoEsperado(new Programa("1PW", 10, "Comercial", "C++", 50, 1));
         Tarea t3 = new Tarea();
-        assertTrue(proyect.añadirTareaProyecto(t1));
-        assertTrue(proyect.añadirTareaProyecto(t2));
-        assertTrue(proyect.añadirTareaProyecto(t3));
-    }
+        t3.setTitulo("estudiar");
+        t3.setResultadoEsperado(new Programa("1PW", 10, "Comercial", "C++", 50, 1));
+        assertTrue(proyecto.añadirTareaProyecto(t1));
+        assertTrue(proyecto.añadirTareaProyecto(t2));
+        assertTrue(proyecto.añadirTareaProyecto(t3));
+        assertThrows(añadirTareaExistenteException.class, () -> proyecto.añadirTareaProyecto(t1));
 
+
+    }
 }

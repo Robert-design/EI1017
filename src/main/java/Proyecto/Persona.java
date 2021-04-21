@@ -1,9 +1,10 @@
 package Proyecto;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Persona implements tieneClave {
+public class Persona implements tieneClave, tieneLista, Serializable {
     private String nombre, correo;
     ArrayList<Tarea> tareasResponsables;
 
@@ -33,16 +34,17 @@ public class Persona implements tieneClave {
     public void añadirResponsable(Tarea tarea) {
         tareasResponsables.add(tarea);
     }
-//comentrioo de persona
+
     @Override
-    public Boolean getClave(Object item) {
-        int repeticiones = 0;
-        for (Tarea titulo : tareasResponsables) {
-            if (titulo.getTitulo().equals(item))
-                repeticiones++;
-        }
-        if(repeticiones > 1)
-            return false;
-        return true;
+    public String getClave() {
+        return getNombre();
     }
+
+
+    @Override
+    public ArrayList getLista() {
+        return tareasResponsables;
+    }
+
+
 }

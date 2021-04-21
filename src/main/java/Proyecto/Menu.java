@@ -1,12 +1,16 @@
 package Proyecto;
 
-import java.time.LocalDate;
+import Excepciones.añadirPersonaATareaException;
+import Excepciones.añadirTareaExistenteException;
+import Excepciones.existeResponsableException;
+
+import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, añadirPersonaATareaException {
         System.out.print("Introduce el nombre del nuevo proyecto para comenzar: ");
         Scanner scan = new Scanner(System.in);
         Proyecto proyecto = new Proyecto();
@@ -15,14 +19,16 @@ public class Menu {
         boolean acabado = false;
         while (!acabado) {
             System.out.println("Escoja la opción deseada.");
-            System.out.println("1. Dar de dalta personas que trabajan en el proyecto.");
+            System.out.println("1. Dar de alta personas que trabajan en el proyecto.");
             System.out.println("2. Dar de alta las tareas con sus datos.");
             System.out.println("3. Marcar una tarea como finalizada.");
             System.out.println("4. Introducir una persona en una tarea.");
             System.out.println("5. Eliminar una persona de una tarea.");
             System.out.println("6. Listar las personas asignadas a un proyecto.");
             System.out.println("7. Listar las tarea de un proyecto.");
-            System.out.println("8. Salir del menú.");
+            System.out.println("8. Guardar los datos del proyecto");
+            System.out.println("9. Cargar los datos de un proyecto");
+            System.out.println("10. Salir del menú.");
             System.out.print("Escoge la opción deseada: ");
             int operacion = scan.nextInt();
             switch (operacion) {
@@ -64,6 +70,24 @@ public class Menu {
                     break;
                 }
                 case 8: {
+                    FileOutputStream fichero = new FileOutputStream(nombreProyecto+".bin");
+                    ObjectOutputStream obj = new ObjectOutputStream(fichero);
+                    obj.writeObject(proyecto);
+                    obj.close();
+                    System.out.println("Guardando los datos...");
+                    break;
+                }
+                case 9: {
+                    System.out.print(" ¿Qué proyecto deseas cargar?:");
+                    String cargarProyecto = scan.next();
+                    FileInputStream fichero = new FileInputStream(cargarProyecto+".bin");
+                    ObjectInputStream obj = new ObjectInputStream(fichero);
+                    proyecto = (Proyecto) obj.readObject();
+                    obj.close();
+                    System.out.println("Datos cargados");
+                    break;
+                }
+                case 10: {
                     System.out.println("¡Hasta luego!");
                     acabado = true;
                     break;
@@ -73,12 +97,14 @@ public class Menu {
     }
 
 
-    public static void altaPersona(Proyecto proyecto) {
+    public static void altaPersona(Proyecto proyecto) throws añadirPersonaATareaException {
         Scanner scan = new Scanner(System.in);
         System.out.print("Introduce el nombre de la persona: ");
         String nombrePersona = scan.next();
-        if (!proyecto.existePersona(nombrePersona))
+        if (utilidadesParaListas.elementosInsertables(nombrePersona, proyecto.listaPersonas)) {
             proyecto.añadirPersonaProyecto(nombrePersona);
+            System.out.println("Persona dada de alta\n");
+        }
         else
             System.out.println("Ya existe esa persona");
     }
@@ -99,7 +125,7 @@ public class Menu {
                 resultado = new Biblioteca("1PW", 10, "Comercial", "C++", 50, 1);
                 break;
             default:
-                System.out.println("No has introducido una opción correcta");
+                System.out.println("No has introducido una opción correcta\n");
                 break;
         }
         return resultado;
@@ -113,7 +139,6 @@ public class Menu {
         tarea.setTitulo(nombreTarea);
         tarea.setDescripcion("Hacer código en Java");
         tarea.setPrioridad(1);
-        tarea.setFechaCreacion(LocalDate.now());
         tarea.setFechaFinalizacion(null);
         tarea.setFinalizado(false);
         System.out.print("Introduce el tipo de resultado esperado: Documentación (D), Programa (P), Página web (PW), Biblioteca (B): ");
@@ -125,8 +150,11 @@ public class Menu {
             resultado = crearResultado(nombreResultado);
         }
         tarea.setResultadoEsperado(resultado);
-        proyecto.añadirTareaProyecto(tarea);
-        System.out.println("Tarea creada exitosamente");
+        try {
+            proyecto.añadirTareaProyecto(tarea);
+        } catch (añadirTareaExistenteException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -137,41 +165,43 @@ public class Menu {
         Tarea tarea = proyecto.dameTarea(nombreTarea);
         if (!tarea.getFinalizado()) {
             tarea.setFinalizado(true);
-            System.out.println("Tarea finalizada");
+            System.out.println("Tarea finalizada\n");
         } else
-            System.out.println("La tarea ya se encontraba finalizada");
+            System.out.println("La tarea ya se encontraba finalizada\n");
     }
 
-    public static void introducirPersonaATarea(Proyecto proyecto) {
+    public static void introducirPersonaATarea(Proyecto proyecto)  {
         Scanner scan = new Scanner(System.in);
         System.out.print("Introduce el nombre a añadir: ");
         String nombre = scan.next();
         System.out.print("Introduce el nombre de la tarea: ");
         String titulo = scan.next();
-        boolean tareaExistente = proyecto.existeTarea(titulo);
-        boolean personaExistente = proyecto.existePersona(nombre);
         Tarea tarea = proyecto.dameTarea(titulo);
 
-        if ((personaExistente && tareaExistente) && !tarea.getFinalizado()) {
+        if (!tarea.getFinalizado()) {
             Tarea existente = proyecto.dameTarea(titulo);
             Persona nueva = proyecto.damePersona(nombre);
-
-            //Aquí empieza mi idea. el método está en la clase TAREA.
             boolean tieneResponsable = existente.tieneResponsable();
-            existente.añadirPersonaTarea(nueva);
+            try {
+                existente.añadirPersonaTarea(nueva);
+            } catch (añadirPersonaATareaException e) {
+                e.printStackTrace();
+            }
             if (!tieneResponsable) {
-                System.out.print("¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
+                System.out.print(" ¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
                 String respuesta = scan.next();
                 if (respuesta.equals("Y")) {
-                    existente.setResponsable(nueva);
-                    System.out.println("Hay responsable");
+                        try {
+                            existente.setResponsable(nueva);
+                        } catch (existeResponsableException e) {
+                            e.printStackTrace();
+                        }
                 }
             }
-            //aquí termina
 
-            System.out.println("Persona añadida a la tarea.");
+            System.out.println("Persona añadida a la tarea.\n");
         } else {
-            System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto o la tarea estaba finalizada");
+            System.out.println("No se ha podido dar de alta a la persona, has introducido algún campo incorrecto o la tarea estaba finalizada\n");
         }
 
     }
@@ -183,33 +213,36 @@ public class Menu {
         String nombre = scan.next();
         System.out.print("Introduce el título de la tarea: ");
         String titulo = scan.next();
-        boolean tareaExistente = proyecto.existeTarea(titulo);
-        boolean personaExistente = proyecto.existePersona(nombre);
-        if (personaExistente && tareaExistente) {
-            Tarea existente = proyecto.dameTarea(titulo);
-            Persona eliminada = proyecto.damePersona(nombre);
-            Tarea tarea = proyecto.dameTarea(titulo);
-            Persona esResponsable = tarea.getResponsable();
-           if (existente.personasATarea.size() > 1) {
-               if(esResponsable.getNombre().equals(eliminada.getNombre())){
-                   System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
-                   boolean hecho = false;
-                   while (!hecho) {
-                       nombre = scan.next();
-                       Persona nueva = proyecto.damePersona(nombre);
-                       if (tarea.personasATarea.contains(nueva)) {
-                           tarea.setResponsable(nueva);
-                           hecho = true;
-                       }
-                       else
-                           System.out.println("Introduce una persona dada de alta en la tarea");
-                   }
-               }
+        Tarea existente = proyecto.dameTarea(titulo);
+        Persona eliminada = proyecto.damePersona(nombre);
+        Tarea tarea = proyecto.dameTarea(titulo);
+        Persona esResponsable = tarea.getResponsable();
+        //existente.personasATarea.size() > 1
+        if (!utilidadesParaListas.elementosConListaVacia(tarea.personasATarea).isEmpty()) {
+            if (esResponsable.getNombre().equals(eliminada.getNombre())) {
+                System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
+                boolean hecho = false;
+                while (!hecho) {
+                    nombre = scan.next();
+                    Persona nueva = proyecto.damePersona(nombre);
+                    if (tarea.personasATarea.contains(nueva)) {
+                        try {
+                            tarea.setResponsable(nueva);
+                            existente.eliminarPersonaTarea(eliminada);
+                            System.out.println("Persona eliminada correctamente\n");
+                        } catch (existeResponsableException e) {
+                            e.printStackTrace();
+                        }
+                        hecho = true;
+                    } else
+                        System.out.println("Introduce una persona dada de alta en la tarea");
+                }
+            } else {
                 existente.eliminarPersonaTarea(eliminada);
-                System.out.println("Persona eliminada correctamente");
-           } else
-                System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo");
+                System.out.println("Persona eliminada correctamente\n");
+
+            }
         } else
-            System.out.println("No se ha podido eliminar a la persona, la persona y/o tarea no existen");
+            System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo. O bien no hay nadie en la tarea\n");
     }
 }

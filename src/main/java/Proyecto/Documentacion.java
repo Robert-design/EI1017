@@ -1,6 +1,8 @@
 package Proyecto;
 
-public class Documentacion extends Resultado {
+import java.io.Serializable;
+
+public class Documentacion extends Resultado implements Serializable {
 
 
     private String formato; //Word, PDF, texto plano...

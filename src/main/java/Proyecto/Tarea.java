@@ -1,9 +1,12 @@
 package Proyecto;
+import Excepciones.añadirPersonaATareaException;
+import Excepciones.existeResponsableException;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
-public class Tarea implements tieneClave {
+public class Tarea implements tieneClave, tieneLista, Serializable {
     ArrayList<Persona> personasATarea;
     ArrayList<String> listaEtiquetas;
     private String titulo, descripcion;
@@ -12,10 +15,9 @@ public class Tarea implements tieneClave {
     private LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
     private boolean finalizado;
     private Resultado resultadoEsperado;
-    private double coste;
-    private String tipoFactura;
-
-
+    public void setFinalizado() {
+        this.finalizado = true;
+    }
     public Tarea () {
         super();
         personasATarea = new ArrayList<>();
@@ -44,9 +46,12 @@ public class Tarea implements tieneClave {
 
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
 
-    public void setResponsable(Persona responsable) {
-        if (personasATarea.contains(responsable))
+    public void setResponsable(Persona responsable) throws existeResponsableException {
+        if (!responsable.equals(getResponsable()))
             this.responsable = responsable;
+        else
+            throw new existeResponsableException();
+
     }
 
     public void setTitulo(String titulo) {
@@ -61,8 +66,8 @@ public class Tarea implements tieneClave {
         this.prioridad = prioridad;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setFechaCreacion(LocalDate fechaCreacion)  {
+            this.fechaCreacion = fechaCreacion;
     }
 
     public void setFechaFinalizacion(LocalDate fechaFinalizacion) {
@@ -77,10 +82,11 @@ public class Tarea implements tieneClave {
          return this.responsable != null;
      }
 
-
-
-    public void añadirPersonaTarea(Persona persona) {
-        personasATarea.add(persona);
+    public void añadirPersonaTarea(Persona persona) throws añadirPersonaATareaException {
+        if (personasATarea.contains(persona))
+            throw new añadirPersonaATareaException();
+        else
+            personasATarea.add(persona);
     }
 
     public void eliminarPersonaTarea(Persona eliminar) {
@@ -96,15 +102,12 @@ public class Tarea implements tieneClave {
     }
 
     @Override
-    //comentario tarea
-    public Boolean getClave(Object item) {
-        int repeticiones = 0;
-        for (Persona persona : personasATarea) {
-            if (persona.getNombre().equals(item))
-                repeticiones++;
-        }
-        if(repeticiones > 1)
-            return false;
-        return true;
+    public String getClave() {
+        return getTitulo();
+    }
+
+    @Override
+    public ArrayList getLista() {
+        return personasATarea;
     }
 }
