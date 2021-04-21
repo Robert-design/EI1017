@@ -15,9 +15,10 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
     private LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
     private boolean finalizado;
     private Resultado resultadoEsperado;
-    public void setFinalizado() {
-        this.finalizado = true;
-    }
+    private double coste;
+    private String tipoFacturacion;
+
+
     public Tarea () {
         super();
         personasATarea = new ArrayList<>();
@@ -43,7 +44,6 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
     public void setFinalizado(boolean finalizado) {
         this.finalizado = finalizado;
     }
-
     public Resultado getResultadoEsperado() { return resultadoEsperado; }
 
     public void setResponsable(Persona responsable) throws existeResponsableException {
