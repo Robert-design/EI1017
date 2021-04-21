@@ -12,6 +12,8 @@ public class Tarea implements tieneClave {
     private LocalDate fechaCreacion, fechaFinalizacion; //Esta última puede estar en blanco
     private boolean finalizado;
     private Resultado resultadoEsperado;
+    private double coste;
+    private String tipoFactura;
 
 
     public Tarea () {
