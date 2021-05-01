@@ -1,6 +1,7 @@
 package Proyecto;
 import Excepciones.añadirPersonaATareaException;
 import Excepciones.existeResponsableException;
+import Patrones.Facturacion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -16,8 +17,7 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
     private boolean finalizado;
     private Resultado resultadoEsperado;
     private double coste;
-    private String tipoFacturacion;
-
+    private Facturacion facturacion;
 
     public Tarea () {
         super();
@@ -78,7 +78,23 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
         this.resultadoEsperado = resultadoEsperado;
     }
 
-     public boolean tieneResponsable(){
+    public double getCoste() {
+        return coste;
+    }
+
+    public void setCoste(double coste) {
+        this.coste = coste;
+    }
+
+    public Facturacion getFacturacion() {
+        return facturacion;
+    }
+
+    public void setFacturacion(Facturacion facturacion) {
+        this.facturacion = facturacion;
+    }
+
+    public boolean tieneResponsable(){
          return this.responsable != null;
      }
 

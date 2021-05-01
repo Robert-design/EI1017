@@ -1,5 +1,7 @@
 package Patrones;
 
-public interface precio {
+public interface Facturacion {
+
     double coste(double coste, double porcentaje);
+
 }
