@@ -3,6 +3,9 @@ package Proyecto;
 import Excepciones.añadirPersonaATareaException;
 import Excepciones.añadirTareaExistenteException;
 import Excepciones.existeResponsableException;
+import Patrones.ConsumoInterno;
+import Patrones.Descuento;
+import Patrones.Urgente;
 
 import java.io.*;
 import java.util.Arrays;
@@ -28,7 +31,9 @@ public class Menu {
             System.out.println("7. Listar las tarea de un proyecto.");
             System.out.println("8. Guardar los datos del proyecto");
             System.out.println("9. Cargar los datos de un proyecto");
-            System.out.println("10. Salir del menú.");
+            System.out.println("10. Cambiar coste de una tarea");
+            System.out.println("11. Cambiar tipo de facturación de una tarea");
+            System.out.println("12. Salir del menú.");
             System.out.print("Escoge la opción deseada: ");
             int operacion = scan.nextInt();
             switch (operacion) {
@@ -88,6 +93,14 @@ public class Menu {
                     break;
                 }
                 case 10: {
+                    modificarCoste(proyecto);
+                    break;
+                }
+                case 11: {
+                    modificarFacturacion(proyecto);
+                    break;
+                }
+                case 12: {
                     System.out.println("¡Hasta luego!");
                     acabado = true;
                     break;
@@ -150,6 +163,32 @@ public class Menu {
             resultado = crearResultado(nombreResultado);
         }
         tarea.setResultadoEsperado(resultado);
+
+        System.out.print("Introduce el coste de la tarea: ");
+        double coste = scan.nextInt();
+        tarea.setCoste(coste);
+
+        System.out.print("¿Qué tipo de facturación es? Consumo interno (C), Descuento (D), Urgente (U): ");
+        String tipo = scan.next();
+        if (tipo.equals("C")) {
+            tarea.setFacturacion(new ConsumoInterno());
+            tarea.setCoste(tarea.getFacturacion().coste(tarea.getCoste(), 1));
+        }
+        else if (tipo.equals("D")) {
+            tarea.setFacturacion(new Descuento());
+            System.out.print("Introduce el descuento (del 1 al 100%): ");
+            int desc = scan.nextInt();
+            tarea.setCoste(tarea.getFacturacion().coste(tarea.getCoste(), desc));
+        }
+        else if (tipo.equals("U")) {
+            tarea.setFacturacion(new Urgente());
+            System.out.print("Introduce el porcentaje a aplicar (del 1 al 100%): ");
+            int urg = scan.nextInt();
+            tarea.setCoste(tarea.getFacturacion().coste(tarea.getCoste(), urg));
+        }
+
+        System.out.println("El coste es de " + tarea.getCoste() + "\n");
+
         try {
             proyecto.añadirTareaProyecto(tarea);
         } catch (añadirTareaExistenteException e) {
@@ -245,4 +284,43 @@ public class Menu {
         } else
             System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo. O bien no hay nadie en la tarea\n");
     }
+
+    public static void modificarCoste (Proyecto proyecto) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Introduce el nuevo coste: ");
+        int coste = scan.nextInt();
+        System.out.print("Dime el título de la tarea: ");
+        String titulo = scan.next();
+        proyecto.dameTarea(titulo).setCoste(coste);
+        System.out.println("El nuevo coste es " + proyecto.dameTarea(titulo).getCoste() + "\n");
+    }
+
+    public static void modificarFacturacion (Proyecto proyecto) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Introduce la inicial del tipo de facturación - Consumo interno (C), Descuento (D), Urgente (U): ");
+        String tipo = scan.next();
+        System.out.print("Dime el título de la tarea: ");
+        String titulo = scan.next();
+        Tarea tarea = proyecto.dameTarea(titulo);
+
+        if (tipo.equals("C")) {
+            tarea.setFacturacion(new ConsumoInterno());
+            tarea.setCoste(tarea.getFacturacion().coste(tarea.getCoste(), 1));
+        }
+        else if (tipo.equals("D")) {
+            tarea.setFacturacion(new Descuento());
+            System.out.print("Introduce el descuento (del 1 al 100%): ");
+            int desc = scan.nextInt();
+            tarea.setCoste(tarea.getFacturacion().coste(tarea.getCoste(), desc));
+        }
+        else if (tipo.equals("U")) {
+            tarea.setFacturacion(new Urgente());
+            System.out.print("Introduce el porcentaje a aplicar (del 1 al 100%): ");
+            int urg = scan.nextInt();
+            tarea.setCoste(tarea.getFacturacion().coste(tarea.getCoste(), urg));
+        }
+        System.out.println("El nuevo precio por la facturación es " + tarea.getCoste() + "\n");
+    }
+
+
 }

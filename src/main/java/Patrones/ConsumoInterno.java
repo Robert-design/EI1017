@@ -1,8 +1,9 @@
 package Patrones;
 
-public class consumoInterno implements precio {
+public class ConsumoInterno implements Facturacion {
+
     @Override
     public double coste(double coste, double porcentaje) {
-        return coste * porcentaje;
+        return coste * 1;
     }
 }
