@@ -89,4 +89,12 @@ public class Proyecto implements Serializable {
                 return persona;
         return null;
     }
+
+    public double importeTotal() {
+        double res = 0;
+        for (Tarea tarea: listaTareas) {
+            res += tarea.getImporte();
+        }
+        return res;
+    }
 }

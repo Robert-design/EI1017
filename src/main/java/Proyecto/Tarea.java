@@ -126,4 +126,8 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
     public ArrayList getLista() {
         return personasATarea;
     }
+
+    public double getImporte () {
+        return facturacion.coste(coste);
+    }
 }
