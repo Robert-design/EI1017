@@ -2,6 +2,9 @@ package Proyecto;
 
 import Excepciones.añadirPersonaATareaException;
 import Excepciones.añadirTareaExistenteException;
+import Patrones.ConsumoInterno;
+import Patrones.Descuento;
+import Patrones.Urgente;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -55,7 +58,28 @@ class ProyectoTest {
         assertTrue(proyecto.añadirTareaProyecto(t2));
         assertTrue(proyecto.añadirTareaProyecto(t3));
         assertThrows(añadirTareaExistenteException.class, () -> proyecto.añadirTareaProyecto(t1));
+    }
 
+    @Test
+    void Facturacion() {
+
+        Tarea t1 = new Tarea();
+        t1.setTitulo("programar");
+        t1.setCoste(500);
+        t1.setFacturacion(new Urgente(20));
+        assertEquals(t1.getCoste() + (t1.getCoste() * 20/ 100),t1.getImporte());
+
+        Tarea t2 = new Tarea();
+        t2.setTitulo("comer");
+        t2.setFacturacion(new Descuento(50));
+        assertEquals(t2.getCoste() - (t2.getCoste() * (50 / 100)),t2.getImporte());
+
+
+        Tarea t3 = new Tarea();
+        t3.setTitulo("estudiar");
+        t1.setCoste(150);
+        t3.setFacturacion(new ConsumoInterno());
+        assertEquals(t2.getCoste() ,t3.getImporte());
 
     }
 }

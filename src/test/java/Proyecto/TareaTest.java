@@ -1,6 +1,8 @@
 package Proyecto;
 
 import Excepciones.añadirPersonaATareaException;
+import Patrones.ConsumoInterno;
+import Patrones.Facturacion;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -97,4 +99,6 @@ class TareaTest {
         p1[0] = String.valueOf(prueba1);
         assertArrayEquals(p1,res);
     }
+
+
 }
