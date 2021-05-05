@@ -1,4 +1,4 @@
-package Patrones;
+package Interfaces;
 
 public interface Facturacion {
 

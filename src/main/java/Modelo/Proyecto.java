@@ -1,12 +1,8 @@
-package Proyecto;
-
-import Excepciones.añadirPersonaATareaException;
-import Excepciones.añadirTareaExistenteException;
+package Modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 
 public class Proyecto implements Serializable {
     private String nombre;
@@ -24,6 +20,10 @@ public class Proyecto implements Serializable {
 
     public  String getNombre() {
         return nombre;
+    }
+
+    public ArrayList<Persona> getListaPersonas() {
+        return listaPersonas;
     }
 
     public String[] listarPersonasProyecto() {

@@ -1,10 +1,8 @@
-package Proyecto;
+package Interfaces;
 
-import Excepciones.añadirPersonaATareaException;
-import Excepciones.añadirTareaExistenteException;
-import Patrones.ConsumoInterno;
-import Patrones.Descuento;
-import Patrones.Urgente;
+import Modelo.añadirPersonaATareaException;
+import Modelo.añadirTareaExistenteException;
+import Modelo.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -62,7 +60,6 @@ class ProyectoTest {
 
     @Test
     void Facturacion() {
-
         Tarea t1 = new Tarea();
         t1.setTitulo("programar");
         t1.setCoste(500);
@@ -80,6 +77,5 @@ class ProyectoTest {
         t1.setCoste(150);
         t3.setFacturacion(new ConsumoInterno());
         assertEquals(t2.getCoste() ,t3.getImporte());
-
     }
 }

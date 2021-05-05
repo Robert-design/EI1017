@@ -1,4 +1,4 @@
-package Proyecto;
+package Modelo;
 
 import java.io.Serializable;
 

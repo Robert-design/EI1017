@@ -1,11 +1,7 @@
-package Proyecto;
+package Vista;
 
-import Excepciones.añadirPersonaATareaException;
-import Excepciones.añadirTareaExistenteException;
-import Excepciones.existeResponsableException;
-import Patrones.ConsumoInterno;
-import Patrones.Descuento;
-import Patrones.Urgente;
+import Interfaces.utilidadesParaListas;
+import Modelo.*;
 
 import java.io.*;
 import java.util.Arrays;
@@ -119,7 +115,7 @@ public class Menu {
         Scanner scan = new Scanner(System.in);
         System.out.print("Introduce el nombre de la persona: ");
         String nombrePersona = scan.next();
-        if (utilidadesParaListas.elementosInsertables(nombrePersona, proyecto.listaPersonas)) {
+        if (utilidadesParaListas.elementosInsertables(nombrePersona, proyecto.getListaPersonas())) {
             proyecto.añadirPersonaProyecto(nombrePersona);
             System.out.println("Persona dada de alta\n");
         }
@@ -259,14 +255,14 @@ public class Menu {
         Tarea tarea = proyecto.dameTarea(titulo);
         Persona esResponsable = tarea.getResponsable();
         //existente.personasATarea.size() > 1
-        if (!utilidadesParaListas.elementosConListaVacia(tarea.personasATarea).isEmpty()) {
+        if (!utilidadesParaListas.elementosConListaVacia(tarea.getPersonasATarea()).isEmpty()) {
             if (esResponsable.getNombre().equals(eliminada.getNombre())) {
                 System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
                 boolean hecho = false;
                 while (!hecho) {
                     nombre = scan.next();
                     Persona nueva = proyecto.damePersona(nombre);
-                    if (tarea.personasATarea.contains(nueva)) {
+                    if (tarea.getPersonasATarea().contains(nueva)) {
                         try {
                             tarea.setResponsable(nueva);
                             existente.eliminarPersonaTarea(eliminada);

@@ -1,15 +1,10 @@
-package Proyecto;
+package Interfaces;
 
-import Excepciones.añadirPersonaATareaException;
-import Patrones.ConsumoInterno;
-import Patrones.Facturacion;
-import org.junit.jupiter.api.Test;
+import Modelo.añadirPersonaATareaException;
+import Modelo.Persona;
+import Modelo.Tarea;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
-package Proyecto;
-import Excepciones.añadirPersonaATareaException;
-import Excepciones.existeResponsableException;
-import Patrones.Facturacion;
+package Modelo;
+import Interfaces.Facturacion;
+import Interfaces.tieneClave;
+import Interfaces.tieneLista;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -51,7 +51,6 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
             this.responsable = responsable;
         else
             throw new existeResponsableException();
-
     }
 
     public void setTitulo(String titulo) {
@@ -92,6 +91,10 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
 
     public void setFacturacion(Facturacion facturacion) {
         this.facturacion = facturacion;
+    }
+
+    public ArrayList<Persona> getPersonasATarea() {
+        return personasATarea;
     }
 
     public boolean tieneResponsable(){

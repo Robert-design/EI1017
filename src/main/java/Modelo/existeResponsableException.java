@@ -1,4 +1,4 @@
-package Excepciones;
+package Modelo;
 
 public class existeResponsableException extends Exception {
     public existeResponsableException () {

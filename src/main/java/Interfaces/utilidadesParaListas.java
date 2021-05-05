@@ -1,4 +1,6 @@
-package Proyecto;
+package Interfaces;
+
+import Modelo.Persona;
 
 import java.util.ArrayList;
 

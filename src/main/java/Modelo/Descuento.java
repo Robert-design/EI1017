@@ -1,4 +1,6 @@
-package Patrones;
+package Modelo;
+
+import Interfaces.Facturacion;
 
 public class Descuento implements Facturacion {
 

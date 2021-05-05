@@ -1,5 +1,8 @@
-package Proyecto;
+package Modelo;
 
+
+import Interfaces.tieneClave;
+import Interfaces.tieneLista;
 
 import java.io.Serializable;
 import java.util.ArrayList;
