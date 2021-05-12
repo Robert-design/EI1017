@@ -1,36 +1,23 @@
 package Modelo;
-import Vista.informaVista;
+import Interfaces.utilidadesParaListas;
+import Vista.*;
+
+import java.util.Scanner;
+
 public class impletaModelo implements interrogaModelo, cambioModelo {
     private Proyecto proy;
-    private informaVista vista;
+    private implementaVista vista;
     private cambioModelo modelo;
-    @Override
-    public void addEntrance(String entrance) {
-        modelo.addEntrance(entrance);
-    }
 
     @Override
-    public void incrementsActualPosition() {
-        ///proy.listarPersonasProyecto();
-    }
-
-    @Override
-    public void decrementsActualPosition() {
-
-    }
-
-    @Override
-    public int getEntranceNumbers() {
-        return 0;
-    }
-
-    @Override
-    public String getActualEntrance() {
-        return null;
-    }
-
-    @Override
-    public int getActualEntrancePosition() {
-        return 0;
+    public Persona altaPersona() throws añadirPersonaATareaException, NoElementException {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Introduce el nombre de la persona: ");
+        String nombrePersona = vista.getPersona();
+        if (utilidadesParaListas.elementosInsertables(nombrePersona, proy.getListaPersonas())) {
+            proy.añadirPersonaProyecto(nombrePersona);
+            System.out.println("Persona dada de alta\n");
+        }
+        throw new NoElementException();
     }
 }

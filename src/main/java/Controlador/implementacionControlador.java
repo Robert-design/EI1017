@@ -1,13 +1,20 @@
 package Controlador;
+import Interfaces.utilidadesParaListas;
 import Modelo.Persona;
-import Vista.interrogaVista;
+import Modelo.Proyecto;
+import Vista.*;
 import Modelo.cambioModelo;
+
+import java.util.Scanner;
+import Modelo.*;
 public class implementacionControlador implements Controlador {
-
-
+    private implementaVista vista;
+    private Proyecto proyecto;
+    private impletaModelo modelo;
     @Override
-    public void altaPersona() {
-        //Persona persona =
+    public void altaPersona() throws añadirPersonaATareaException, NoElementException {
+        String persona = vista.getPersona();
+        modelo.altaPersona();
     }
 
     @Override
