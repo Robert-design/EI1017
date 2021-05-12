@@ -11,7 +11,7 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
 
     @Override
     public void incrementsActualPosition() {
-        //proy.listarPersonasProyecto();
+        ///proy.listarPersonasProyecto();
     }
 
     @Override
