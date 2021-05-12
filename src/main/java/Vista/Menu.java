@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, añadirPersonaATareaException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, añadirPersonaATareaException, NoElementException {
         System.out.print("Introduce el nombre del nuevo proyecto para comenzar: ");
         Scanner scan = new Scanner(System.in);
         Proyecto proyecto = new Proyecto();
@@ -55,21 +55,10 @@ public class Menu {
                     break;
                 }
                 case 6: {
-                    String[] personasEnProyecto = proyecto.listarPersonasProyecto();
-                    if (personasEnProyecto.length != 0)
-                        System.out.println(Arrays.toString(personasEnProyecto));
-                    else
-                        System.out.println("No hay niguna persona dada de alta en el proyecto");
-                    break;
+                    proyecto.listarPersonasProyecto();
                 }
-
                 case 7: {
-                    String[] tareasEnProyecto = proyecto.listarTareasPoyecto();
-                    if (tareasEnProyecto.length != 0)
-                        System.out.println(Arrays.toString(tareasEnProyecto) + "\n");
-                    else
-                        System.out.println("No hay ninguna tarea dada de alta en el proyecto");
-                    break;
+                    proyecto.listarTareasPoyecto();
                 }
                 case 8: {
                     FileOutputStream fichero = new FileOutputStream(nombreProyecto+".bin");

@@ -26,10 +26,14 @@ public class Proyecto implements Serializable {
         return listaPersonas;
     }
 
-    public String[] listarPersonasProyecto() {
+    public String[] listarPersonasProyecto() throws NoElementException {
         String [] res = new String[listaPersonas.size()];
-        for (int i = 0; i < listaPersonas.size(); i++) {
-            res[i] = "Nombre: "+ listaPersonas.get(i).getNombre() + "----" + listaPersonas.get(i).getCorreo();
+        if (listaPersonas.size() == 0)
+            throw new NoElementException();
+        else{
+            for (int i = 0; i < listaPersonas.size(); i++) {
+                res[i] = "Nombre: "+ listaPersonas.get(i).getNombre() + "----" + listaPersonas.get(i).getCorreo();
+            }
         }
         return res;
     }
@@ -50,15 +54,19 @@ public class Proyecto implements Serializable {
         return false;
     }
 
-    public String [] listarTareasPoyecto() {
+    public String [] listarTareasPoyecto() throws NoElementException {
         String [] res = new String[listaTareas.size()];
-        for (int i = 0; i < listaTareas.size(); i++) {
-            //res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"; Finalizado: "+ listaTareas.get(i).isFinalizado() + "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString() + "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto()) + "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
-            res[i] = "Tarea: " + listaTareas.get(i).getTitulo();
-            res[i] += "; Finalizado: "+ listaTareas.get(i).isFinalizado();
-            res[i] += "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString();
-            res[i] += "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto());
-            res[i] += "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
+        if (listaTareas.size() == 0)
+           throw new NoElementException();
+        else{
+            for (int i = 0; i < listaTareas.size(); i++) {
+                //res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"; Finalizado: "+ listaTareas.get(i).isFinalizado() + "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString() + "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto()) + "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
+                res[i] = "Tarea: " + listaTareas.get(i).getTitulo();
+                res[i] += "; Finalizado: "+ listaTareas.get(i).isFinalizado();
+                res[i] += "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString();
+                res[i] += "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto());
+                res[i] += "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
+            }
         }
         return res;
     }
