@@ -1,7 +1,10 @@
-package Modelo;
-import Interfaces.Facturacion;
+package Modelo.Tarea;
+import Modelo.Facturacion.Facturacion;
 import Interfaces.tieneClave;
 import Interfaces.tieneLista;
+import Modelo.Excepciones.añadirPersonaATareaException;
+import Modelo.Excepciones.existeResponsableException;
+import Modelo.Persona;
 
 import java.io.Serializable;
 import java.time.LocalDate;

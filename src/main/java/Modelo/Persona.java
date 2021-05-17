@@ -3,6 +3,7 @@ package Modelo;
 
 import Interfaces.tieneClave;
 import Interfaces.tieneLista;
+import Modelo.Tarea.Tarea;
 
 import java.io.Serializable;
 import java.util.ArrayList;

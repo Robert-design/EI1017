@@ -1,6 +1,4 @@
-package Modelo;
-
-import Interfaces.Facturacion;
+package Modelo.Facturacion;
 
 public class Urgente implements Facturacion {
 

@@ -1,5 +1,7 @@
 package Modelo;
 import Interfaces.utilidadesParaListas;
+import Modelo.Excepciones.NoElementException;
+import Modelo.Excepciones.añadirPersonaATareaException;
 import Vista.*;
 
 import java.util.Scanner;

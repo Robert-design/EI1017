@@ -1,4 +1,6 @@
-package Modelo;
+package Modelo.Tarea;
+
+import Modelo.Tarea.Resultado;
 
 import java.io.Serializable;
 

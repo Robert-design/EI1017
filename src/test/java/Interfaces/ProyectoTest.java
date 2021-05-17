@@ -1,8 +1,14 @@
 package Interfaces;
 
-import Modelo.añadirPersonaATareaException;
-import Modelo.añadirTareaExistenteException;
-import Modelo.*;
+import Modelo.Excepciones.añadirPersonaATareaException;
+import Modelo.Excepciones.añadirTareaExistenteException;
+import Modelo.Facturacion.ConsumoInterno;
+import Modelo.Facturacion.Descuento;
+import Modelo.Facturacion.Urgente;
+import Modelo.Persona;
+import Modelo.Tarea.Programa;
+import Modelo.Proyecto;
+import Modelo.Tarea.Tarea;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

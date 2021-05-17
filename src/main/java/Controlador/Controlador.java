@@ -1,7 +1,7 @@
 package Controlador;
 
-import Modelo.NoElementException;
-import Modelo.añadirPersonaATareaException;
+import Modelo.Excepciones.NoElementException;
+import Modelo.Excepciones.añadirPersonaATareaException;
 
 public interface Controlador {
     void altaPersona() throws añadirPersonaATareaException, NoElementException; //opt 1

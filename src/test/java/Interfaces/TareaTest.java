@@ -1,8 +1,8 @@
 package Interfaces;
 
-import Modelo.añadirPersonaATareaException;
+import Modelo.Excepciones.añadirPersonaATareaException;
 import Modelo.Persona;
-import Modelo.Tarea;
+import Modelo.Tarea.Tarea;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,10 +1,18 @@
-package Vista;
+package Modelo.Menu;
 
 import Interfaces.utilidadesParaListas;
-import Modelo.*;
+import Modelo.Excepciones.NoElementException;
+import Modelo.Excepciones.añadirPersonaATareaException;
+import Modelo.Excepciones.añadirTareaExistenteException;
+import Modelo.Excepciones.existeResponsableException;
+import Modelo.Facturacion.ConsumoInterno;
+import Modelo.Facturacion.Descuento;
+import Modelo.Facturacion.Urgente;
+import Modelo.Persona;
+import Modelo.Proyecto;
+import Modelo.Tarea.*;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {

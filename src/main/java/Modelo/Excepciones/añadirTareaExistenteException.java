@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.Excepciones;
 
 public class añadirTareaExistenteException extends Exception {
     public añadirTareaExistenteException () {

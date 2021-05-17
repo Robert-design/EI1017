@@ -1,4 +1,4 @@
-package Interfaces;
+package Modelo.Facturacion;
 
 public interface Facturacion {
 

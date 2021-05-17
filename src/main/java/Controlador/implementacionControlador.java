@@ -1,11 +1,9 @@
 package Controlador;
-import Interfaces.utilidadesParaListas;
-import Modelo.Persona;
+import Modelo.Excepciones.NoElementException;
+import Modelo.Excepciones.añadirPersonaATareaException;
 import Modelo.Proyecto;
 import Vista.*;
-import Modelo.cambioModelo;
 
-import java.util.Scanner;
 import Modelo.*;
 public class implementacionControlador implements Controlador {
     private implementaVista vista;
