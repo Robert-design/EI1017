@@ -13,26 +13,42 @@ public class PanelTarea extends JPanel {
     private JTextArea areaTarea = new JTextArea(20, 10);
     private JTextField correoPersona;
     private JFrame vista;
+    private JTextArea areaDatos = new JTextArea(20, 10);
 
     public PanelTarea(implementacionControlador controlador, impletaModelo modelo, JFrame vista) throws IOException, ClassNotFoundException {
         this.controlador = controlador;
         this.modelo = modelo;
         this.vista = vista;
-        JFrame prueba = new JFrame("Gestión de Proyectos");
-        prueba.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JToolBar toolBar = new JToolBar();
-        toolBar.setRollover(true);
-        JButton boton1 = new JButton("Probamos");
-        toolBar.addSeparator();
-        toolBar.add(new Button("Menú"));
-        toolBar.add(new JComboBox(new String[]{"Añadir Tarea","Añadir Persona","Eliminar Persona","Marcar Finalizado"}));
-        Container contentPane = prueba.getContentPane();
-        contentPane.add(toolBar,BorderLayout.NORTH);
-        JTextArea areaTexto = new JTextArea();
-        JScrollPane miPanel = new JScrollPane(areaTexto);
-        contentPane.add(miPanel,BorderLayout.EAST);
-        prueba.setSize(450,450);
-        prueba.setVisible(true);
+
+        JButton bBuscarCliente = new JButton("Buscar Cliente");
+        JLabel jDNI = new JLabel("DNI del cliente: ");
+        correoPersona = new JTextField(10);
+
+        JScrollPane panel = new JScrollPane(areaDatos);
+        panel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        panel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        //rellenarInformacion(datos);
+        //Añadimos los elementos
+
+        JPanel panelDNI = new JPanel();
+        panelDNI.add(jDNI);
+        panelDNI.add(correoPersona);
+
+        Container contenedor = new Container();
+        contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.PAGE_AXIS));
+        JPanel panelOption = new JPanel();
+        panelOption.add(panelDNI);
+        contenedor.add(panelOption);
+        add(contenedor);
+
+
+
+
+
+    }
+    public void rellenarInformacion(String datos) {
+        areaDatos.setText("");
+        areaDatos.append(datos);
 
     }
 }

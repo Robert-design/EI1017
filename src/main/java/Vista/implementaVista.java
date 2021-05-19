@@ -8,11 +8,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import Modelo.*;
-public class implementaVista implements informaVista, interrogaVista {
+public class implementaVista  implements informaVista, interrogaVista {
     private implementacionControlador controlador;
     private impletaModelo modelo;
-    private JFrame window = new JFrame("Gestión de Proyectos");
-    //private Panelproyecto
+    private PanelTarea panel;
     //private PanelTarea
     //Private PanelPersona
 
@@ -25,8 +24,20 @@ public class implementaVista implements informaVista, interrogaVista {
     }
 
     public void run() throws IOException, ClassNotFoundException {
-        new PanelTarea(controlador,modelo,window);
-        controlador.cargarDatos();
+        //controlador.cargarDatos();
+
+        JFrame ventana = new JFrame("Gestión de Proyectos");
+        ventana.setSize(400, 400); //.pack()
+        Image icono = Toolkit.getDefaultToolkit().getImage("src/iconos/icono.png"); //Creamos una IMAGE
+        ventana.setIconImage(icono); //Añadimos la IMAGE creada
+        JTabbedPane pestanyas = new JTabbedPane();
+        panel = new PanelTarea(controlador,modelo,ventana);
+
+        pestanyas.add("Proyectos",panel );
+        ventana.add(pestanyas);
+        ventana.setVisible(true);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
 
@@ -39,8 +50,6 @@ public class implementaVista implements informaVista, interrogaVista {
     public String getNombreProyecto() {
         return modelo.getNombreProyecto();
     }
-
-
 
 }
 

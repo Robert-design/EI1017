@@ -6,7 +6,7 @@ import Modelo.impletaModelo;
 import java.io.IOException;
 
 public class Main {
-    public static void main (String args[]) throws IOException {
+    public static void main (String args[]) throws Exception {
         implementacionControlador controlador = new implementacionControlador();
         implementaVista vista = new implementaVista();
         impletaModelo modelo = new impletaModelo();
@@ -15,14 +15,13 @@ public class Main {
         vista.setControlador(controlador);
         controlador.setModelo(modelo);
         controlador.setVista(vista);
+
         modelo.setVista(vista);
         modelo.setControlador(controlador);
+        vista.run();
+        controlador.cargarDatos();
 
-        try {
-            vista.run();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
 
     }
 

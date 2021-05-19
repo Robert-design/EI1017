@@ -11,7 +11,9 @@ import java.io.*;
 import java.util.Scanner;
 
 public class impletaModelo implements interrogaModelo, cambioModelo {
+    private Proyecto[] proyectos;
     private Proyecto proy;
+
     private implementaVista vista;
     private cambioModelo modelo;
     private implementacionControlador controlador;
@@ -208,7 +210,7 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
 
     public void cargarProyecto () throws IOException, ClassNotFoundException {
         Scanner scan = new Scanner(System.in);
-        System.out.print(" ¿Qué proyecto deseas cargar?:");
+        System.out.print(" ¿Qué proyecto deseas cargar?¿:");
         String cargarProyecto = scan.next();
         FileInputStream fichero = new FileInputStream(cargarProyecto+".bin");
         ObjectInputStream obj = new ObjectInputStream(fichero);
