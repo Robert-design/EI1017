@@ -2,8 +2,11 @@ package Main;
 import Controlador.implementacionControlador;
 import  Vista.*;
 import Modelo.impletaModelo;
+
+import java.io.IOException;
+
 public class Main {
-    public static void main (String args[]) {
+    public static void main (String args[]) throws IOException {
         implementacionControlador controlador = new implementacionControlador();
         implementaVista vista = new implementaVista();
         impletaModelo modelo = new impletaModelo();
@@ -15,7 +18,11 @@ public class Main {
         modelo.setVista(vista);
         modelo.setControlador(controlador);
 
-        vista.run();
+        try {
+            vista.run();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 

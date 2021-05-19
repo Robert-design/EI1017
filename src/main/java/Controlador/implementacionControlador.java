@@ -4,6 +4,9 @@ import Modelo.añadirPersonaATareaException;
 import Vista.*;
 
 import Modelo.*;
+
+import java.io.IOException;
+
 public class implementacionControlador implements Controlador {
     private implementaVista vista;
     private impletaModelo modelo;
@@ -14,6 +17,22 @@ public class implementacionControlador implements Controlador {
 
     public void setVista(implementaVista vista) {
         this.vista = vista;
+    }
+
+    public void guardarDatos(){
+        try {
+            modelo.guardarProyecto();
+        } catch (IOException e) {
+            System.out.println("Error al guardar datos.");
+        }
+    }
+
+    public void cargarDatos() throws IOException {
+        try {
+            modelo.cargarProyecto();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error al cargar datos.");;
+        }
     }
 
     @Override

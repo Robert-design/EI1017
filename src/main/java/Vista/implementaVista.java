@@ -5,58 +5,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import Modelo.*;
 public class implementaVista implements informaVista, interrogaVista {
-    private Controlador controlador;
-    private interrogaModelo modelo;
+    private implementacionControlador controlador;
+    private impletaModelo modelo;
     private JFrame window = new JFrame("Gestión de Proyectos");
     //private Panelproyecto
     //private PanelTarea
     //Private PanelPersona
 
-    public void setModelo(interrogaModelo modelo) {
+    public void setModelo(impletaModelo modelo) {
         this.modelo = modelo;
     }
 
-    public void setControlador(Controlador controlador){
+    public void setControlador(implementacionControlador controlador){
         this.controlador = controlador;
     }
 
-    private void GUI() {
-        JFrame ventana = new JFrame("Modelo/Vista/Controlador");
-        Container contenedor = ventana.getContentPane();
-        JPanel jpEntrada = new JPanel();
-        JPanel jpContador = new JPanel();
-        JTextField jtfNombre = new JTextField(20);
-        //EscuchadorOpcion1 escuchador = new EscuchadorOpcion1();
-        JButton jbMenu = new JButton("Menú");
-        //jbNuevo.addActionListener(escuchador);
-        JButton jbAceptar = new JButton("Aceptar");
-        //jbAtras.addActionListener(escuchador);
-        JButton jbSalir = new JButton("Salir");
-        // jbAdelante.addActionListener(escuchador);
-        //JLabel jlContador = new JLabel(infoEstadoEntradas());
-        jpEntrada.add(jtfNombre);
-        jpEntrada.add(jbMenu);
-        jpEntrada.add(jbAceptar);
-        jpEntrada.add(jbSalir);
-        //jpContador.add(jlContador);
-        contenedor.add(jpEntrada, BorderLayout.NORTH);
-        contenedor.add(jpContador, BorderLayout.SOUTH);
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.pack();
-        ventana.setVisible(true);
+    public void run() throws IOException, ClassNotFoundException {
+        new PanelTarea(controlador,modelo,window);
+        controlador.cargarDatos();
     }
 
-
-    public void creaGUI() {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                GUI();
-            }
-        });
-    }
 
     @Override
     public String getPersona() {
@@ -69,23 +41,6 @@ public class implementaVista implements informaVista, interrogaVista {
     }
 
 
-    public class Escuchador implements ActionListener {
-        private implementacionControlador controlador;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JButton boton1 = (JButton) e.getSource();
-            String text = boton1.getText();
-            /*if(text.equals("Nuevo"))
-                //controlador.nuevoProyecto();
-           /* else if(text.equals("Aceptar"))
-                //controlador.forward();
-
-           else if(text.equals("Salir"))
-                System.exit(0);
-                */
-        }
-    }
 
 }
 
