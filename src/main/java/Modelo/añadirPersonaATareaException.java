@@ -1,4 +1,4 @@
-package Modelo.Excepciones;
+package Modelo;
 
 public class añadirPersonaATareaException extends Exception {
     public añadirPersonaATareaException () {

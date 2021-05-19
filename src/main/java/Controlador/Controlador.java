@@ -1,7 +1,7 @@
 package Controlador;
 
-import Modelo.Excepciones.NoElementException;
-import Modelo.Excepciones.añadirPersonaATareaException;
+import Modelo.NoElementException;
+import Modelo.añadirPersonaATareaException;
 
 public interface Controlador {
 

@@ -1,9 +1,5 @@
 package Modelo;
 
-import Modelo.Excepciones.NoElementException;
-import Modelo.Excepciones.añadirPersonaATareaException;
-import Modelo.Excepciones.añadirTareaExistenteException;
-import Modelo.Persona;
 import Modelo.Tarea.Tarea;
 
 import java.io.Serializable;

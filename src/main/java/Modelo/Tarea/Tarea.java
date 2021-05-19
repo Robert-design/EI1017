@@ -2,8 +2,8 @@ package Modelo.Tarea;
 import Modelo.Facturacion.Facturacion;
 import Interfaces.tieneClave;
 import Interfaces.tieneLista;
-import Modelo.Excepciones.añadirPersonaATareaException;
-import Modelo.Excepciones.existeResponsableException;
+import Modelo.añadirPersonaATareaException;
+import Modelo.existeResponsableException;
 import Modelo.Persona;
 
 import java.io.Serializable;
@@ -11,8 +11,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Tarea implements tieneClave, tieneLista, Serializable {
-    ArrayList<Persona> personasATarea;
-    ArrayList<String> listaEtiquetas;
+    public ArrayList<Persona> personasATarea;
+    public ArrayList<String> listaEtiquetas;
     private String titulo, descripcion;
     private Persona responsable;
     private int prioridad;

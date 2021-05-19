@@ -1,7 +1,8 @@
 package Interfaces;
 
-import Modelo.Excepciones.añadirPersonaATareaException;
-import Modelo.Excepciones.añadirTareaExistenteException;
+import Modelo.NoElementException;
+import Modelo.añadirPersonaATareaException;
+import Modelo.añadirTareaExistenteException;
 import Modelo.Facturacion.ConsumoInterno;
 import Modelo.Facturacion.Descuento;
 import Modelo.Facturacion.Urgente;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProyectoTest {
 
     @Test
-    void listarPersonasProyecto() throws añadirPersonaATareaException {
+    void listarPersonasProyecto() throws añadirPersonaATareaException, NoElementException {
         Proyecto proyect = new Proyecto();
         ArrayList<Persona> pr1 = new ArrayList<>();
         Persona p1 = new Persona("p1","@gmail.com");

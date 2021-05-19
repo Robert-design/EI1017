@@ -9,6 +9,10 @@ import Modelo.*;
 public class implementaVista implements informaVista, interrogaVista {
     private Controlador controlador;
     private interrogaModelo modelo;
+    private JFrame window = new JFrame("Gestión de Proyectos");
+    //private Panelproyecto
+    //private PanelTarea
+    //Private PanelPersona
 
     public void setModelo(interrogaModelo modelo) {
         this.modelo = modelo;

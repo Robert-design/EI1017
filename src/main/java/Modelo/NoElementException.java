@@ -1,4 +1,4 @@
-package Modelo.Excepciones;
+package Modelo;
 
 public class NoElementException extends Exception {
     public NoElementException() {

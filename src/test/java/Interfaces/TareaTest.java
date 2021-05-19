@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Modelo.Excepciones.añadirPersonaATareaException;
+import Modelo.añadirPersonaATareaException;
 import Modelo.Persona;
 import Modelo.Tarea.Tarea;
 

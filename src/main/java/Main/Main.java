@@ -8,7 +8,14 @@ public class Main {
         implementaVista vista = new implementaVista();
         impletaModelo modelo = new impletaModelo();
 
-        
+        vista.setModelo(modelo);
+        vista.setControlador(controlador);
+        controlador.setModelo(modelo);
+        controlador.setVista(vista);
+        modelo.setVista(vista);
+        modelo.setControlador(controlador);
+
+        vista.run();
 
     }
 

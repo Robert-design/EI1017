@@ -1,12 +1,21 @@
 package Controlador;
-import Modelo.Excepciones.NoElementException;
-import Modelo.Excepciones.añadirPersonaATareaException;
+import Modelo.NoElementException;
+import Modelo.añadirPersonaATareaException;
 import Vista.*;
 
 import Modelo.*;
 public class implementacionControlador implements Controlador {
     private implementaVista vista;
     private impletaModelo modelo;
+
+    public void setModelo(impletaModelo modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setVista(implementaVista vista) {
+        this.vista = vista;
+    }
+
     @Override
     public void altaPersona() throws añadirPersonaATareaException, NoElementException {
         String persona = vista.getPersona();

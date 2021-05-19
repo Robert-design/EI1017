@@ -1,10 +1,10 @@
 package Modelo.Menu;
 
 import Interfaces.utilidadesParaListas;
-import Modelo.Excepciones.NoElementException;
-import Modelo.Excepciones.añadirPersonaATareaException;
-import Modelo.Excepciones.añadirTareaExistenteException;
-import Modelo.Excepciones.existeResponsableException;
+import Modelo.NoElementException;
+import Modelo.añadirPersonaATareaException;
+import Modelo.añadirTareaExistenteException;
+import Modelo.existeResponsableException;
 import Modelo.Facturacion.ConsumoInterno;
 import Modelo.Facturacion.Descuento;
 import Modelo.Facturacion.Urgente;

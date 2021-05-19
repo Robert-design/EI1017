@@ -1,14 +1,11 @@
 package Modelo;
 import Interfaces.utilidadesParaListas;
-import Modelo.Excepciones.NoElementException;
-import Modelo.Excepciones.añadirPersonaATareaException;
-import Modelo.Excepciones.añadirTareaExistenteException;
-import Modelo.Excepciones.existeResponsableException;
 import Modelo.Facturacion.ConsumoInterno;
 import Modelo.Facturacion.Descuento;
 import Modelo.Facturacion.Urgente;
 import Modelo.Tarea.*;
 import Vista.*;
+import Controlador.implementacionControlador;
 
 import java.util.Scanner;
 
@@ -16,6 +13,15 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
     private Proyecto proy;
     private implementaVista vista;
     private cambioModelo modelo;
+    private implementacionControlador controlador;
+
+    public void setVista(implementaVista vista) {
+        this.vista = vista;
+    }
+
+    public void setControlador(implementacionControlador controlador) {
+        this.controlador = controlador;
+    }
 
     @Override
     public void altaPersona() throws añadirPersonaATareaException, NoElementException {
