@@ -1,13 +1,11 @@
 package Controlador;
 import Modelo.Excepciones.NoElementException;
 import Modelo.Excepciones.añadirPersonaATareaException;
-import Modelo.Proyecto;
 import Vista.*;
 
 import Modelo.*;
 public class implementacionControlador implements Controlador {
     private implementaVista vista;
-    private Proyecto proyecto;
     private impletaModelo modelo;
     @Override
     public void altaPersona() throws añadirPersonaATareaException, NoElementException {
@@ -17,22 +15,26 @@ public class implementacionControlador implements Controlador {
 
     @Override
     public void crearTarea() {
-
+    String proyecto = vista.getNombreProyecto();
+    modelo.creaTarea();
     }
 
     @Override
     public void marcarFinalizado() {
-
+        //String proyecto = vista.getNombreProyecto();
+        modelo.marcarFinalizado();
     }
 
     @Override
     public void introducirPersonaATarea() {
-
+        String proyecto = vista.getNombreProyecto();
+        modelo.añadirPersonaTarea();
     }
 
     @Override
     public void eliminarPersonaDeTarea() {
-
+        String proyecto = vista.getNombreProyecto();
+        modelo.getNombreProyecto();
     }
 
     @Override

@@ -44,6 +44,7 @@ public class implementaVista implements informaVista, interrogaVista {
         ventana.setVisible(true);
     }
 
+
     public void creaGUI() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -58,6 +59,12 @@ public class implementaVista implements informaVista, interrogaVista {
         return modelo.getPersona();
     }
 
+    @Override
+    public String getNombreProyecto() {
+        return modelo.getNombreProyecto();
+    }
+
+
     public class Escuchador implements ActionListener {
         private implementacionControlador controlador;
 
@@ -65,42 +72,16 @@ public class implementaVista implements informaVista, interrogaVista {
         public void actionPerformed(ActionEvent e) {
             JButton boton1 = (JButton) e.getSource();
             String text = boton1.getText();
-          /*  if(text.equals("Nuevo"))
-                //controlador.();
-           /* else if(text.equals("Avanzar"))
+            /*if(text.equals("Nuevo"))
+                //controlador.nuevoProyecto();
+           /* else if(text.equals("Aceptar"))
                 //controlador.forward();
-            else if(text.equals("Atrás"))
-                //controlador.backwards();
-        }*/
+
+           else if(text.equals("Salir"))
+                System.exit(0);
+                */
         }
-
     }
-
-
-
-
-
-
-
-
-
-
-     /*
-    @Override
-    public void actualEntranceChange() {
-
-    }
-
-    @Override
-    public void newEntrance() {
-        String entranceState = "Número de entradas: " +
-        modelo.getActualEntrancePosition() + " de" +
-        modelo.getEntranceNumbers();
-    }
-
-    @Override
-    public String getEntrance() {
-        return modelo.getActualEntrance() ;
-    }*/
 
 }
+

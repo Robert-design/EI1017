@@ -4,6 +4,7 @@ import Modelo.Excepciones.NoElementException;
 import Modelo.Excepciones.añadirPersonaATareaException;
 
 public interface Controlador {
+
     void altaPersona() throws añadirPersonaATareaException, NoElementException; //opt 1
     void crearTarea(); //opt2
     void marcarFinalizado(); //....
