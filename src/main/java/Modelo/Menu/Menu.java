@@ -69,21 +69,11 @@ public class Menu {
                     proyecto.listarTareasPoyecto();
                 }
                 case 8: {
-                    FileOutputStream fichero = new FileOutputStream(nombreProyecto+".bin");
-                    ObjectOutputStream obj = new ObjectOutputStream(fichero);
-                    obj.writeObject(proyecto);
-                    obj.close();
-                    System.out.println("Guardando los datos...");
+                    guardarProyecto(proyecto);
                     break;
                 }
                 case 9: {
-                    System.out.print(" ¿Qué proyecto deseas cargar?:");
-                    String cargarProyecto = scan.next();
-                    FileInputStream fichero = new FileInputStream(cargarProyecto+".bin");
-                    ObjectInputStream obj = new ObjectInputStream(fichero);
-                    proyecto = (Proyecto) obj.readObject();
-                    obj.close();
-                    System.out.println("Datos cargados");
+                    cargarProyecto(proyecto);
                     break;
                 }
                 case 10: {
@@ -319,6 +309,24 @@ public class Menu {
     }
 
 
+    public static void cargarProyecto (Proyecto proyecto) throws IOException, ClassNotFoundException {
+        Scanner scan = new Scanner(System.in);
+        System.out.print(" ¿Qué proyecto deseas cargar?:");
+        String cargarProyecto = scan.next();
+        FileInputStream fichero = new FileInputStream(cargarProyecto+".bin");
+        ObjectInputStream obj = new ObjectInputStream(fichero);
+        proyecto = (Proyecto) obj.readObject();
+        obj.close();
+        System.out.println("Datos cargados");
+    }
 
+    public static void guardarProyecto (Proyecto proyecto) throws IOException {
+        String nombreProyecto = proyecto.getNombre();
+        FileOutputStream fichero = new FileOutputStream(nombreProyecto+".bin");
+        ObjectOutputStream obj = new ObjectOutputStream(fichero);
+        obj.writeObject(proyecto);
+        obj.close();
+        System.out.println("Guardando los datos...");
+    }
 
 }

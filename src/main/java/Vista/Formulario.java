@@ -1,5 +1,6 @@
 package Vista;
 import javax.swing.*;
+
 public abstract class Formulario {
     public int fieldSize(JTextField camp) {
         return camp.getText().length();
