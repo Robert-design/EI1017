@@ -16,6 +16,11 @@ public class Proyecto implements Serializable {
         listaTareas = new ArrayList<>();
     }
 
+    public Proyecto(String nombre) {
+        this.nombre = nombre;
+        listaPersonas = new ArrayList<>();
+        listaTareas = new ArrayList<>();
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -108,4 +113,7 @@ public class Proyecto implements Serializable {
         return res;
     }
 
+    public String mostrarinfo() {
+        return ("Nombre: "+nombre+ " nº Tareas: "+this.listaTareas.size()+ " nº Personas: "+this.listaPersonas.size()+"\n");
+    }
 }

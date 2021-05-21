@@ -24,6 +24,8 @@ public class implementacionControlador implements Controlador {
             modelo.guardarProyecto();
         } catch (IOException e) {
             System.out.println("Error al guardar datos.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -32,31 +34,33 @@ public class implementacionControlador implements Controlador {
             modelo.cargarProyecto();
         } catch (ClassNotFoundException e) {
             System.out.println("Error al cargar datos.");;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public void altaPersona() throws añadirPersonaATareaException, NoElementException {
         String persona = vista.getPersona();
-        modelo.altaPersona();
+       // modelo.altaPersona();
     }
 
     @Override
     public void crearTarea() {
     String proyecto = vista.getNombreProyecto();
-    modelo.creaTarea();
+    //modelo.creaTarea();
     }
 
     @Override
     public void marcarFinalizado() {
         //String proyecto = vista.getNombreProyecto();
-        modelo.marcarFinalizado();
+       // modelo.marcarFinalizado();
     }
 
     @Override
     public void introducirPersonaATarea() {
         String proyecto = vista.getNombreProyecto();
-        modelo.añadirPersonaTarea();
+       // modelo.añadirPersonaTarea();
     }
 
     @Override

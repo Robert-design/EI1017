@@ -15,11 +15,12 @@ public class Main {
         vista.setControlador(controlador);
         controlador.setModelo(modelo);
         controlador.setVista(vista);
+        controlador.cargarDatos();
+
 
         modelo.setVista(vista);
         modelo.setControlador(controlador);
         vista.run();
-        controlador.cargarDatos();
 
 
 

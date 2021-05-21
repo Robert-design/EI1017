@@ -8,11 +8,11 @@ import Vista.*;
 import Controlador.implementacionControlador;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class impletaModelo implements interrogaModelo, cambioModelo {
-    private Proyecto[] proyectos;
-    private Proyecto proy;
+public class impletaModelo   {
+    private ArrayList<Proyecto> proyectos =new ArrayList<>();
 
     private implementaVista vista;
     private cambioModelo modelo;
@@ -21,18 +21,43 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
     public void setVista(implementaVista vista) {
         this.vista = vista;
     }
+    public void crearProyecto(String nombre){
+        Proyecto nuevo = new Proyecto(nombre);
+        System.out.println(nombre);
 
+        proyectos.add(nuevo);
+        try {
+            guardarProyecto();
+        }catch (Exception e){
+            System.out.println("Error al guardar");
+        }
+
+    }
+    public String obtenerInfo(){
+        System.out.println("cargando info");
+        String resultado = "";
+        for (Proyecto proyecto : proyectos){
+            resultado+=(proyecto.mostrarinfo());
+        }
+        return resultado;
+        }
     public void setControlador(implementacionControlador controlador) {
         this.controlador = controlador;
     }
+    public Proyecto buscarProyecto(String nombreProyecto){
+        for (Proyecto proyecto : proyectos){
+            if (proyecto.getNombre().equals(nombreProyecto)){
+                return proyecto;
+            }
+        }
+        return null;
+    }
+    public void altaPersona(String nombreProyecto,String nombrePersona) throws añadirPersonaATareaException, NoElementException {
+        Proyecto proyecto =  buscarProyecto(nombreProyecto);
 
-    @Override
-    public void altaPersona() throws añadirPersonaATareaException, NoElementException {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Introduce el nombre de la persona: ");
-        String nombrePersona = vista.getPersona();
-        if (utilidadesParaListas.elementosInsertables(nombrePersona, proy.getListaPersonas())) {
-            proy.añadirPersonaProyecto(nombrePersona);
+        if (utilidadesParaListas.elementosInsertables(nombrePersona, proyecto.getListaPersonas())) {
+            proyecto.añadirPersonaProyecto(nombrePersona);
+
             System.out.println("Persona dada de alta\n");
         }
         throw new NoElementException();
@@ -58,62 +83,45 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
         }
         return resultado;
     }
-    @Override
-    public void creaTarea() {
+    public void creaTarea(String nombreProyecto,String nombreTarea,String nombreResultado, double coste,String tipo, double porcentaje) {
         Tarea tarea = new Tarea();
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Introduce la tarea: ");
-        String nombreTarea = scan.next();
+        Proyecto proyecto =  buscarProyecto(nombreProyecto);
+
+
         tarea.setTitulo(nombreTarea);
         tarea.setDescripcion("Hacer código en Java");
         tarea.setPrioridad(1);
         tarea.setFechaFinalizacion(null);
         tarea.setFinalizado(false);
-        System.out.print("Introduce el tipo de resultado esperado: Documentación (D), Programa (P), Página web (PW), Biblioteca (B): ");
-        String nombreResultado = scan.next();
         Resultado resultado = crearResultado(nombreResultado);
-        while (resultado == null) {
-            System.out.print("Introduce una opción correcta por favor: Documentación (D), Programa (P), Página web (PW), Biblioteca (B): ");
-            nombreResultado = scan.next();
-            resultado = crearResultado(nombreResultado);
-        }
         tarea.setResultadoEsperado(resultado);
-
-        System.out.print("Introduce el coste de la tarea: ");
-        double coste = scan.nextDouble();
         tarea.setCoste(coste);
 
-        System.out.print("¿Qué tipo de facturación es? Consumo interno (C), Descuento (D), Urgente (U): ");
-        String tipo = scan.next();
+
         if (tipo.equals("C")) {
             tarea.setFacturacion(new ConsumoInterno());
         }
         else if (tipo.equals("D")) {
-            System.out.print("Introduce el descuento (del 1 al 100%): ");
-            double desc = scan.nextDouble();
-            tarea.setFacturacion(new Descuento(desc));
+            tarea.setFacturacion(new Descuento(porcentaje));
         }
         else if (tipo.equals("U")) {
-            System.out.print("Introduce el porcentaje a aplicar (del 1 al 100%): ");
-            double urg = scan.nextDouble();
-            tarea.setFacturacion(new Urgente(urg));
+            tarea.setFacturacion(new Urgente(porcentaje));
         }
 
         System.out.println("El importe es de " + tarea.getImporte() + "\n");
 
         try {
-            proy.añadirTareaProyecto(tarea);
+            proyecto.añadirTareaProyecto(tarea);
         } catch (añadirTareaExistenteException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void marcarFinalizado() {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("¿Qué tarea ha sido finalizada? ");
-        String nombreTarea = scan.next();
-        Tarea tarea = proy.dameTarea(nombreTarea);
+    public void marcarFinalizado(String nombreProyecto,String nombreTarea) {
+        Proyecto proyecto =  buscarProyecto(nombreProyecto);
+
+
+        Tarea tarea = proyecto.dameTarea(nombreTarea);
         if (!tarea.getFinalizado()) {
             tarea.setFinalizado(true);
             System.out.println("Tarea finalizada\n");
@@ -121,18 +129,14 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
             System.out.println("La tarea ya se encontraba finalizada\n");
     }
 
-    @Override
-    public void añadirPersonaTarea() {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Introduce el nombre a añadir: ");
-        String nombre = scan.next();
-        System.out.print("Introduce el nombre de la tarea: ");
-        String titulo = scan.next();
-        Tarea tarea = proy.dameTarea(titulo);
+    public void añadirPersonaTarea(String nombreProyecto,String nombre, String titulo, String respuesta) {
+        Proyecto proyecto =  buscarProyecto(nombreProyecto);
+
+        Tarea tarea = proyecto.dameTarea(titulo);
 
         if (!tarea.getFinalizado()) {
-            Tarea existente = proy.dameTarea(titulo);
-            Persona nueva = proy.damePersona(nombre);
+            Tarea existente = proyecto.dameTarea(titulo);
+            Persona nueva = proyecto.damePersona(nombre);
             boolean tieneResponsable = existente.tieneResponsable();
             try {
                 existente.añadirPersonaTarea(nueva);
@@ -140,8 +144,7 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
                 e.printStackTrace();
             }
             if (!tieneResponsable) {
-                System.out.print(" ¿Quieres que esta persona sea responsable de la tarea? (Y/N)");
-                String respuesta = scan.next();
+
                 if (respuesta.equals("Y")) {
                     try {
                         existente.setResponsable(nueva);
@@ -157,25 +160,19 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
         }
     }
 
-    @Override
-    public void eliminarPersonaTarea() {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Introduce el nombre de la persona para eliminarlo de la tarea: ");
-        String nombre = scan.next();
-        System.out.print("Introduce el título de la tarea: ");
-        String titulo = scan.next();
-        Tarea existente = proy.dameTarea(titulo);
-        Persona eliminada = proy.damePersona(nombre);
-        Tarea tarea = proy.dameTarea(titulo);
+    public void eliminarPersonaTarea(String nombreProyecto,String nombre, String titulo,String nombreNuevo) {
+        Proyecto proyecto = buscarProyecto(nombreProyecto);
+
+        Tarea existente = proyecto.dameTarea(titulo);
+        Persona eliminada = proyecto.damePersona(nombre);
+        Tarea tarea = proyecto.dameTarea(titulo);
         Persona esResponsable = tarea.getResponsable();
         //existente.personasATarea.size() > 1
         if (!utilidadesParaListas.elementosConListaVacia(tarea.getPersonasATarea()).isEmpty()) {
             if (esResponsable.getNombre().equals(eliminada.getNombre())) {
-                System.out.print("Vas a eliminar al responsable de la tarea, escoge a otro antes por favor: ");
                 boolean hecho = false;
                 while (!hecho) {
-                    nombre = scan.next();
-                    Persona nueva = proy.damePersona(nombre);
+                    Persona nueva = proyecto.damePersona(nombreNuevo);
                     if (tarea.getPersonasATarea().contains(nueva)) {
                         try {
                             tarea.setResponsable(nueva);
@@ -185,46 +182,40 @@ public class impletaModelo implements interrogaModelo, cambioModelo {
                             e.printStackTrace();
                         }
                         hecho = true;
-                    } else
-                        System.out.println("Introduce una persona dada de alta en la tarea");
+                    }
                 }
-            } else {
-                existente.eliminarPersonaTarea(eliminada);
-                System.out.println("Persona eliminada correctamente\n");
-
-            }
-        } else
-            System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo. O bien no hay nadie en la tarea\n");
+            } else
+                System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo. O bien no hay nadie en la tarea\n");
+        }
     }
 
-
-    @Override
     public String getPersona() {
        return getPersona();
     }
 
-    @Override
     public String getNombreProyecto() {
         return getNombreProyecto();
     }
 
-    public void cargarProyecto () throws IOException, ClassNotFoundException {
-        Scanner scan = new Scanner(System.in);
-        System.out.print(" ¿Qué proyecto deseas cargar?¿:");
-        String cargarProyecto = scan.next();
-        FileInputStream fichero = new FileInputStream(cargarProyecto+".bin");
-        ObjectInputStream obj = new ObjectInputStream(fichero);
-        Proyecto proyecto = (Proyecto) obj.readObject();
-        obj.close();
-        System.out.println("Datos cargados");
+    public void cargarProyecto () throws Exception, ClassNotFoundException {
+        try {
+            FileInputStream fichero = new FileInputStream("DatosProyecto.bin");
+            ObjectInputStream obj = new ObjectInputStream(fichero);
+            this.proyectos = (ArrayList<Proyecto>) obj.readObject();
+            obj.close();
+            for(Proyecto p : proyectos){
+                System.out.println(p.mostrarinfo());
+            }
+        }catch (Exception error){
+            System.out.println("No hay datos");
+        }
     }
 
-    public void guardarProyecto () throws IOException {
+    public void guardarProyecto () throws Exception {
         FileOutputStream fichero = new FileOutputStream("DatosProyecto.bin");
         ObjectOutputStream obj = new ObjectOutputStream(fichero);
-        obj.writeObject(proy.getNombre());
+        obj.writeObject(proyectos);
         obj.close();
-        System.out.println("Guardando los datos...");
     }
 
 }
