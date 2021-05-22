@@ -11,8 +11,8 @@ import Modelo.*;
 public class implementaVista  implements informaVista, interrogaVista {
     private implementacionControlador controlador;
     private impletaModelo modelo;
-    private PanelTarea panel;
-    //private PanelTarea
+    private PanelProyecto panel;
+    private PanelTarea panel2;
     //Private PanelPersona
 
     public void setModelo(impletaModelo modelo) {
@@ -27,14 +27,16 @@ public class implementaVista  implements informaVista, interrogaVista {
         //controlador.cargarDatos();
 
         JFrame ventana = new JFrame("Gestión de Proyectos");
-        ventana.setSize(400, 400); //.pack()
+        ventana.setSize(30, 50); //.pack()
         Image icono = Toolkit.getDefaultToolkit().getImage("src/iconos/icono.png"); //Creamos una IMAGE
         ventana.setIconImage(icono); //Añadimos la IMAGE creada
-        JTabbedPane pestanyas = new JTabbedPane();
-        panel = new PanelTarea(controlador,modelo,ventana);
-
-        pestanyas.add("Proyectos",panel );
-        ventana.add(pestanyas);
+        JTabbedPane tabs = new JTabbedPane();
+        panel = new PanelProyecto(controlador,modelo,ventana);
+        panel2 = new PanelTarea(controlador, modelo, ventana);
+        tabs.add("Proyectos",panel );
+        tabs.add("Tareas",panel2);
+        ventana.add(tabs);
+        ventana.add(tabs);
         ventana.setVisible(true);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

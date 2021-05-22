@@ -23,7 +23,6 @@ public class Main {
         vista.run();
 
 
-
     }
 
 }
