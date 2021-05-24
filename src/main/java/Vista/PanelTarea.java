@@ -53,7 +53,7 @@ public class PanelTarea extends JPanel {
         areaDatos.setForeground(Color.BLACK);
         areaDatos.setEditable(false);
 
-
+//
         insertarProyecto.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(correoPersona.getText());
