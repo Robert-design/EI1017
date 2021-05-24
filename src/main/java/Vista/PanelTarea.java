@@ -67,7 +67,7 @@ public class PanelTarea extends JPanel{
         Container contenedor = new Container();
         contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.PAGE_AXIS));;
        /*contenedor.add(nombreProyecto);
-        contenedor.add(nombre);*/
+        contenedor.add(nombre);*/ //
         contenedor.add(boton1);
         contenedor.add(boton2);
         contenedor.add(boton3);
