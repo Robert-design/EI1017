@@ -38,7 +38,7 @@ public class Proyecto implements Serializable {
         String [] res = new String[listaPersonas.size()];
         if (listaPersonas.size() == 0)
             throw new NoElementException();
-        else{
+        else {
             for (int i = 0; i < listaPersonas.size(); i++) {
                 res[i] = "Nombre: "+ listaPersonas.get(i).getNombre() + "----" + listaPersonas.get(i).getCorreo();
             }

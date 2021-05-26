@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PanelTarea extends JPanel{
+public class PanelTarea extends JPanel {
     private implementacionControlador controlador;
     private impletaModelo modelo;
     private JFrame vista;
@@ -112,6 +112,5 @@ public class PanelTarea extends JPanel{
         areaDatos.append(modelo.obtenerInfo());
 
     }
-
 
 }
