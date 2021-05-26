@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class impletaModelo   {
-    private ArrayList<Proyecto> proyectos =new ArrayList<>();
+    private ArrayList<Proyecto> proyectos = new ArrayList<>();
 
     private implementaVista vista;
     private cambioModelo modelo;
@@ -21,29 +21,31 @@ public class impletaModelo   {
     public void setVista(implementaVista vista) {
         this.vista = vista;
     }
+
     public void crearProyecto(String nombre){
         Proyecto nuevo = new Proyecto(nombre);
         System.out.println(nombre);
-
         proyectos.add(nuevo);
         try {
             guardarProyecto();
-        }catch (Exception e){
+        } catch (Exception e){
             System.out.println("Error al guardar");
         }
 
     }
     public String obtenerInfo(){
-        System.out.println("cargando info");
+        System.out.println("Cargando info");
         String resultado = "";
         for (Proyecto proyecto : proyectos){
-            resultado+=(proyecto.mostrarinfo());
+            resultado += (proyecto.mostrarinfo());
         }
         return resultado;
-        }
+    }
+
     public void setControlador(implementacionControlador controlador) {
         this.controlador = controlador;
     }
+
     public Proyecto buscarProyecto(String nombreProyecto){
         for (Proyecto proyecto : proyectos){
             if (proyecto.getNombre().equals(nombreProyecto)){

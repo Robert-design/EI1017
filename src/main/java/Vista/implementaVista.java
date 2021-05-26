@@ -33,13 +33,12 @@ public class implementaVista  implements informaVista, interrogaVista {
         JTabbedPane tabs = new JTabbedPane();
         panel = new PanelProyecto(controlador,modelo,ventana);
         panel2 = new PanelTarea(controlador, modelo, ventana);
-        tabs.add("Proyectos",panel );
-        tabs.add("Tareas",panel2);
+        tabs.add("Proyectos", panel );
+        tabs.add("Tareas", panel2);
         ventana.add(tabs);
         ventana.add(tabs);
         ventana.setVisible(true);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
 

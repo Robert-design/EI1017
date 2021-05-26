@@ -21,6 +21,7 @@ public class Proyecto implements Serializable {
         listaPersonas = new ArrayList<>();
         listaTareas = new ArrayList<>();
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -114,6 +115,6 @@ public class Proyecto implements Serializable {
     }
 
     public String mostrarinfo() {
-        return ("Nombre: "+nombre+ " nº Tareas: "+this.listaTareas.size()+ " nº Personas: "+this.listaPersonas.size()+"\n");
+        return ("Nombre: " + nombre + "\t nº Tareas: " + this.listaTareas.size() + "\t nº Personas: " + this.listaPersonas.size() + "\n");
     }
 }
