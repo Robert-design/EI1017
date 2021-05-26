@@ -40,9 +40,8 @@ public class implementacionControlador implements Controlador {
     }
 
     @Override
-    public void altaPersona() throws añadirPersonaATareaException, NoElementException {
-        String persona = vista.getPersona();
-       // modelo.altaPersona();
+    public void altaPersona(String nomProy, String persona) throws añadirPersonaATareaException, NoElementException {
+       modelo.altaPersona(nomProy, persona);
     }
 
     @Override
@@ -58,16 +57,15 @@ public class implementacionControlador implements Controlador {
     }
 
     @Override
-    public void introducirPersonaATarea() {
-        String proyecto = vista.getNombreProyecto();
-       // modelo.añadirPersonaTarea();
+    public void añadirPersonaATarea(String proyecto, String persona, String titulo, String resultado) {
+       modelo.añadirPersonaTarea(proyecto, persona, titulo, resultado);
     }
 
     @Override
-    public void eliminarPersonaDeTarea() {
-        String proyecto = vista.getNombreProyecto();
-        modelo.getNombreProyecto();
+    public void eliminarPersonaDeTarea(String proyecto,String tituloTarea, String personaNueva, String nuevaPersonaRespon) {
+        modelo.eliminarPersonaTarea(proyecto,tituloTarea,personaNueva,nuevaPersonaRespon);
     }
+
 
     @Override
     public void listarPersonasProyecto() {
@@ -79,18 +77,4 @@ public class implementacionControlador implements Controlador {
 
     }
 
-    @Override
-    public void modificarCoste() {
-
-    }
-
-    @Override
-    public void modificarFacturación() {
-
-    }
-
-    @Override
-    public void importeTotal() {
-
-    }
 }

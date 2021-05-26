@@ -5,18 +5,19 @@ import Modelo.añadirPersonaATareaException;
 
 public interface Controlador {
 
-    void altaPersona() throws añadirPersonaATareaException, NoElementException; //opt 1
+    void altaPersona(String nomProy, String persona) throws añadirPersonaATareaException, NoElementException;
+
     void crearTarea(); //opt2
     void marcarFinalizado(); //....
-    void introducirPersonaATarea();
-    void eliminarPersonaDeTarea();
+    void añadirPersonaATarea(String proyecto, String persona,String titulo, String resultado);
+    void eliminarPersonaDeTarea(String proyecto, String tituloTarea ,String personaNueva, String nuevaPersonaRespon);
     void listarPersonasProyecto();
     void listarTareasProyecto();
-    //void guardarProycto();
-    //void cargarProyecto();
+    /*void guardarProycto();
+    void cargarProyecto();
     void modificarCoste();
     void modificarFacturación();
-    void importeTotal(); //opt12
+    void importeTotal(); //opt12*/
 
 
 
