@@ -17,11 +17,16 @@ public class impletaModelo   {
     private implementaVista vista;
     private cambioModelo modelo;
     private implementacionControlador controlador;
-
+    String proyectoNombre;
     public void setVista(implementaVista vista) {
         this.vista = vista;
     }
-
+    public void setProyectoNombre(String proyectoNombre) {
+        this.proyectoNombre = proyectoNombre;
+    }
+    public String getProyectoNombre() {
+        return this.proyectoNombre;
+    }
     public void crearProyecto(String nombre){
         Proyecto nuevo = new Proyecto(nombre);
         System.out.println(nombre);
@@ -29,7 +34,7 @@ public class impletaModelo   {
         try {
             guardarProyecto();
         } catch (Exception e){
-            System.out.println("Error al guardar");
+            System.out.println("Error al guardar"+e);
         }
 
     }
@@ -100,13 +105,13 @@ public class impletaModelo   {
         tarea.setCoste(coste);
 
 
-        if (tipo.equals("C")) {
+        if (tipo.equals("Consumo Interno")) {
             tarea.setFacturacion(new ConsumoInterno());
         }
-        else if (tipo.equals("D")) {
+        else if (tipo.equals("Descuento")) {
             tarea.setFacturacion(new Descuento(porcentaje));
         }
-        else if (tipo.equals("U")) {
+        else if (tipo.equals("Urgente")) {
             tarea.setFacturacion(new Urgente(porcentaje));
         }
 
@@ -196,7 +201,7 @@ public class impletaModelo   {
     }
 
     public String getNombreProyecto() {
-        return getNombreProyecto();
+        return proyectoNombre;
     }
 
     public void cargarProyecto () throws Exception, ClassNotFoundException {

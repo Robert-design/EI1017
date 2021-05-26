@@ -50,7 +50,7 @@ public class PanelPersona extends JPanel {
         contenedor.add(recuadroDatos);
 
         rellenarInformacion();
-        add(contenedor);
+        //add(contenedor);
         areaDatos.setForeground(Color.BLACK);
         areaDatos.setEditable(false);
 

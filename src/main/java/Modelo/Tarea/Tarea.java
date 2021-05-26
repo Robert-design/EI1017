@@ -115,10 +115,10 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
         personasATarea.remove(eliminar);
     }
 
-    public String [] mostrarPersonasProyecto() {
-        String [] res = new String[personasATarea.size()];
+    public String  mostrarPersonasProyecto() {
+        String  res = "";
         for (int i = 0; i < personasATarea.size(); i++) {
-            res[i] = String.valueOf(personasATarea.get(i));
+            res += String.valueOf(personasATarea.get(i));
         }
         return res;
     }

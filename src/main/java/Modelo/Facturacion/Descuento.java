@@ -1,6 +1,8 @@
 package Modelo.Facturacion;
 
-public class Descuento implements Facturacion {
+import java.io.Serializable;
+
+public class Descuento implements Facturacion, Serializable {
 
     private double porcentajeDescuento;
 

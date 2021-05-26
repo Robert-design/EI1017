@@ -14,6 +14,9 @@ public class implementacionControlador implements Controlador {
     public void setModelo(impletaModelo modelo) {
         this.modelo = modelo;
     }
+    public impletaModelo getModelo() {
+        return this.modelo;
+    }
 
     public void setVista(implementaVista vista) {
         this.vista = vista;
@@ -45,9 +48,8 @@ public class implementacionControlador implements Controlador {
     }
 
     @Override
-    public void crearTarea() {
-    String proyecto = vista.getNombreProyecto();
-    //modelo.creaTarea();
+    public void crearTarea(String nombreProyecto,String nombreTarea,String nombreResultado, double coste,String tipo, double porcentaje) {
+        modelo.creaTarea(nombreProyecto, nombreTarea, nombreResultado, coste, tipo, porcentaje);
     }
 
     @Override

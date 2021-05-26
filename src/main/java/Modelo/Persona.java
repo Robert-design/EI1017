@@ -9,10 +9,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Persona implements tieneClave, tieneLista, Serializable {
-    private String nombre, correo;
+    private String nombre;
+    private String  correo;
     ArrayList<Tarea> tareasResponsables;
 
+    public Persona() {
+        super();
+        this.nombre = "Sin asignar";
 
+    }
     public Persona(String nombre, String correo) {
         super();
         this.nombre = nombre;

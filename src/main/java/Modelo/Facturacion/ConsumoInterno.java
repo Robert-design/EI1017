@@ -1,6 +1,8 @@
 package Modelo.Facturacion;
 
-public class ConsumoInterno implements Facturacion {
+import java.io.Serializable;
+
+public class ConsumoInterno implements Facturacion, Serializable {
 
     public ConsumoInterno() {
         super();

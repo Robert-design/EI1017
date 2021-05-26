@@ -72,7 +72,7 @@ public class Proyecto implements Serializable {
                 res[i] = "Tarea: " + listaTareas.get(i).getTitulo();
                 res[i] += "; Finalizado: "+ listaTareas.get(i).isFinalizado();
                 res[i] += "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString();
-                res[i] += "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto());
+                res[i] += "; Trabajan en tarea: " + listaTareas.get(i).mostrarPersonasProyecto();
                 res[i] += "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
             }
         }
@@ -116,5 +116,19 @@ public class Proyecto implements Serializable {
 
     public String mostrarinfo() {
         return ("Nombre: " + nombre + "\t nº Tareas: " + this.listaTareas.size() + "\t nº Personas: " + this.listaPersonas.size() + "\n");
+    }
+    public String mostrarTareas(){
+        String  res = "";
+
+            for (int i = 0; i < listaTareas.size(); i++) {
+                //res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"; Finalizado: "+ listaTareas.get(i).isFinalizado() + "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString() + "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto()) + "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
+                res += "Tarea: " + listaTareas.get(i).getTitulo()+
+                 "\tFinalizado: "+ listaTareas.get(i).isFinalizado()+
+                "\tTipo: " + listaTareas.get(i).getResultadoEsperado().getOpcion()+
+                "\tTrabajan en tarea: " + listaTareas.get(i).mostrarPersonasProyecto()+
+                "\tEl responsable es: " + listaTareas.get(i).getResponsable() + "\n";
+            }
+
+        return res;
     }
 }

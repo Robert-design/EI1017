@@ -1,6 +1,8 @@
 package Modelo.Facturacion;
 
-public class Urgente implements Facturacion {
+import java.io.Serializable;
+
+public class Urgente implements Facturacion, Serializable {
 
     private double porcentajeUrgente;
 

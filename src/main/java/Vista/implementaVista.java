@@ -27,7 +27,7 @@ public class implementaVista implements informaVista, interrogaVista {
         //controlador.cargarDatos();
 
         JFrame ventana = new JFrame("Gestión de Proyectos");
-        ventana.setSize(30, 50); //.pack()
+        ventana.setSize(800, 600); //.pack()
         Image icono = Toolkit.getDefaultToolkit().getImage("src/iconos/icono.png"); //Creamos una IMAGE
         ventana.setIconImage(icono); //Añadimos la IMAGE creada
         JTabbedPane tabs = new JTabbedPane();

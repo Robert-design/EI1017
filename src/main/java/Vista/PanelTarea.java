@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.implementacionControlador;
+import Modelo.Proyecto;
 import Modelo.impletaModelo;
 
 import javax.swing.*;
@@ -21,14 +22,16 @@ public class PanelTarea extends JPanel {
         this.vista = vista;
 
 
-        JButton buscarTareasProyecto = new JButton("Buscar Tareas"); //listar Tareas?
+        JButton buscarTareasProyecto = new JButton("Seleccionar Proyecto"); //listar Tareas?
         JButton insertarTarea = new JButton("Añadir Tarea");
         JButton insertarPersonaTarea = new JButton("Añadir persona a tarea");
         JButton eliminarPersonaTarea = new JButton("Eliminar Persona de  Tarea");
         JButton marcarFinalizada = new JButton("Marcar Finalizada");
+        JButton añadirPersona = new JButton("Añadir Persona");
+        JButton Guardar = new JButton("Guardar");
 
         JLabel nombreProyecto = new JLabel("Nombre de proyecto");
-        nombre = new JTextField(30);
+        nombre = new JTextField(10);
 
 
         JScrollPane panel = new JScrollPane(areaDatos);
@@ -40,76 +43,75 @@ public class PanelTarea extends JPanel {
         boton1.add(nombreProyecto);
         boton1.add(nombre);
         boton1.add(buscarTareasProyecto);
+        boton1.add(añadirPersona);
+        boton1.add(Guardar);
 
         JPanel boton2 = new JPanel();
-       //boton1.add(nombre);
-        //boton1.add(nombreProyecto); //Esto tal vez no vaya aquí. Es solo para mostrar el boton de momento
-        boton1.add(insertarTarea);
-
-        JPanel boton3 = new JPanel();
-        //boton1.add(nombre);
-        //boton1.add(nombreProyecto); //Esto tal vez no vaya aquí. Es solo para mostrar el boton de momento
-        boton1.add(insertarPersonaTarea);
-
-        JPanel boton4 = new JPanel();
-        //boton1.add(nombre);
-        //boton1.add(nombreProyecto); //Lo mismo que en la linea 41
-        boton1.add(eliminarPersonaTarea);
-
-        JPanel boton5 = new JPanel();
-        //boton1.add(nombre);
-        //boton1.add(nombreProyecto);
-        boton1.add(marcarFinalizada);
+        boton2.add(insertarTarea);
+        boton2.add(insertarPersonaTarea);
+        boton2.add(eliminarPersonaTarea);
+        boton2.add(marcarFinalizada);
 
         JPanel recuadroDatos = new JPanel();
         recuadroDatos.add(areaDatos);
 
         Container contenedor = new Container();
         contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.PAGE_AXIS));;
-       /*contenedor.add(nombreProyecto);
-        contenedor.add(nombre);*/ //
         contenedor.add(boton1);
         contenedor.add(boton2);
-        contenedor.add(boton3);
-        contenedor.add(boton4);
-        contenedor.add(boton5);
+
         contenedor.add(recuadroDatos);
 
-        rellenarInformacion();
+        //rellenarInformacion();
         add(contenedor);
         areaDatos.setForeground(Color.BLACK);
         areaDatos.setEditable(false);
+        insertarTarea.setEnabled(false);
+        insertarPersonaTarea.setEnabled(false);
+        eliminarPersonaTarea.setEnabled(false);
+        marcarFinalizada.setEnabled(false);
 
         buscarTareasProyecto.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(nombre.getText());
-                modelo.buscarProyecto(nombre.getText());
-                rellenarInformacion();
+                Proyecto proyecto =modelo.buscarProyecto(nombre.getText());
+                System.out.println(proyecto.mostrarTareas());
+
+                rellenarInformacion(proyecto.mostrarTareas());
+                insertarTarea.setEnabled(true);
+                insertarPersonaTarea.setEnabled(true);
+                eliminarPersonaTarea.setEnabled(true);
+                marcarFinalizada.setEnabled(true);
+                modelo.setProyectoNombre(nombre.getText());
             }
         });
 
         insertarTarea.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println(nombre.getText());
-                //modelo.insertarTarea(nombre.getText());
-                rellenarInformacion();
+                new FormularioAñadirTarea(controlador);
             }
         });
-
-        buscarTareasProyecto.addActionListener(new ActionListener() {
+        Guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println(nombre.getText());
-                modelo.buscarProyecto(nombre.getText());
-                rellenarInformacion();
+                try {
+                    modelo.guardarProyecto();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
-
 
     }
     public void rellenarInformacion() {
         System.out.println("rellenarInformacion");
         areaDatos.setText("");
         areaDatos.append(modelo.obtenerInfo());
+
+    }
+    public void rellenarInformacion(String datos) {
+        System.out.println("rellenarInformacion");
+        areaDatos.setText("");
+        areaDatos.append(datos);
 
     }
 
