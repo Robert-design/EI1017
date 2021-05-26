@@ -66,13 +66,13 @@ public class impletaModelo   {
 
     public void altaPersona(String nombreProyecto,String nombrePersona) throws añadirPersonaATareaException, NoElementException {
         Proyecto proyecto =  buscarProyecto(nombreProyecto);
-
+        System.out.println(utilidadesParaListas.elementosInsertables(nombrePersona, proyecto.getListaPersonas()));
         if (utilidadesParaListas.elementosInsertables(nombrePersona, proyecto.getListaPersonas())) {
             proyecto.añadirPersonaProyecto(nombrePersona);
 
             System.out.println("Persona dada de alta\n");
-        }
-        throw new NoElementException();
+        } else
+            throw new NoElementException();
     }
 
     private Resultado crearResultado(String nombreResultado) {
