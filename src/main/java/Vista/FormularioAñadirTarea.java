@@ -33,12 +33,10 @@ public class FormularioAñadirTarea {
         JLabel resultado = new JLabel("Resultado: ");
         JLabel coste = new JLabel("Precio de la Tarea: ");
         JLabel facturacion = new JLabel("Tipo de Facturación: ");
-        JLabel label_porcentage = new JLabel("Porcentage: ");
+        JLabel label_porcentage = new JLabel("Porcentaje: ");
         añadir = new JButton("Añadir Tarea");
 
         //añadimos icono?
-
-
 
         //Creamos tabla fila x col
         formulario.setLayout(new GridLayout(10,2));
@@ -88,6 +86,4 @@ public class FormularioAñadirTarea {
             System.out.println("Error añadiendo tarea...");
         }
     }
-
-
 }

@@ -18,15 +18,19 @@ public class impletaModelo   {
     private cambioModelo modelo;
     private implementacionControlador controlador;
     String proyectoNombre;
+
     public void setVista(implementaVista vista) {
         this.vista = vista;
     }
+
     public void setProyectoNombre(String proyectoNombre) {
         this.proyectoNombre = proyectoNombre;
     }
+
     public String getProyectoNombre() {
         return this.proyectoNombre;
     }
+
     public void crearProyecto(String nombre){
         Proyecto nuevo = new Proyecto(nombre);
         System.out.println(nombre);
@@ -59,6 +63,7 @@ public class impletaModelo   {
         }
         return null;
     }
+
     public void altaPersona(String nombreProyecto,String nombrePersona) throws añadirPersonaATareaException, NoElementException {
         Proyecto proyecto =  buscarProyecto(nombreProyecto);
 
@@ -69,6 +74,7 @@ public class impletaModelo   {
         }
         throw new NoElementException();
     }
+
     private Resultado crearResultado(String nombreResultado) {
         Resultado resultado = null;
         switch (nombreResultado) {

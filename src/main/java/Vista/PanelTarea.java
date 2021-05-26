@@ -74,7 +74,7 @@ public class PanelTarea extends JPanel {
         buscarTareasProyecto.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(nombre.getText());
-                Proyecto proyecto =modelo.buscarProyecto(nombre.getText());
+                Proyecto proyecto = modelo.buscarProyecto(nombre.getText());
                 System.out.println(proyecto.mostrarTareas());
 
                 rellenarInformacion(proyecto.mostrarTareas());
@@ -91,6 +91,14 @@ public class PanelTarea extends JPanel {
                 new FormularioAñadirTarea(controlador);
             }
         });
+
+        añadirPersona.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new FormularioAñadirPersona(controlador);
+            }
+        });
+
+
         Guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
