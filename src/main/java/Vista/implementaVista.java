@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import Modelo.*;
-public class implementaVista  implements informaVista, interrogaVista {
+public class implementaVista implements informaVista, interrogaVista {
     private implementacionControlador controlador;
     private impletaModelo modelo;
     private PanelProyecto panel;

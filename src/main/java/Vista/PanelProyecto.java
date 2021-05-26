@@ -66,10 +66,9 @@ public class PanelProyecto extends JPanel {
 
 
     }
-    public void rellenarInformacion() {
-        System.out.println("rellenarInformacion");
-        areaDatos.setText("");
-        areaDatos.append(modelo.obtenerInfo());
-
-    }
+        public void rellenarInformacion() {
+            System.out.println("rellenarInformacion");
+            areaDatos.setText("");
+            areaDatos.append(modelo.obtenerInfo());
+        }
 }
