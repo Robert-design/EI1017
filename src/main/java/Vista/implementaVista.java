@@ -13,7 +13,7 @@ public class implementaVista implements informaVista, interrogaVista {
     private impletaModelo modelo;
     private PanelProyecto panel;
     private PanelTarea panel2;
-    //Private PanelPersona
+    private PanelPersona panel3;
 
     public void setModelo(impletaModelo modelo) {
         this.modelo = modelo;
@@ -33,8 +33,11 @@ public class implementaVista implements informaVista, interrogaVista {
         JTabbedPane tabs = new JTabbedPane();
         panel = new PanelProyecto(controlador,modelo,ventana);
         panel2 = new PanelTarea(controlador, modelo, ventana);
+        panel3 = new PanelPersona(controlador, modelo, ventana);
         tabs.add("Proyectos", panel );
         tabs.add("Tareas", panel2);
+        tabs.add("Persona", panel3);
+        ventana.add(tabs);
         ventana.add(tabs);
         ventana.add(tabs);
         ventana.setVisible(true);
