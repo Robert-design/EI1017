@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PanelPersona {
+public class PanelPersona extends JPanel {
 
     private implementacionControlador controlador;
     private impletaModelo modelo;
