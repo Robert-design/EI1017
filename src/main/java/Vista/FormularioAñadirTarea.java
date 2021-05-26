@@ -30,7 +30,7 @@ public class FormularioAñadirTarea {
         this.formulario = new JFrame("Añadir Tarea");
         JLabel nombreProy = new JLabel("Nombre del Proyecto: ");
         JLabel nombreTar = new JLabel("Nombre de la Tarea: ");
-        JLabel resultado = new JLabel("Nombre de la Persona: ");
+        JLabel resultado = new JLabel("Resultado: ");
         JLabel coste = new JLabel("Precio de la Tarea: ");
         JLabel facturacion = new JLabel("Tipo de Facturación: ");
         JLabel label_porcentage = new JLabel("Porcentage: ");

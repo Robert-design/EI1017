@@ -22,7 +22,7 @@ public class PanelProyecto extends JPanel {
         this.vista = vista;
 
         JButton insertarProyecto = new JButton("Crear Proyecto");
-        JButton seleccionarProy = new JButton("Seleccionar Proyecto");
+        JButton añadirPersonaProy = new JButton("Añadir persona a  Proyecto");
         JLabel nombrePryecto = new JLabel("Nombre de Proyecto: ");
         nombreProyecto = new JTextField(30);
 
@@ -40,7 +40,7 @@ public class PanelProyecto extends JPanel {
         JPanel linea3 = new JPanel();
         //linea.add(nombrePryecto);
         //linea.add(nombreProyecto);
-        linea.add(seleccionarProy);
+        linea.add(añadirPersonaProy);
 
         JPanel linea2 = new JPanel();
         linea2.add(areaDatos);

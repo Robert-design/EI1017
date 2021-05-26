@@ -26,7 +26,7 @@ public class PanelPersona extends JPanel {
         JButton insertarPersona = new JButton("Añadir persona");
 
         JLabel nombrePersona = new JLabel("Nombre de la persona");
-        nombre = new JTextField(30);
+        nombre = new JTextField(15);
 
         JScrollPane panel = new JScrollPane(areaDatos);
         panel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -50,18 +50,18 @@ public class PanelPersona extends JPanel {
         contenedor.add(recuadroDatos);
 
         rellenarInformacion();
-        //add(contenedor);
+        add(contenedor);
         areaDatos.setForeground(Color.BLACK);
         areaDatos.setEditable(false);
 
 
-        buscarPersonaProyecto.addActionListener(new ActionListener() {
+       /* buscarPersonaProyecto.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(nombre.getText());
                 modelo.getPersona();
                 rellenarInformacion();
             }
-        });
+        });*/
     }
 
 
