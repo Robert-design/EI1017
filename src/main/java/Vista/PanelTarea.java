@@ -23,10 +23,10 @@ public class PanelTarea extends JPanel {
 
 
         JButton buscarTareasProyecto = new JButton("Seleccionar Proyecto"); //listar Tareas?
-        JButton insertarTarea = new JButton("Añadir Tarea");
+        JButton insertarTarea = new JButton("Añadir tarea");
         JButton insertarPersonaTarea = new JButton("Añadir persona a tarea");
         JButton eliminarPersonaTarea = new JButton("Eliminar Persona de  Tarea");
-        JButton marcarFinalizada = new JButton("Marcar Finalizada");
+        JButton modificarTarea = new JButton("Modificar tarea");
         JButton añadirPersona = new JButton("Añadir Persona");
         JButton Guardar = new JButton("Guardar");
 
@@ -50,7 +50,7 @@ public class PanelTarea extends JPanel {
         boton2.add(insertarTarea);
         boton2.add(insertarPersonaTarea);
         boton2.add(eliminarPersonaTarea);
-        boton2.add(marcarFinalizada);
+        boton2.add(modificarTarea);
 
         JPanel recuadroDatos = new JPanel();
         recuadroDatos.add(areaDatos);
@@ -69,7 +69,7 @@ public class PanelTarea extends JPanel {
         insertarTarea.setEnabled(false);
         insertarPersonaTarea.setEnabled(false);
         eliminarPersonaTarea.setEnabled(false);
-        marcarFinalizada.setEnabled(false);
+        modificarTarea.setEnabled(false);
 
         buscarTareasProyecto.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -81,7 +81,7 @@ public class PanelTarea extends JPanel {
                 insertarTarea.setEnabled(true);
                 insertarPersonaTarea.setEnabled(true);
                 eliminarPersonaTarea.setEnabled(true);
-                marcarFinalizada.setEnabled(true);
+                modificarTarea.setEnabled(true);
                 modelo.setProyectoNombre(nombre.getText());
             }
         });
@@ -101,6 +101,18 @@ public class PanelTarea extends JPanel {
         insertarPersonaTarea.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new FormularioAñadirPersonaTarea(controlador);
+            }
+        });
+
+        eliminarPersonaTarea.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new FormularioEliminarPersona(controlador);
+            }
+        });
+
+        modificarTarea.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new FormularioModificarTarea(controlador);
             }
         });
 

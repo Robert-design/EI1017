@@ -180,7 +180,6 @@ public class impletaModelo   {
         Persona eliminada = proyecto.damePersona(nombre);
         Tarea tarea = proyecto.dameTarea(titulo);
         Persona esResponsable = tarea.getResponsable();
-        //existente.personasATarea.size() > 1
         if (!utilidadesParaListas.elementosConListaVacia(tarea.getPersonasATarea()).isEmpty()) {
             if (esResponsable.getNombre().equals(eliminada.getNombre())) {
                 boolean hecho = false;
@@ -197,9 +196,13 @@ public class impletaModelo   {
                         hecho = true;
                     }
                 }
-            } else
+            } else if(!esResponsable.getNombre().equals(eliminada.getNombre())) {
+               existente.eliminarPersonaTarea(eliminada);
+                System.out.println("Persona eliminada correctamente\n");
+            }else
                 System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo. O bien no hay nadie en la tarea\n");
         }
+
     }
 
     public String getPersona() {
