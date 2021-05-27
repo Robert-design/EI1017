@@ -101,7 +101,7 @@ public class Proyecto implements Serializable {
 
     public Persona damePersona(String nombre) {
         for (Persona persona : listaPersonas)
-            if (persona.getNombre().equals(nombre) && existePersona(nombre))
+            if (persona.getNombre().equals(nombre))
                 return persona;
         return null;
     }

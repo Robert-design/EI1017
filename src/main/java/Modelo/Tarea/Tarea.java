@@ -122,6 +122,12 @@ public class Tarea implements tieneClave, tieneLista, Serializable {
         }
         return res;
     }
+    public Persona personaEnTarea(String nombre){
+        for (Persona persona : personasATarea)
+            if (persona.getNombre().equals(nombre))
+                return persona;
+        return null;
+    }
 
     @Override
     public String getClave() {

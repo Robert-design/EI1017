@@ -14,8 +14,10 @@ public class FormularioEliminarPersona {
     private JTextField nombreProyecto;
     private JTextField nombrePersona;
     private JTextField nombreTarea;
-    private JCheckBox resp;
+    //private JTextField resp;
     private String esResponsable;
+    private JTextField nombreRespNuevo;
+    private JCheckBox checkRespSI;
     private implementacionControlador controlador;
     private JFrame formularioPerso;
     private JButton eliminarPersona;
@@ -24,7 +26,8 @@ public class FormularioEliminarPersona {
         this.nombreProyecto = new JTextField(10);
         this.nombreTarea = new JTextField(10);
         this.nombrePersona = new JTextField(10);
-        this.resp = new JCheckBox("¿Responsable? ");
+        this.nombreRespNuevo = new JTextField(10);
+        this.checkRespSI = new JCheckBox("Marcar si es afirmativo");
         this.esResponsable = null;
         this.eliminarPersona = new JButton("Eliminar persona");
 
@@ -34,13 +37,16 @@ public class FormularioEliminarPersona {
         JLabel nombProy = new JLabel("Nombre Proyecto: ");
         JLabel nombTarea = new JLabel("Nombre Tarea: ");
         JLabel nombPerso = new JLabel("Nombre Persona: ");
-        JLabel responsable = new JLabel("Responsable: ");
+        JLabel responsable = new JLabel("¿Es responsable? ");
+        JLabel nuevoResp = new JLabel("Nombre nuevo responsable: ");
+
+        JPanel panel = new JPanel();
+        panel.add(responsable);
+        panel.add(checkRespSI);
 
         formularioPerso.setLayout(new GridLayout(10,2));
 
         Container contenedor = formularioPerso.getContentPane();
-        JPanel panel = new JPanel();
-        panel.add(resp);
 
         contenedor.add(nombProy);
         contenedor.add(nombreProyecto);
@@ -50,13 +56,30 @@ public class FormularioEliminarPersona {
         contenedor.add(nombreTarea);
         contenedor.add(nombPerso);
         contenedor.add(nombrePersona);
-        contenedor.add(responsable);
-        contenedor.add(resp);
+        contenedor.add(panel);
+        contenedor.add(nuevoResp);
+        nombreRespNuevo.setEditable(false);
+        contenedor.add(nombreRespNuevo);
         contenedor.add(eliminarPersona);
 
 
         formularioPerso.pack();
         formularioPerso.setVisible(true);
+
+       checkRespSI.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                switch (e.getStateChange()) {//Preguntamos al evento
+                    case ItemEvent.SELECTED:
+                        nombreRespNuevo.setEditable(true);
+                        esResponsable= nombreRespNuevo.getText();
+                        break;
+                   case ItemEvent.DESELECTED:
+
+                        break;
+                }
+            }
+        });
 
         eliminarPersona.addActionListener(new ActionListener() {
             @Override
@@ -69,8 +92,8 @@ public class FormularioEliminarPersona {
     }
     private void eliminarPersonaTarea() {
         if(nombreProyecto.getText().length() > 0 && nombreTarea.getText().length() > 0 && nombrePersona.getText().length() > 0){
-            System.out.println("Eliminando persona...");
 
+            System.out.println("Eliminando persona...");
             controlador.eliminarPersonaDeTarea(nombreProyecto.getText(),nombrePersona.getText(),nombreTarea.getText(),esResponsable);
         } else {
             System.out.println("Error añadiendo persona...");

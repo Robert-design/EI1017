@@ -9,11 +9,12 @@ import Controlador.implementacionControlador;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class impletaModelo   {
     private ArrayList<Proyecto> proyectos = new ArrayList<>();
-
+    //private Random randomGenerator;
     private implementaVista vista;
     private cambioModelo modelo;
     private implementacionControlador controlador;
@@ -182,20 +183,23 @@ public class impletaModelo   {
         Persona esResponsable = tarea.getResponsable();
         if (!utilidadesParaListas.elementosConListaVacia(tarea.getPersonasATarea()).isEmpty()) {
             if (esResponsable.getNombre().equals(eliminada.getNombre())) {
-                boolean hecho = false;
-                while (!hecho) {
                     Persona nueva = proyecto.damePersona(nombreNuevo);
-                    if (tarea.getPersonasATarea().contains(nueva)) {
+                    System.out.println("tengo persona nueva");
+                    if (tarea.personasATarea.contains(nueva)) {
                         try {
+                            System.out.println("cambiando responsable");
                             tarea.setResponsable(nueva);
+                            System.out.println("nuevo resp");
                             existente.eliminarPersonaTarea(eliminada);
                             System.out.println("Persona eliminada correctamente\n");
                         } catch (existeResponsableException e) {
                             e.printStackTrace();
                         }
-                        hecho = true;
-                    }
-                }
+                        System.out.println("todo listo");
+
+                    } else
+                        System.out.println("No existe persona, no se puede eliminar");
+
             } else if(!esResponsable.getNombre().equals(eliminada.getNombre())) {
                existente.eliminarPersonaTarea(eliminada);
                 System.out.println("Persona eliminada correctamente\n");
