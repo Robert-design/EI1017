@@ -25,4 +25,5 @@ public class FormularioModificarTarea {
         this.nombreProyecto = new JTextField(25);
         JLabel nombrePers = new JLabel("Nombre de la persona: ");
         modificar = new JButton("Modificar tarea");
+    }
 }
