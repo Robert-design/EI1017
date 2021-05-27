@@ -53,9 +53,8 @@ public class implementacionControlador implements Controlador {
     }
 
     @Override
-    public void marcarFinalizado() {
-        //String proyecto = vista.getNombreProyecto();
-       // modelo.marcarFinalizado();
+    public void marcarFinalizado(String nombreProyecto, String nombreTarea) {
+        modelo.marcarFinalizado(nombreProyecto, nombreTarea);
     }
 
     @Override

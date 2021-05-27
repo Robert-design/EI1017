@@ -137,10 +137,9 @@ public class impletaModelo implements cambioModelo  {
         }
     }
 
-    public void marcarFinalizado(String nombreProyecto,String nombreTarea) {
+    public void marcarFinalizado(String nombreProyecto, String nombreTarea) {
         Proyecto proyecto =  buscarProyecto(nombreProyecto);
-
-
+        System.out.println(nombreProyecto);
         Tarea tarea = proyecto.dameTarea(nombreTarea);
         if (!tarea.getFinalizado()) {
             tarea.setFinalizado(true);

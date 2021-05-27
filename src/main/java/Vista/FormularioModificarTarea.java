@@ -8,6 +8,8 @@ import Modelo.añadirPersonaATareaException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.*;
 
 public class FormularioModificarTarea {
@@ -19,6 +21,7 @@ public class FormularioModificarTarea {
     private JTextField porcentaje;
     private JFrame formulario;
     private JButton modificar;
+    private JCheckBox marcar;
     private implementacionControlador controlador;
 
     public FormularioModificarTarea(implementacionControlador controlador) {
@@ -28,6 +31,7 @@ public class FormularioModificarTarea {
         this.precio = new JTextField(10);
         this.tipoFAC = new JTextField(10);
         this.porcentaje = new JTextField(4);
+        this.marcar = new JCheckBox("Marcar como finalizada");
 
         this.formulario = new JFrame("Modificar tarea");
         JLabel nombreProy = new JLabel("Nombre del proyecto: ");
@@ -59,6 +63,7 @@ public class FormularioModificarTarea {
         contenedor.add(label_porcentage);
         contenedor.add(porcentaje);
         contenedor.add(modificar);
+        contenedor.add(marcar);
 
         formulario.pack();
         formulario.setVisible(true);
@@ -69,6 +74,31 @@ public class FormularioModificarTarea {
                 modificarTarea();
             }
         });
+
+        marcar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (marcar.isSelected()) {
+                    System.out.println(nombreProyecto.getText());
+                    controlador.marcarFinalizado(nombreProyecto.getText(), nombreTarea.getText());
+                }
+            }
+        });
+
+        /*marcar.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                switch (e.getStateChange()) {//Preguntamos al evento
+                    case ItemEvent.SELECTED:
+                        controlador.marcarFinalizado(nombreProy.getText(), nombreTarea.getText());
+                        break;
+                    /*case ItemEvent.DESELECTED:
+                       esResponsable;
+
+                        break;
+                }
+            }
+        });*/
     }
 
     private void modificarTarea() {
