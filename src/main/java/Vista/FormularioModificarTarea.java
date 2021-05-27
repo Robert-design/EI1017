@@ -12,18 +12,75 @@ import javax.swing.*;
 
 public class FormularioModificarTarea {
 
-    private JTextField nombrePersona;
     private JTextField nombreProyecto;
+    private JTextField nombreTarea;
+    private JTextField precio;
+    private JTextField tipoFAC;
+    private JTextField porcentaje;
     private JFrame formulario;
     private JButton modificar;
     private implementacionControlador controlador;
 
     public FormularioModificarTarea(implementacionControlador controlador) {
         this.controlador = controlador;
-        this.nombrePersona = new JTextField(25);
-        this.formulario = new JFrame("Añadir persona");
         this.nombreProyecto = new JTextField(25);
-        JLabel nombrePers = new JLabel("Nombre de la persona: ");
+        this.nombreTarea = new JTextField(25);
+        this.precio = new JTextField(10);
+        this.tipoFAC = new JTextField(10);
+        this.porcentaje = new JTextField(4);
+
+        this.formulario = new JFrame("Modificar tarea");
+        JLabel nombreProy = new JLabel("Nombre del proyecto: ");
+        JLabel nombreTar = new JLabel("Nombre de la tarea: ");
+        JLabel coste = new JLabel("Precio de la tarea: ");
+        JLabel facturacion = new JLabel("Tipo de facturación: ");
+        JLabel label_porcentage = new JLabel("Porcentaje: ");
         modificar = new JButton("Modificar tarea");
+
+        //añadimos icono?
+
+        //Creamos tabla fila x col
+        formulario.setLayout(new GridLayout(10,2));
+
+        //Contenedor
+        Container contenedor = formulario.getContentPane();
+
+        //añadimos
+        contenedor.add(nombreProy);
+        contenedor.add(nombreProyecto);
+        nombreProyecto.setEditable(false);
+        nombreProyecto.setText(controlador.getModelo().getNombreProyecto());
+        contenedor.add(nombreTar);
+        contenedor.add(nombreTarea);
+        contenedor.add(coste);
+        contenedor.add(precio);
+        contenedor.add(facturacion);
+        contenedor.add(tipoFAC);
+        contenedor.add(label_porcentage);
+        contenedor.add(porcentaje);
+        contenedor.add(modificar);
+
+        formulario.pack();
+        formulario.setVisible(true);
+
+        modificar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modificarTarea();
+            }
+        });
+    }
+
+    private void modificarTarea() {
+        if(nombreProyecto.getText().length() > 0 && nombreTarea.getText().length() > 0){
+            int coste = Integer.valueOf(String.valueOf(precio.getText()));
+            int porcen = Integer.valueOf(String.valueOf(porcentaje.getText()));
+
+            System.out.println("Modificando tarea...");
+
+            controlador.modificarTarea(nombreProyecto.getText(),coste, porcen, nombreTarea.getText(), tipoFAC.getText());
+        } else {
+            System.out.println("Error modificando tarea...");
+        }
     }
 }

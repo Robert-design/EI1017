@@ -79,4 +79,10 @@ public class implementacionControlador implements Controlador {
 
     }
 
+    @Override
+    public void modificarTarea (String proyecto, double coste, double porcentaje, String titulo, String tipo) {
+        modelo.modificarCoste(proyecto, coste, titulo);
+        modelo.modificarFacturacion(proyecto, porcentaje, titulo, tipo);
+    }
+
 }

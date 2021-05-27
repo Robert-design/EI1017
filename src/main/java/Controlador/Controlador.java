@@ -13,11 +13,12 @@ public interface Controlador {
     void eliminarPersonaDeTarea(String proyecto, String tituloTarea ,String personaNueva, String nuevaPersonaRespon);
     void listarPersonasProyecto();
     void listarTareasProyecto();
-    /*void guardarProycto();
-    void cargarProyecto();
-    void modificarCoste();
-    void modificarFacturación();
-    void importeTotal(); //opt12*/
+    //void guardarProycto();
+    //void cargarProyecto();
+    void modificarTarea(String proyecto, double coste, double porcentaje, String titulo, String tipo);
+    //void modificarCoste();
+    //void modificarFacturación();
+    //void importeTotal(); //opt12*/
 
 
 

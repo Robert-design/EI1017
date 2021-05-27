@@ -122,11 +122,13 @@ public class Proyecto implements Serializable {
 
             for (int i = 0; i < listaTareas.size(); i++) {
                 //res[i] = "Tarea: " + listaTareas.get(i).getTitulo() +"; Finalizado: "+ listaTareas.get(i).isFinalizado() + "; Resultado: " + listaTareas.get(i).getResultadoEsperado().toString() + "; Trabajan en tarea: " + Arrays.toString(listaTareas.get(i).mostrarPersonasProyecto()) + "; El responsable es: " + listaTareas.get(i).getResponsable() + "\n";
-                res += "Tarea: " + listaTareas.get(i).getTitulo()+
-                 "\tFinalizado: "+ listaTareas.get(i).isFinalizado()+
-                "\tTipo: " + listaTareas.get(i).getResultadoEsperado().getOpcion()+
-                "\tTrabajan en tarea: " + listaTareas.get(i).mostrarPersonasProyecto()+
-                "\tEl responsable es: " + listaTareas.get(i).getResponsable() + "\n";
+                res += "Tarea: " + listaTareas.get(i).getTitulo() +
+                 "\tFinalizado: "+ listaTareas.get(i).isFinalizado() +
+                //"\tTipo: " + listaTareas.get(i).getResultadoEsperado().getOpcion() +
+                "\tTrabajan en tarea: " + listaTareas.get(i).mostrarPersonasProyecto() +
+                "\tEl responsable es: " + listaTareas.get(i).getResponsable() +
+                "\tLa facturación es: " + listaTareas.get(i).getFacturacion().getNombre() +
+                "\tEl coste es: " + listaTareas.get(i).getCoste() + "\n";
             }
 
         return res;

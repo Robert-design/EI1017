@@ -234,4 +234,23 @@ public class impletaModelo   {
         obj.close();
     }
 
+    public void modificarCoste (String nombreProyecto, double coste, String titulo) {
+        Proyecto proyecto = buscarProyecto(nombreProyecto);
+        proyecto.dameTarea(titulo).setCoste(coste);
+    }
+
+    public void modificarFacturacion (String nombreProyecto, double porcentaje, String titulo, String tipo) {
+        Proyecto proyecto = buscarProyecto(nombreProyecto);
+        Tarea tarea = proyecto.dameTarea(titulo);
+
+        if (tipo.equals("Consumo Interno")) {
+            tarea.setFacturacion(new ConsumoInterno());
+        }
+        else if (tipo.equals("Descuento")) {
+            tarea.setFacturacion(new Descuento(porcentaje));
+        }
+        else if (tipo.equals("Urgente")) {
+            tarea.setFacturacion(new Urgente(porcentaje));
+        }
+    }
 }

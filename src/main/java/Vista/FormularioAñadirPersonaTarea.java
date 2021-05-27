@@ -71,10 +71,10 @@ public class FormularioAñadirPersonaTarea {
                     case ItemEvent.SELECTED:
                         esResponsable = "Y";
                         break;
-                    case ItemEvent.DESELECTED:
-                       esResponsable = null;
+                    /*case ItemEvent.DESELECTED:
+                       esResponsable;
 
-                        break;
+                        break;*/
                 }
             }
         });
