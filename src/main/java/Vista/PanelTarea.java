@@ -98,6 +98,12 @@ public class PanelTarea extends JPanel {
             }
         });
 
+        insertarPersonaTarea.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new FormularioAñadirPersonaTarea(controlador);
+            }
+        });
+
 
         Guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
