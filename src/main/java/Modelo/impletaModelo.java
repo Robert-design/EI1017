@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class impletaModelo   {
+public class impletaModelo implements cambioModelo  {
     private ArrayList<Proyecto> proyectos = new ArrayList<>();
     //private Random randomGenerator;
     private implementaVista vista;
@@ -50,6 +50,12 @@ public class impletaModelo   {
             resultado += (proyecto.mostrarinfo());
         }
         return resultado;
+    }
+
+    public String obtenerPersonas (String nombreProyecto) {
+        System.out.println("Cargando info");
+        Proyecto proy = buscarProyecto(nombreProyecto);
+        return proy.mostrarPersonas();
     }
 
     public void setControlador(implementacionControlador controlador) {
@@ -174,18 +180,18 @@ public class impletaModelo   {
         }
     }
 
-    public void eliminarPersonaTarea(String nombreProyecto,String nombre, String titulo,String nombreNuevo) {
+    public void eliminarPersonaTarea(String nombreProyecto, String titulo, String nombre, String nombreNuevo) {
         Proyecto proyecto = buscarProyecto(nombreProyecto);
-
         Tarea existente = proyecto.dameTarea(titulo);
         Persona eliminada = proyecto.damePersona(nombre);
         Tarea tarea = proyecto.dameTarea(titulo);
         Persona esResponsable = tarea.getResponsable();
         if (!utilidadesParaListas.elementosConListaVacia(tarea.getPersonasATarea()).isEmpty()) {
             if (esResponsable.getNombre().equals(eliminada.getNombre())) {
+                    System.out.println(nombreNuevo);
                     Persona nueva = proyecto.damePersona(nombreNuevo);
-                    System.out.println("tengo persona nueva");
-                    if (tarea.personasATarea.contains(nueva)) {
+                    boolean prueba = tarea.personasATarea.contains(esResponsable);
+                    if (esResponsable.getNombre().equals(eliminada.getNombre())) {
                         try {
                             System.out.println("cambiando responsable");
                             tarea.setResponsable(nueva);
@@ -207,6 +213,13 @@ public class impletaModelo   {
                 System.out.println("Sólo hay una persona en la tarea y es el responsable, no puedes eliminarlo. O bien no hay nadie en la tarea\n");
         }
 
+    }
+
+    @Override
+    public ArrayList<Persona> listarPersonas(String nombreProyecto) {
+        Proyecto proy = buscarProyecto(nombreProyecto);
+        ArrayList<Persona> res = proy.getListaPersonas();
+        return res;
     }
 
     public String getPersona() {
@@ -257,4 +270,6 @@ public class impletaModelo   {
             tarea.setFacturacion(new Urgente(porcentaje));
         }
     }
+
+
 }

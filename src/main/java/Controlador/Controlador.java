@@ -11,7 +11,7 @@ public interface Controlador {
     void marcarFinalizado(); //....
     void añadirPersonaATarea(String proyecto, String persona,String titulo, String resultado);
     void eliminarPersonaDeTarea(String proyecto, String tituloTarea ,String personaNueva, String nuevaPersonaRespon);
-    void listarPersonasProyecto();
+    void listarPersonasProyecto(String nombreProyecto);
     void listarTareasProyecto();
     //void guardarProycto();
     //void cargarProyecto();

@@ -1,6 +1,8 @@
 package Vista;
 
 import Controlador.*;
+import Modelo.Persona;
+import Modelo.Proyecto;
 import Modelo.impletaModelo;
 
 import javax.swing.*;
@@ -22,23 +24,19 @@ public class PanelPersona extends JPanel {
         this.vista = vista;
 
 
-        JButton buscarPersonaProyecto = new JButton("Buscar persona");
-        JButton insertarPersona = new JButton("Añadir persona");
+        JLabel nombreProyecto = new JLabel("Nombre de proyecto");
+        nombre = new JTextField(10);
+        JButton buscarPersonas = new JButton("Listar personas del proyecto");
 
-        JLabel nombrePersona = new JLabel("Nombre de la persona");
-        nombre = new JTextField(15);
 
         JScrollPane panel = new JScrollPane(areaDatos);
         panel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         panel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         JPanel boton1 = new JPanel();
-        boton1.add(nombrePersona);
+        boton1.add(nombreProyecto);
         boton1.add(nombre);
-        boton1.add(buscarPersonaProyecto);
-
-        JPanel boton2 = new JPanel();
-        boton1.add(insertarPersona);
+        boton1.add(buscarPersonas);
 
         JPanel recuadroDatos = new JPanel();
         recuadroDatos.add(areaDatos);
@@ -46,28 +44,27 @@ public class PanelPersona extends JPanel {
         Container contenedor = new Container();
         contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.PAGE_AXIS));
         contenedor.add(boton1);
-        contenedor.add(boton2);
         contenedor.add(recuadroDatos);
 
-        rellenarInformacion();
         add(contenedor);
         areaDatos.setForeground(Color.BLACK);
         areaDatos.setEditable(false);
 
 
-       /* buscarPersonaProyecto.addActionListener(new ActionListener() {
+       buscarPersonas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println(nombre.getText());
-                modelo.getPersona();
-                rellenarInformacion();
+                rellenarInformacion2();
             }
-        });*/
+        });
     }
 
 
-    public void rellenarInformacion() {
+    public void rellenarInformacion2() {
         System.out.println("rellenarInformacion");
         areaDatos.setText("");
-        areaDatos.append(modelo.obtenerInfo());
+        Proyecto proyecto = modelo.buscarProyecto(nombre.getText());
+        for (Persona p : proyecto.getListaPersonas())
+            areaDatos.append(p.getClave() + "\t");
     }
+
 }

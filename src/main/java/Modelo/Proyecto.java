@@ -133,4 +133,12 @@ public class Proyecto implements Serializable {
 
         return res;
     }
+
+    public String mostrarPersonas() {
+        String res = "";
+        for (Persona pers: listaPersonas) {
+            res += pers.getNombre();
+        }
+        return res;
+    }
 }

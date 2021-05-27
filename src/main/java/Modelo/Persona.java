@@ -16,12 +16,11 @@ public class Persona implements tieneClave, tieneLista, Serializable {
     public Persona() {
         super();
         this.nombre = "Sin asignar";
-
     }
     public Persona(String nombre, String correo) {
         super();
         this.nombre = nombre;
-        this.correo = nombre+correo;
+        this.correo = nombre + correo;
         tareasResponsables = new ArrayList<>();
     }
 

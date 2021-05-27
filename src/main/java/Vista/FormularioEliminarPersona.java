@@ -58,7 +58,7 @@ public class FormularioEliminarPersona {
         contenedor.add(nombrePersona);
         contenedor.add(panel);
         contenedor.add(nuevoResp);
-        nombreRespNuevo.setEditable(false);
+        nombreRespNuevo.setEditable(true);
         contenedor.add(nombreRespNuevo);
         contenedor.add(eliminarPersona);
 
@@ -71,11 +71,8 @@ public class FormularioEliminarPersona {
             public void itemStateChanged(ItemEvent e) {
                 switch (e.getStateChange()) {//Preguntamos al evento
                     case ItemEvent.SELECTED:
-                        nombreRespNuevo.setEditable(true);
-                        esResponsable= nombreRespNuevo.getText();
                         break;
                    case ItemEvent.DESELECTED:
-
                         break;
                 }
             }
@@ -92,11 +89,10 @@ public class FormularioEliminarPersona {
     }
     private void eliminarPersonaTarea() {
         if(nombreProyecto.getText().length() > 0 && nombreTarea.getText().length() > 0 && nombrePersona.getText().length() > 0){
-
             System.out.println("Eliminando persona...");
-            controlador.eliminarPersonaDeTarea(nombreProyecto.getText(),nombrePersona.getText(),nombreTarea.getText(),esResponsable);
+            controlador.eliminarPersonaDeTarea(nombreProyecto.getText(), nombrePersona.getText(), nombreTarea.getText(), nombreRespNuevo.getText());
         } else {
-            System.out.println("Error añadiendo persona...");
+            System.out.println("Error eliminando persona...");
         }
     }
 }

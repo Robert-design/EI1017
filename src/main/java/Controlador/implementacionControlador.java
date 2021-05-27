@@ -64,14 +64,13 @@ public class implementacionControlador implements Controlador {
     }
 
     @Override
-    public void eliminarPersonaDeTarea(String proyecto,String tituloTarea, String personaNueva, String nuevaPersonaRespon) {
-        modelo.eliminarPersonaTarea(proyecto,tituloTarea,personaNueva,nuevaPersonaRespon);
+    public void eliminarPersonaDeTarea(String proyecto, String tituloTarea, String personaNueva, String nuevaPersonaRespon) {
+        modelo.eliminarPersonaTarea(proyecto, personaNueva, tituloTarea, nuevaPersonaRespon);
     }
 
-
     @Override
-    public void listarPersonasProyecto() {
-
+    public void listarPersonasProyecto(String nombreProyecto) {
+        modelo.listarPersonas(nombreProyecto);
     }
 
     @Override
