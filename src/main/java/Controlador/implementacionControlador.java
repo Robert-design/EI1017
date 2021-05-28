@@ -60,7 +60,7 @@ public class implementacionControlador implements Controlador {
     @Override
     public void añadirPersonaATarea(String proyecto, String persona, String titulo, String resultado) {
        modelo.añadirPersonaTarea(proyecto, persona, titulo, resultado);
-       //comentario
+       //comentarios
     }
 
     @Override
