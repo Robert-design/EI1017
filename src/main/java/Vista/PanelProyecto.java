@@ -37,10 +37,7 @@ public class PanelProyecto extends JPanel {
         linea.add(nombreProyecto);
         linea.add(insertarProyecto);
 
-        JPanel linea3 = new JPanel();
-        //linea.add(nombrePryecto);
-        //linea.add(nombreProyecto);
-        //linea.add(añadirPersonaProy);
+
 
         JPanel linea2 = new JPanel();
         linea2.add(areaDatos);
@@ -60,6 +57,8 @@ public class PanelProyecto extends JPanel {
                 System.out.println(nombreProyecto.getText());
                 modelo.crearProyecto(nombreProyecto.getText());
                 rellenarInformacion();
+                JOptionPane.showMessageDialog(
+                        null, "Proyecto creado correctamente", "Proyecto: "+nombreProyecto.getText(), JOptionPane.INFORMATION_MESSAGE);
             }
         });
 

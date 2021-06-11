@@ -83,6 +83,8 @@ public class PanelTarea extends JPanel {
                 eliminarPersonaTarea.setEnabled(true);
                 modificarTarea.setEnabled(true);
                 modelo.setProyectoNombre(nombre.getText());
+                JOptionPane.showMessageDialog(
+                        null, "Proyecto cargado correctamente", "Proyecto: "+nombre.getText(), JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
